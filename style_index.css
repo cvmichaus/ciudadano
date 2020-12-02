@@ -1,0 +1,65 @@
+:root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: .75rem;
+}
+
+@font-face {
+      font-family: "Roboto";
+      src: url("../font/Roboto-Regular.ttf");
+
+    }
+
+body {
+    background-color: #eaeaea;
+    color:#000;
+    font-family: Roboto;
+    font-size: 12px;
+
+}
+
+.container-fluid{
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 15px;
+  }
+
+
+
+  .row{
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 15px;
+    background-color: #eaeaea;
+    color:#000;
+    font-family: Roboto;
+    font-size: 12px;
+  }
+
+
+  .row2{
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 15px;
+    background-color: #fff;
+    color:#000;
+    font-family: Roboto;
+    font-size: 12px;
+    padding: 15px;
+  margin: 0 auto;
+  }
+
+ .sidenav {
+      padding-top: 20px;
+      height: 100%;
+    }
+
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 10px;
+      }
+      .row.content {height:auto;} 
+    }
+

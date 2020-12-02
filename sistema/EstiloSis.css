@@ -1,0 +1,191 @@
+@font-face {
+      font-family: "Roboto";
+      src: url("../font/Roboto-Regular.ttf");
+
+    }
+
+    body{
+      font-family: Roboto;
+      font-size: 12px;
+    margin: 0;
+    overflow-x: hidden;
+    color: #686868;
+    line-height: 1.42857143;
+    font-weight: 300;
+  }
+
+   #wrapper{
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 5px;
+  }
+
+  #page-wrapper {
+    position: inherit;
+    margin: 0;
+    padding: 0 0 60px;
+    max-width: auto;
+    max-height: 800px;
+    min-height: 450px;
+    background: #fff;
+}
+
+li{
+ color: #666666;
+  font-family: Roboto;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 14px;
+  }
+
+  li:active{
+ color: #A31D24;
+  font-family: Roboto;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 14px;
+  }
+
+  
+
+    li:hover{
+ color: #A31D24;
+  font-family: Roboto;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 14px;
+  }
+
+  .TitulosGenerlaes{
+  color: #666666;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 16px;
+}
+
+  .TextoGenerlaes{
+ color: #000000;
+  font-family: Roboto;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 14px;
+}
+
+.BotonEditarTG
+{
+
+  color: #A31D24;
+  font-family: Roboto;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 14px;
+  text-align: center;
+}
+
+
+ /* Tooltip */
+  .test + .tooltip > .tooltip-inner {
+  
+    color: #ffffff; 
+    font-family: Lato;
+    padding: 15px;
+    font-size: 12px;
+    letter-spacing: 0;
+  line-height: 15px;
+  border: 1px solid #D4D4D4;
+  background-color: #1F1D21;
+  }
+
+  /* Tooltip on right */
+  .test + .tooltip.right > .tooltip-arrow {
+    border-right: 5px solid black;
+  }
+
+.enlace_didactico{
+  font-family: Roboto;
+  cursor:pointer;
+  font-size: 18px;
+  color:#a31d24;
+  text-transform: uppercase;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+.nav-link{
+
+ color: #666666;
+  font-family: Roboto;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 14px;
+
+}
+
+
+.nav-link:active{
+ color: #A31D24;
+  font-family: Roboto;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 14px;
+  
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 400px) {
+.logo{
+height: 26px;
+  width: 155px;
+}
+
+.collapse navbar-collapse{
+padding-left: 0px;
+}
+
+#menu_rec{
+  height: 80px; width: 100%;
+}
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+.logo{
+height: 26px;
+  width: 155px;
+}
+.collapse navbar-collapse{
+padding-left: 0px;
+}
+#menu_rec{
+  height: 80px; width: 100%;
+}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+.logo{
+height: 26px;
+  width: 155px;
+}
+.collapse navbar-collapse{
+padding-left: 0px;
+}
+#menu_rec{
+  height: 80px; width: 100%;
+}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .logo{
+height: 26px;
+  width: 155px;
+}
+#menu_rec{
+  height: 80px; width: 100%;
+}
+}

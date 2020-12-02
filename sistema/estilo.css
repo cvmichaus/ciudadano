@@ -1,0 +1,36 @@
+  @font-face {
+      font-family: "Roboto";
+      src: url("../font/Roboto-Regular.ttf");
+
+    }
+  #wrapper{
+    width: 100%;
+    margin: 0 auto;
+    box-shadow: 1px 0 50px rgba(0,0,0,.2);
+  }
+
+  #page-wrapper {
+    position: inherit;
+    margin: 0;
+    padding: 0 0 60px;
+    max-width: auto;
+    max-height: 800px;
+    min-height: 450px;
+    background: #fff;
+}
+
+.navbar .nav-item:not(:last-child) {
+  margin-right: 0px;
+}
+
+.dropdown-toggle::after {
+   transition: transform 0.15s linear; 
+}
+
+.show.dropdown .dropdown-toggle::after {
+  transform: translateY(3px);
+}
+
+.dropdown-menu {
+  margin-top: 0;
+}

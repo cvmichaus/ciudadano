@@ -1,0 +1,132 @@
+@font-face {
+      font-family: "Roboto";
+      src: url("font/Roboto-Regular.ttf");
+
+    }
+
+
+    @font-face {
+      font-family: "Lato";
+      src: url("font/Lato-Thin.ttf");
+
+    }
+
+.iniciar-sesion {
+ height: 16px;
+  width: 84px;
+  color: #A31D24;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 16px;
+}
+
+.no-tienes-cuenta {
+  height: 30px;
+  width: 100%;
+  color: #A31D24;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 16px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+    .no-tienes-cuenta {
+  height: 16px;
+  width: 219px;
+  color: #A31D24;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 16px;
+}
+
+.telefono {
+  height: 64px;
+  width: 213px;
+  color: #000000;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 16px;
+  text-align: left;
+ text-indent: 1em;
+}
+
+.contactanos {
+  height: 16px;
+  width: 80px;
+  color: #000000;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 16px;
+  text-align: center;
+}
+
+
+.has-cerrado-sesion {
+  height: 56px;
+  width: 272px;
+  color: #000000;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 28px;
+  text-align: center;
+}
+
+
+
+.espera-si-tengo-un {
+  height: 30px;
+  width: 152px;
+  color: #666666;
+  font-family: Lato;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 15px;
+  text-align: right;
+}
+
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 400px) {
+.logo{
+width: 200px;
+height:40px;
+}
+
+
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+.logo{
+width: 130px;
+height:51px;
+}
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+.logo{
+width: 330px;
+height:51px;
+}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+	.logo{
+width: 330px;
+height:51px;
+}
+}
