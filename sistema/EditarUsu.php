@@ -153,13 +153,34 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
                                 <div class="col-4" style="border: 1px solid #000000;-moz-border-radius: 7px;-webkit-border-radius: 7px;padding: 10px; ">
                                  <label style="text-transform: uppercase;font-family: Roboto;font-size: 12px;font-weight: bolder; text-align: left;vertical-align: middle;font-color:#ccc;">Datos Basicos</label>
                                  <br>
+                                  <!--
                                   <center><img src="fotos/avatar.png" alt="" style="cursor: pointer;height: 120px; width: 120px;" width="25%" class="rounded-circle" >
                                    
                                   <input type="file" class="form-control-file" name="foto" id="foto">
                  
                                    
                                   </center>
+                                  -->
+                                  <center>
+                                    <div class="image-upload">
+    <label for="file-input">
+        <img src="fotos/avatar.png" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto" style="cursor: pointer;height: 120px; width: 120px;" class="rounded-circle" width="20%"> 
+    </label>
+        <input id="file-input" name="foto" type="file" accept="image/x-png,image/jpeg,image/png"/>
+</div>
+<style>
+.image-upload > input
+{
+    display: none;
+}
 
+.image-upload img
+{
+    width: 30px;
+    cursor: pointer;
+}
+  </style>
+                                  </center>
                                  <br>
                                  <label style="font-family: Roboto;font-size: 12px;color:#a31d24;text-transform: capitalize;font-weight: bold;">Nomnbre(s)</label>
                                  <br>
@@ -180,7 +201,7 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
                                  <label  style="font-family: Roboto;font-size: 12px;color:#a31d24;text-transform: capitalize;font-weight: bold;">Tipo de Usuario</label>
                                    <br>
                                    <label>
-                                      <select style="width: 150%;color:#000;font-family: Roboto;" class="form-control" type="text" name="correo"  id="correo" >
+                                      <select style="width: 150%;color:#000;font-family: Roboto;" class="form-control" type="text" name="docente"  id="docente" >
                                       <option value="1">Docente</option>
                                       
                                    </select>
