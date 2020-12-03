@@ -123,9 +123,9 @@ $tipo_usuario = $_SESSION['Perfil'];
         <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<?php echo $i; ?>" aria-expanded="true" aria-controls="collapse<?php echo $i; ?>" style="color: #666666;  font-family: Roboto; font-size: 16px; letter-spacing: 0; line-height: 19px;text-decoration: none;">
          <a style="text-decoration: none;color:#666666;" href="DelSecuencia.php?codUF=<?php echo $COD_UF; ?>&CodM=<?php echo $iduser; ?>" data-toggle="tooltip" data-placement="right" title="Eliminar"> <i class="fas fa-trash fa-sm"></i></a> 
          &nbsp;&nbsp;&nbsp;&nbsp; 
-		 <a href="#"><i class="fas fa-download fa-sm"></i></a>
+		 <a href="descargar_secuencia.php?cods=<?php echo $i; ?>&codUF=<?php echo $COD_UF; ?>"><i class="fas fa-download fa-sm"></i></a>
     &nbsp;&nbsp;&nbsp;&nbsp; 
-     <a href="#"><i class="fas fa-eye fa-sm"></i></a>
+     <a href="ver_secuencia.php?cods=<?php echo $i; ?>&codUF=<?php echo $COD_UF; ?>"><i class="fas fa-eye fa-sm"></i></a>
     &nbsp;&nbsp;&nbsp;&nbsp; 
 		 <?php echo $i; ?>.&nbsp; Secuencia didáctica <?php echo $i; ?>
         </button>

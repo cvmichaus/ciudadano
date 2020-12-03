@@ -155,31 +155,37 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
                                 <div class="col-4" style="border: 1px solid #000000;-moz-border-radius: 7px;-webkit-border-radius: 7px;padding: 10px; ">
                                  <label style="text-transform: uppercase;font-family: Roboto;font-size: 12px;font-weight: bolder; text-align: left;vertical-align: middle;font-color:#ccc;">Datos Basicos</label>
                                  <br>
-                                 <center><img src="fotos/avatar.png" alt="" style="cursor: pointer;height: 120px; width: 120px;" width="25%" class="rounded-circle" ></center>
+                                 <center><img src="fotos/<?php
+                                   if(isset($data['avatar'])){
+                                    echo $data['avatar'];
+                                   } else{
+                                    echo "avatar.png";
+                                   }
+                                 ?>" alt="" style="height: 120px; width: 120px;" width="25%" class="rounded-circle" ></center>
                                  <br>
-                                 <label style="font-family: Roboto;font-size: 12px;color:#a31d24;text-transform: capitalize;font-weight: bold;">Nomnbre(s)</label>
+                                 <label style="  color: #A31D24; font-family: Roboto; font-size: 12px;  letter-spacing: 0; line-height: 14px;font-weight: bold;">Nomnbre(s)</label>
                                  <br>
-                                  <label><input readonly class="form-control" style="background-color: white;border-style: none;width: 150%color:#000;font-family: Roboto;" type="text" name="nombre" id="nombre" value="<?php echo $data['Nombres']; ?>"></label>
+                                  <label><input readonly class="form-control" style="background-color: white;border-style: none;width: 150%color:#000;  color: #000000;font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;" type="text" name="nombre" id="nombre" value="<?php echo $data['Nombres']; ?>"></label>
                                   <br>
                                  <label  style="font-family: Roboto;font-size: 12px;color:#a31d24;text-transform: capitalize;font-weight: bold;">Apellidos</label>
                                   <br>
-                                   <label><input readonly style="background-color: white;border-style: none;width: 150%color:#000;font-family: Roboto;" class="form-control" type="text" name="apellidos" id="apellidos" value="<?php echo $data['Apellidos']; ?>"></label>
+                                   <label><input readonly style="background-color: white;border-style: none;width: 110%;color:#000;  color: #000000;font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px" class="form-control" type="text" name="apellidos" id="apellidos" value="<?php echo $data['Apellidos']; ?>"></label>
                                   <br>
                                  <label  style="font-family: Roboto;font-size: 12px;color:#a31d24;text-transform: capitalize;font-weight: bold;">Correo</label>
                                   <br>
-                                   <label><input readonly style="background-color: white;border-style: none;color:#000;font-family: Roboto;width: 110%;" class="form-control" type="mail" name="correo"  id="correo" value="<?php echo $data['correo']; ?>"></label>
+                                   <label><input readonly style="background-color: white;border-style: none;color:#000;  color: #000000;font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;width: 110%;" class="form-control" type="mail" name="correo"  id="correo" value="<?php echo $data['correo']; ?>"></label>
                                   <br>
                                  <label  style="font-family: Roboto;font-size: 12px;color:#a31d24;text-transform: capitalize;font-weight: bold;">Cedula</label>
                                 <br>
                                    <label>
-                                      <input readonly style="background-color: white;border-style: none;color:#000;font-family: Roboto;width: 110%;" class="form-control" type="mail" name="cedula"  id="cedula" value="<?php echo $data['cedula']; ?>"></label>
+                                      <input readonly style="background-color: white;border-style: none;width: 110%color:#000;  color: #000000;font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px" class="form-control" type="mail" name="cedula"  id="cedula" value="<?php echo $data['cedula']; ?>"></label>
 
                                    </label>
                                     <br>
                                    <label  style="font-family: Roboto;font-size: 12px;color:#a31d24;text-transform: capitalize;font-weight: bold;">Tipo de Usuario</label>
                                    <br>
                                    <label>
-                                      <select disabled="true" readonly style="background-color: white;border-style: none;width: 150%;color:#000;font-family: Roboto;" class="form-control" type="text" name="correo"  id="correo" >
+                                      <select disabled="true" readonly style="background-color: white;border-style: none;width: 110%;color:#000;  color: #000000;font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px" class="form-control" type="text" name="correo"  id="correo" >
                                       <option value="1">Docente</option>
                                       
                                    </select>
@@ -198,7 +204,7 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
                                       <div class="col-12">
                      
 
-    <select readonly disabled="true" style="background-color: white;border-style: none;width: 100%;color:#000;font-family: Roboto;" name="tipo_escuela" id="tipo_escuela" class="form-control" placeholder="Tipo de Secundaria">
+    <select readonly disabled="true" style="background-color: white;border-style: none;width: 110%;  color: #000000; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;" name="tipo_escuela" id="tipo_escuela" class="form-control" placeholder="Tipo de Secundaria">
     <option value="<?php echo $data['Tipo']; ?>"><?php echo $data['Tipo']; ?></option>
     <option value="Secundaria General">Secundaria General </option>
     <option value="Tele-secundaria">Tele-secundaria</option>
@@ -211,12 +217,13 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
             <div class="col-6">
               <label  style="font-family: Roboto;font-size: 12px;color:#a31d24;text-transform: capitalize;font-weight: bold;">Nombre de secundaria</label>
               <br>
- <input type="text" style="background-color: white;border-style: none;" readonly name="nombre_secundaria" id="nombre_secundaria" class="form-control" placeholder="Nombre de la escuela" value="<?php echo $data['Nombre']; ?>">
+ <input type="text" style="background-color: white;border-style: none;  color: #000000;  font-family: Roboto;
+  font-size: 12px; letter-spacing: 0;  line-height: 14px;" readonly name="nombre_secundaria" id="nombre_secundaria" class="form-control" placeholder="Nombre de la escuela" value="<?php echo $data['Nombre']; ?>">
             </div>
             <div class="col-6">
               <label  style="font-family: Roboto;font-size: 12px;color:#a31d24;text-transform: capitalize;font-weight: bold;">Clave de secundaria</label>
               <br>
-<input type="text" style="background-color: white;border-style: none;" readonly name="clave_secundaria" id="clave_secundaria" class="form-control" placeholder="Clave de la secundaria" value="<?php echo $data['Clave']; ?>">
+<input type="text" style="background-color: white;border-style: none;  color: #000000; font-family: Roboto; font-size: 12px; letter-spacing: 0;  line-height: 14px;" readonly name="clave_secundaria" id="clave_secundaria" class="form-control" placeholder="Clave de la secundaria" value="<?php echo $data['Clave']; ?>">
             </div>
 
                                     </div>

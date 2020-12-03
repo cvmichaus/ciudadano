@@ -10,7 +10,7 @@ require("../class/cnmysql.php");
             $apellidos = $_POST["apellidos"];
             $correo = $_POST["correo"];  
             $cedula = $_POST["cedula"]; 
-            $docente = $_POST["docente"];  
+    
             
             $tipo_escuela = $_POST["tipo_escuela"]; 
             $nombre_secundaria = $_POST["nombre_secundaria"];
@@ -34,10 +34,29 @@ require("../class/cnmysql.php");
 
                         if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
 
-                            $cons = "UPDATE  `detalle_usuario` SET  `cedula`= '".$componente."',`avatar`= '".$componente_meta."' WHERE `CodUsuario` = '".$codUsuario."' ";
+                            $cons = "UPDATE  `detalle_usuario` SET  `Nombres`= '".$nombre."',`Apellidos`= '".$apellidos."',`cedula`= '".$cedula."',`avatar`= '".$archivo."' WHERE `CodUsuario` = '".$codUsuario."' ";
+
+                                if($res = $mysqli->query($cons)) {
+
+                                    $cons2 = "UPDATE  `usuarios` SET  `correo`= '".$correo."'  WHERE `Codusuario` = '".$codUsuario."' ";
+
+                                    if($res2 = $mysqli->query($cons2)) {
+
+                                            echo "exito...";
+
+                                              ?>
+                                              <!--
+<script type="text/javascript">
+    window.location.href='VerUsu.php?codUsu=<?php //echo $codUsuario;?>';
+    </script>
+-->
+    <?php
 
 
-                                echo "revisar....carpeta fotos....";
+                                    }else{ echo "error2";}
+
+                                  
+                                }else{ echo "error 1";}
 
                     }
             }

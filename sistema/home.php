@@ -97,10 +97,15 @@ form.example::after {
   text-align: center;"><i class="fa fa-search"> Buscar</i></button>
 </form>
                     </div>
-
+ <?php
+if($tipo_usuario == 0  OR $tipo_usuario == 1 ) {
+  ?>
                      <div class="col-sm-6" style="text-align: right; height: 30px; width: 253px;color: #808080; font-family: Roboto; font-size: 12px;letter-spacing: 0;line-height: 14px;"  >
                         <a href="FormUF.php" class="btn btn-danger btn-sm" style="background-color: #a31d24;color: #FFF; font-family: Roboto; font-size: 12px;letter-spacing: 0;line-height: 14px;">Crear una nueva Unidad de Formacion</a>
                      </div>
+                    <?php
+                  }
+                    ?>
                </div>
                
                <div class="row">
@@ -121,15 +126,16 @@ form.example::after {
                  </div>
             </div>
               <div class="row">
-                 <div class="col-sm-12" style="padding-bottom: 40px;height: 76px;
-  width: 998px;">
+                 <div class="col-sm-12" style="padding-bottom: 40px;height: 76px; width: 998px;">
                     <label style="color: #2B2B2B; font-family: Roboto; font-size: 16px; letter-spacing: 0; line-height: 19px; text-align: justify;"><strong style="font-weight: bold;">CCIUDADANO</strong> es un programa especial del <strong style="font-weight: bold;">Centro de Investigaciones y Estudios en Antropología Social CIESAS</strong> fundado en 2007, cuyo objetivo es el <label style="color:#A31D24;">fortalecimiento del trabajo de organizaciones y grupos ciudadanos</label> interesados en involucrarse de manera organizada, informada, y responsable en procesos de toma de decisiones públicas en el ámbito local y comunitario. A esto lo llamamos <label style="color:#A31D24;">Control Ciudadano de lo Público.</label>
                  </div>
             </div>
 <div class="row">
             <?php
 
-            $ConsultaPrincipal = "SELECT a.CodUF,a.Titulo,a.NSDidacticas,b.Grado,b.Grupo,b.Asignaturas,b.NumeroAlumnos,b.NumeroHoras 
+if( $tipo_usuario == 1 ) {
+
+       $ConsultaPrincipal = "SELECT a.CodUF,a.Titulo,a.NSDidacticas,b.Grado,b.Grupo,b.Asignaturas,b.NumeroAlumnos,b.NumeroHoras,a.FechaAlta 
             FROM euf as a 
              LEFT JOIN datosidentgrupo as b  ON a.CodUF = b.CodUF
             WHERE  a.CodMaestro =  ".$iduser." ";
@@ -140,7 +146,7 @@ form.example::after {
             ?>
 
       
-      <div class="col-4">
+      <div class="col-4" style="margin-bottom: 20px;">
       <div class="card">
       <div class="card-body">
       <label style=" color: #2B2B2B; font-family: Lato; font-size: 16px; font-weight: bold; letter-spacing: 0; line-height: 19px;" class="card-title"><?php echo $data['Titulo']; ?></label>
@@ -149,6 +155,17 @@ form.example::after {
       Asignatura(s) / proyecto: <?php echo $data['Asignaturas']; ?> <br>
       Número de alumnos: <?php echo $data['NumeroAlumnos']; ?> <br>
       Número de horas: <?php echo $data['NumeroHoras']; ?> <br>
+      <span style="color: #A31D24; font-family: Roboto; font-size: 14px; letter-spacing: 0; line-height: 16px;">Fecha de creacion <?php 
+      $fecha_altaPHP = $data['FechaAlta'];
+    $porciones55 = explode("-", $fecha_altaPHP);
+    $Anio_PHP33=$porciones55[0];
+    $Mes_PHP33=$porciones55[1];
+    $Dia_PHP33=$porciones55[2];
+     $esp3="/";
+echo $FechaPeriodoActual = $Dia_PHP33.$esp3.$Mes_PHP33.$esp3.$Anio_PHP33; //FORMAMOS EL PERIODO ACTUAL
+
+
+      ?><br></span>
       </p>
       <center><a href="detalles_UF.php?codns=<?php echo $NSD; ?>&coduf=<?php echo base64_encode($CodUFxD);?>" class="btn btn-primary" style=" height: 30px;width: 83px; border-radius: 5px;
       background-color: #A31D24;text-align: center;vertical-align: middle;font-family: Lato; font-size: 14px; letter-spacing: 0; line-height: 17px;"> Ver </a></center>
@@ -162,7 +179,94 @@ form.example::after {
             <?php
           }
         }
+          
+
+}else if($tipo_usuario == 0 ) {
+
+  $ConsultaPrincipal = "SELECT a.CodUF,a.Titulo,a.NSDidacticas,b.Grado,b.Grupo,b.Asignaturas,b.NumeroAlumnos,b.NumeroHoras,a.FechaAlta 
+            FROM euf as a 
+             LEFT JOIN datosidentgrupo as b  ON a.CodUF = b.CodUF";
+            if($ResQry = $mysqli->query($ConsultaPrincipal)) {
+            while($data = mysqli_fetch_assoc($ResQry)){ 
+            $CodUFxD = $data['CodUF'];  
+             $NSD = $data['NSDidacticas'];     
             ?>
+
+      
+      <div class="col-4" style="margin-bottom: 20px;">
+      <div class="card">
+      <div class="card-body">
+      <label style=" color: #2B2B2B; font-family: Lato; font-size: 16px; font-weight: bold; letter-spacing: 0; line-height: 19px;" class="card-title"><?php echo $data['Titulo']; ?></label>
+      <p class="card-text" style="color: #2B2B2B; font-family: Lato; font-size: 14px; letter-spacing: 0; line-height: 17px; text-align: left;">
+      Grado: <?php echo $data['Grado']; ?> <br>
+      Asignatura(s) / proyecto: <?php echo $data['Asignaturas']; ?> <br>
+      Número de alumnos: <?php echo $data['NumeroAlumnos']; ?> <br>
+      Número de horas: <?php echo $data['NumeroHoras']; ?> <br>
+      <span style="color: #A31D24; font-family: Roboto; font-size: 14px; letter-spacing: 0; line-height: 16px;">Fecha de creacion <?php 
+      $fecha_altaPHP = $data['FechaAlta'];
+    $porciones55 = explode("-", $fecha_altaPHP);
+    $Anio_PHP33=$porciones55[0];
+    $Mes_PHP33=$porciones55[1];
+    $Dia_PHP33=$porciones55[2];
+     $esp3="/";
+echo $FechaPeriodoActual = $Dia_PHP33.$esp3.$Mes_PHP33.$esp3.$Anio_PHP33; //FORMAMOS EL PERIODO ACTUAL
+
+
+      ?><br></span>
+      </p>
+      <center><a href="detalles_UF.php?codns=<?php echo $NSD; ?>&coduf=<?php echo base64_encode($CodUFxD);?>" class="btn btn-primary" style=" height: 30px;width: 83px; border-radius: 5px;
+      background-color: #A31D24;text-align: center;vertical-align: middle;font-family: Lato; font-size: 14px; letter-spacing: 0; line-height: 17px;"> Ver </a></center>
+      </div>
+      </div>
+      </div>
+     
+            
+            <br><br>
+
+            <?php
+          }
+        }
+          
+
+}else if($tipo_usuario == 2 ) {
+
+ $ConsultaPrincipal = "SELECT a.CodUF,a.Titulo,a.NSDidacticas,b.Grado,b.Grupo,b.Asignaturas,b.NumeroAlumnos,b.NumeroHoras,a.FechaAlta,d.Nombres,d.Apellidos,u.correo,d.cedula 
+            FROM euf as a 
+             LEFT JOIN datosidentgrupo as b  ON a.CodUF = b.CodUF
+             LEFT JOIN usuarios as u ON a.CodMaestro = u.CodUsuario
+             LEFT JOIN detalle_usuario as d ON a.codMaestro = d.CodUsuario
+            WHERE  a.CodMaestro =  ".$iduser." ";
+            if($ResQry = $mysqli->query($ConsultaPrincipal)) {
+            while($data = mysqli_fetch_assoc($ResQry)){ 
+            $CodUFxD = $data['CodUF'];  
+             $NSD = $data['NSDidacticas'];     
+            ?>
+
+<div class="col-4" style="margin-bottom: 20px;">
+      <div class="card">
+      <div class="card-body">
+      <label style=" color: #2B2B2B; font-family: Lato; font-size: 16px; font-weight: bold; letter-spacing: 0; line-height: 19px;" class="card-title"><?php echo $data['Titulo']; ?></label>
+      <p class="card-text" style="color: #2B2B2B; font-family: Lato; font-size: 14px; letter-spacing: 0; line-height: 17px; text-align: left;">
+      
+      Nombre del docente: <?php echo $data['Nombres']; ?>  <?php echo $data['Apellidos']; ?> <br>
+     Asignaturas:  <br>
+     
+      ?><br></span>
+      </p>
+      <center><a href="detalles_UF2.php?codns=<?php echo $NSD; ?>&coduf=<?php echo base64_encode($CodUFxD);?>" class="btn btn-primary" style=" height: 30px;width: 83px; border-radius: 5px;
+      background-color: #A31D24;text-align: center;vertical-align: middle;font-family: Lato; font-size: 14px; letter-spacing: 0; line-height: 17px;"> Ver </a></center>
+      </div>
+      </div>
+      </div>
+     
+            
+            <br><br>
+
+            <?php
+}
+}
+
+}       ?>
         </div>       
                     
 
