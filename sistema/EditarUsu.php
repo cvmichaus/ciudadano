@@ -164,13 +164,11 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
                                   <center>
                                     <div class="image-upload">
     <label for="file-input">
-        <img src="fotos/<?php
-                                   if(isset($data['avatar'])){
+        <img src="fotos/<?php  if(isset($data['avatar'])){
                                     echo $data['avatar'];
-                                   } else{
+                                   } else if(empty($data['avatar'])){ echo "avatar.png";}else{
                                     echo "avatar.png";
-                                   }
-                                 ?>" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto" style="cursor: pointer;height: 120px; width: 120px;" class="rounded-circle" width="20%"> 
+                                   } ?>" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto" style="cursor: pointer;height: 120px; width: 120px;" class="rounded-circle" width="20%"> 
     </label>
         <input id="file-input" name="foto" type="file" accept="image/x-png,image/jpeg,image/png"/>
 </div>

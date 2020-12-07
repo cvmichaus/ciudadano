@@ -272,7 +272,7 @@ form.example::after {
           <?php
     $ConsultaPrincipal = "SELECT u.CodUsuario,u.correo,u.Perfil,d.Nombres,d.Apellidos FROM  usuarios as u 
     INNER JOIN detalle_usuario as d ON u.CodUsuario = d.CodUsuario
-    WHERE u.Perfil = 1 and u.estatus =1 ";
+    WHERE u.Perfil = 1  ";
   if($ResQry = $mysqli->query($ConsultaPrincipal)) {
   while($data = mysqli_fetch_assoc($ResQry)){ 
           ?>
@@ -349,7 +349,7 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
               <div class="col-3">
               </div>
                 <div class="col-3">
-                   <a class="btn btn-sm btn-primary btn-block" href="#" style="background-color:#a31d24;color:#fff;font-size: 15px;height: 40px; width: 178px;" ><i class="fas fa-plus fa-lg"></i> Agregar usuario
+                   <a class="btn btn-sm btn-primary btn-block" href="FormDocentes.php" style="background-color:#a31d24;color:#fff;font-size: 15px;height: 40px; width: 178px;" ><i class="fas fa-plus fa-lg"></i> Agregar usuario
  </a>
 
                 </div>

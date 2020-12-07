@@ -97,10 +97,18 @@ form.example::after {
   text-align: center;"><i class="fa fa-search"> Buscar</i></button>
 </form>
                     </div>
-
+ <?php
+if($tipo_usuario == 0  OR $tipo_usuario == 1 ) {
+  ?>
                      <div class="col-sm-6" style="text-align: right; height: 30px; width: 253px;color: #808080; font-family: Roboto; font-size: 12px;letter-spacing: 0;line-height: 14px;"  >
-                        <a href="FormUF.php" class="btn btn-danger btn-sm" style="background-color: #a31d24;color: #FFF; font-family: Roboto; font-size: 12px;letter-spacing: 0;line-height: 14px;">Crear una nueva Unidad de Formacion</a>
+                        <a href="FormArticulo.php" class="btn btn-danger btn-sm" style="background-color: #a31d24;color: #FFF; font-family: Roboto; font-size: 12px;letter-spacing: 0;line-height: 14px;">Crear un articulo nuevo</a>
+
+                      
+
                      </div>
+                    <?php
+                  }
+                    ?>
                </div>
                
                <div class="row">
@@ -117,52 +125,84 @@ form.example::after {
   font-weight: bold;
   letter-spacing: 0;
   line-height: 28px;
-  text-align: center;">¡Bienvenido!</label>
+  text-align: center;">FORO</label>
                  </div>
             </div>
               <div class="row">
-                 <div class="col-sm-12" style="padding-bottom: 40px;height: 76px;
-  width: 998px;">
-                    <label style="color: #2B2B2B; font-family: Roboto; font-size: 16px; letter-spacing: 0; line-height: 19px; text-align: justify;"><strong style="font-weight: bold;">CCIUDADANO</strong> es un programa especial del <strong style="font-weight: bold;">Centro de Investigaciones y Estudios en Antropología Social CIESAS</strong> fundado en 2007, cuyo objetivo es el <label style="color:#A31D24;">fortalecimiento del trabajo de organizaciones y grupos ciudadanos</label> interesados en involucrarse de manera organizada, informada, y responsable en procesos de toma de decisiones públicas en el ámbito local y comunitario. A esto lo llamamos <label style="color:#A31D24;">Control Ciudadano de lo Público.</label>
+                 <div class="col-sm-12" style="padding-bottom: 40px;height: 76px; width: 998px;">
+                    <label style="color: #2B2B2B; font-family: Roboto; font-size: 16px; letter-spacing: 0; line-height: 19px; text-align: justify;"><strong style="font-weight: bold;">CCIUDADANO</strong> abre este espacio para la discusión, el compañerismo y el apoyo mutuo
                  </div>
             </div>
-
+<div class="row">
+	
             <?php
+echo ' ';
 
-            $ConsultaPrincipal = "SELECT a.CodUF,a.Titulo,a.NSDidacticas,b.Grado,b.Grupo,b.Asignaturas,b.NumeroAlumnos,b.NumeroHoras 
-            FROM euf as a 
-             LEFT JOIN datosidentgrupo as b  ON a.CodUF = b.CodUF
-            WHERE  a.CodMaestro =  ".$iduser." ";
-            if($ResQry = $mysqli->query($ConsultaPrincipal)) {
-            while($data = mysqli_fetch_assoc($ResQry)){ 
-            $CodUFxD = $data['CodUF'];  
-             $NSD = $data['NSDidacticas'];     
-            ?>
+       ?>
+<div class="col-12" style="align-items: center;padding-left: 200px;">
+	
+ 
+<?php 
+   $QueryE = "SELECT * FROM  articulos as a  LEFT JOIN detalle_usuario as u ON a.CodUsu = u.CodUsuario ";
+      if($ResE = $mysqli->query($QueryE)) {
+      
+       while($datoA = mysqli_fetch_assoc($ResE)){ 
+      
 
-               <div class="row">
-                 <div class="col-4">
-            <div class="card">
-            <div class="card-body">
-            <label style=" color: #2B2B2B; font-family: Lato; font-size: 16px; font-weight: bold; letter-spacing: 0; line-height: 19px;" class="card-title"><?php echo $data['Titulo']; ?></label>
-            <p class="card-text" style="color: #2B2B2B; font-family: Lato; font-size: 14px; letter-spacing: 0; line-height: 17px; text-align: left;">
-                Grado: <?php echo $data['Grado']; ?> <br>
-                Asignatura(s) / proyecto: <?php echo $data['Asignaturas']; ?> <br>
-                Número de alumnos: <?php echo $data['NumeroAlumnos']; ?> <br>
-                Número de horas: <?php echo $data['NumeroHoras']; ?> <br>
-            </p>
-            <center><a href="detalles_UF.php?codns=<?php echo $NSD; ?>&coduf=<?php echo base64_encode($CodUFxD);?>" class="btn btn-primary" style=" height: 30px;width: 83px; border-radius: 5px;
-  background-color: #A31D24;text-align: center;vertical-align: middle;font-family: Lato; font-size: 14px; letter-spacing: 0; line-height: 17px;"> Ver </a></center>
-            </div>
-            </div>
-            </div>
-            </div>
-            <br><br>
+  ?>  
+  <div style="height: auto; width: 746px; align-items: center;">
 
-            <?php
-          }
-        }
-            ?>
-              
+ 	<div class="container" style="height: 286px; width: 746px; border-radius: 10px; background-color: #FFFFFF;  box-shadow: 0 2px 4px 0 #D4D4D4;align-items: center;">
+ 	<div class="row">
+ 		<div class="col-12">
+ 	<label style="color: #2B2B2B; font-family: Roboto; font-size: 16px; font-weight: bold;  letter-spacing: 0; line-height: 19px;padding-top: 20px;"><?php echo $datoA["Titulo"]; ?></label><br>
+ 	</div>
+ </div>
+ <div class="row" style="padding-top: 20px;">
+ 	<div class="col-8" >
+ 	<img src="fotos/<?php if (empty($datoA["avatar"])){ echo "avatar.png"; }else{ echo $datoA["avatar"]; }?>" class="rounded-circle" width="25px;" >	<label style="color: #666666; font-family: Roboto;  font-size: 12px; letter-spacing: 0; line-height: 14px;"> <?php echo $datoA["Nombres"]; ?> <?php echo $datoA["Apellidos"]; ?> </label> <i class="fa fa-clock-o" aria-hidden="true"></i> <label style="color: #666666;font-family: Roboto; font-size: 12px;letter-spacing: 0;line-height: 14px;"> <?php echo $datoA["FechaAlta"]; ?> <?php echo $datoA["HoraAlta"]; ?></label><br>
+ 	</div>	
+ 	<div class="col-4" style="text-align: left;">
+ 		<i class="fa fa-envelope-o" aria-hidden="true"></i> <i class="fa fa-whatsapp" aria-hidden="true"></i><i class="fa fa-facebook" aria-hidden="true"></i><i class="fa fa-twitter" aria-hidden="true"></i>
+ 	</div>
+ </div>
+
+ <div class="row">
+ <div class="col-12">
+ 	<label style="color: #2B2B2B;font-family: Roboto;font-size: 14px;letter-spacing: 0;line-height: 16px;padding-top: 20px;">
+ 		<?php echo substr(nl2br($datoA["DetalleArt"]),0,250); ?>...
+  </label>
+ </div>	
+ </div>
+
+  <div class="row">
+ <div class="col-4">
+ 	<label style="color: #A31D24;font-family: Roboto;font-size: 12px; letter-spacing: 0; line-height: 14px;padding-top: 20px;">
+ 		<i class="fa fa-comments-o" aria-hidden="true"></i> 5 comentarios
+  </label>
+ </div>	
+  <div class="col-4">
+ 	<label style="color: #2B2B2B;font-family: Roboto;font-size: 14px;letter-spacing: 0;line-height: 16px;padding-top: 20px;">
+  </label>
+ </div>	
+  <div class="col-4" style="text-align: right;">
+ 	<label style="  color: #808080; font-family: Lato; font-size: 14px; letter-spacing: 0;  line-height: 17px; text-align: center;padding-top: 20px;">
+ 		<a href="DetalleArticulo.php?codart=" class="btn btn-danger btn-sm" style="height: 30px; width: 83px;
+  color: #ffffff; font-family: Lato; font-size: 14px; letter-spacing: 0;  line-height: 17px;  text-align: center;"> Ver </a>
+  </label>
+ </div>	
+ </div>
+  </div>
+  <br><br>
+ <?php 
+  }
+}
+  ?>  
+ </div>
+  
+ </div>  
+
+   
                     
 
            </div> 

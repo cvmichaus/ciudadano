@@ -155,13 +155,11 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
                                 <div class="col-4" style="border: 1px solid #000000;-moz-border-radius: 7px;-webkit-border-radius: 7px;padding: 10px; ">
                                  <label style="text-transform: uppercase;font-family: Roboto;font-size: 12px;font-weight: bolder; text-align: left;vertical-align: middle;font-color:#ccc;">Datos Basicos</label>
                                  <br>
-                                 <center><img src="fotos/<?php
-                                   if(isset($data['avatar'])){
+                                 <center><img src="fotos/<?php  if(isset($data['avatar'])){
                                     echo $data['avatar'];
-                                   } else{
+                                   } else if(empty($data['avatar'])){ echo "avatar.png";}else{
                                     echo "avatar.png";
-                                   }
-                                 ?>" alt="" style="height: 120px; width: 120px;" width="25%" class="rounded-circle" ></center>
+                                   }  ?>" alt="" style="height: 120px; width: 120px;" width="25%" class="rounded-circle" ></center>
                                  <br>
                                  <label style="  color: #A31D24; font-family: Roboto; font-size: 12px;  letter-spacing: 0; line-height: 14px;font-weight: bold;">Nomnbre(s)</label>
                                  <br>

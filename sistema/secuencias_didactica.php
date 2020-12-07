@@ -121,16 +121,66 @@ $tipo_usuario = $_SESSION['Perfil'];
     <div class="card-header" id="heading<?php echo $i; ?>">
       <h5 class="mb-0">
         <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<?php echo $i; ?>" aria-expanded="true" aria-controls="collapse<?php echo $i; ?>" style="color: #666666;  font-family: Roboto; font-size: 16px; letter-spacing: 0; line-height: 19px;text-decoration: none;">
-         <a style="text-decoration: none;color:#666666;" href="DelSecuencia.php?codUF=<?php echo $COD_UF; ?>&CodM=<?php echo $iduser; ?>" data-toggle="tooltip" data-placement="right" title="Eliminar"> <i class="fas fa-trash fa-sm"></i></a> 
+         <a style="text-decoration: none;color:#666666;" href="DelSecuencia.php?codUF=<?php echo $COD_UF; ?>&CodM=<?php echo $iduser; ?>" data-toggle="tooltip" data-placement="right" title="Eliminar Secuencia <?php echo $i; ?>"> <i class="fas fa-trash fa-sm"></i></a> 
          &nbsp;&nbsp;&nbsp;&nbsp; 
-		 <a href="descargar_secuencia.php?cods=<?php echo $i; ?>&codUF=<?php echo $COD_UF; ?>"><i class="fas fa-download fa-sm"></i></a>
+         <?php
+          $QueryE = "SELECT * FROM  matriz  WHERE `CodUF` =  ".$COD_UF." AND NumSD = ".$i." ";
+      if($ResE = $mysqli->query($QueryE)) {
+      
+       $ExisteD = mysqli_num_rows($ResE);
+       
+        if(empty($ExisteD)){
+         ?>
+		 <a style="cursor: not-allowed;"><i class="fas fa-download fa-sm"></i></a>
+     <?php
+         }else{
+          ?>
+          <a href="descargar_secuencia.php?cods=<?php echo $i; ?>&codUF=<?php echo $COD_UF; ?>"><i class="fas fa-download fa-sm" data-toggle="tooltip" title="Descargar Secuencia <?php echo $i; ?>" ></i></a>
+     
+     <?php
+         }
+      }
+     ?>
     &nbsp;&nbsp;&nbsp;&nbsp; 
-     <a href="ver_secuencia.php?cods=<?php echo $i; ?>&codUF=<?php echo $COD_UF; ?>"><i class="fas fa-eye fa-sm"></i></a>
+    
+     <?php
+          $QueryV = "SELECT * FROM  matriz  WHERE `CodUF` =  ".$COD_UF." AND NumSD = ".$i." ";
+      if($ResV = $mysqli->query($QueryV)) {
+      
+       $ExisteV = mysqli_num_rows($ResV);
+       
+        if(empty($ExisteV)){
+         ?>
+     <a style="cursor: not-allowed;"><i class="fas fa-eye fa-sm" data-toggle="tooltip" title="Ver Secuencia <?php echo $i; ?>"></i></a>
+     <?php
+         }else{
+          ?>
+          <a href="ver_secuencia.php?cods=<?php echo $i; ?>&codUF=<?php echo $COD_UF; ?>"><i class="fas fa-eye fa-sm" data-toggle="tooltip" title="Ver Secuencia <?php echo $i; ?>"></i></a></a>
+     
+     <?php
+         }
+      }
+     ?>
     &nbsp;&nbsp;&nbsp;&nbsp; 
 		 <?php echo $i; ?>.&nbsp; Secuencia didáctica <?php echo $i; ?>
         </button>
       </h5>
     </div>
+<style>
+.tooltip-inner {
+    max-width: 463px;
+    /* If max-width does not work, try using width instead */
+    width: 463; 
+    color: #FFFFFF;
+  font-family: Lato;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 15px;
+    text-align: justify;
+    vertical-align: middle;
+    white-space: pre-wrap;
+}
+</style>
 
     <div id="collapse<?php echo $i; ?>" <?php if($i == 1){ echo 'class="collapse show"';}else{ echo 'class="collapse "';}?> aria-labelledby="heading<?php echo $i; ?>" data-parent="#accordion">
       <div class="card-body">
@@ -163,6 +213,7 @@ $tipo_usuario = $_SESSION['Perfil'];
      <div class="row" >
     
       <div class="col-md-2">
+        <br><br>
         <a href="addSecuencia.php?codUF=<?php echo $COD_UF; ?>&CodM=<?php echo $iduser; ?>" class="btn btn-outline-danger btn-sm" style="border-radius: 5px; background-color: #A31D24;color: #FFFFFF;  font-family: Roboto;
   font-size: 12px;  " >Agregar secuencia</a>
 

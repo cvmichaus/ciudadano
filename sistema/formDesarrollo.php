@@ -130,7 +130,7 @@ include ("menu.php");
                           
                             <div class="row">
                             <div class="col-md-12">
-                            <p style="font-family: Roboto;font-size: 11px;color:#a31d24;text-transform: uppercase;" > Desarrollo de las sesiones <span style="cursor: pointer;" class="oi oi-info" data-toggle="tooltip" data-placement="right" title=" " ></span></p>
+                            <p style="font-family: Roboto;font-size: 11px;color:#a31d24;text-transform: uppercase;" > Desarrollo de las sesiones </p>
                             </div>
                             </div>
 
@@ -160,25 +160,72 @@ $Query = "SELECT * FROM  desarrollo_sesiones  WHERE `CodUF` =  ".$ID_UF." AND Nu
 
             <div class="col-md-4">                                    
             <div class="form-group">
-            <label for="act-docente">Actividad docentes </label><br>
+            <label for="act-docente">Actividad docentes <span style="cursor: pointer;" class="oi oi-info" data-toggle="tooltip" data-placement="right" title="Describa las actividades que realizará antes y durante la sesión, sea ésta presencial o virtual, para la conducción de las estrategias de aprendizaje, también incluya las tareas." ></span> </label><br>
             <label for="actividades_docentes" style="font-family: Roboto;font-size: 11px;color:#CCC;text-transform: uppercase;">Primera Session </label>                               
             <textarea rows="6" cols="" class="form-control" name="act_docente" id="act_docente" aria-describedby="act_docente" placeholder="Actividad docentes" maxlength="1000"></textarea>
+             <small id="passwordHelpBlock" style="text-align: right;" class="form-text text-muted">
+Caracteres 1000 / <span id="caracteres1" ></span>  
+</small>   
+                          <script type="text/javascript">
+                          var limit1 = 1000;
+                          $(function() {
+                          $("#act_docente").on("input", function () {
+                          //al cambiar el texto del txt_detalle
+                          var init = $(this).val().length;
+                          total_characters1 = (limit1 - init);
+
+                          $('#caracteres1').html(total_characters1 + "");
+                          });
+                          });
+                          </script>
             </div>                                 
             </div>
 
             <div class="col-md-4">                                    
             <div class="form-group">
-            <label for="act_estudiante">Actividad estudiantes</label><br>
+            <label for="act_estudiante">Actividad estudiantes  <span style="cursor: pointer;" class="oi oi-info" data-toggle="tooltip" data-placement="right" title="Describa las actividades que las y los estudiantes realizarán por cuenta propia, sin su apoyo o con una orientación mínima de su parte." ></span></label><br>
             <label for="actividades_docentes" style="font-family: Roboto;font-size: 11px;color:#CCC;text-transform: uppercase;">Primera Session </label>
             <textarea rows="6" cols=""  class="form-control" name="act_estudiante" id="act_estudiante" aria-describedby="act_estudiante" placeholder="Actividad estudiantes" maxlength="1000"></textarea>
+             <small id="passwordHelpBlock" style="text-align: right;" class="form-text text-muted">
+Caracteres 1000 / <span id="caracteres2" ></span>  
+</small>   
+                          <script type="text/javascript">
+                          var limit2 = 1000;
+                          $(function() {
+                          $("#act_estudiante").on("input", function () {
+                          //al cambiar el texto del txt_detalle
+                          var init = $(this).val().length;
+                          total_characters2 = (limit2 - init);
+
+                          $('#caracteres2').html(total_characters2 + "");
+                          });
+                          });
+                          </script>
+            </div>                   
             </div>                                 
-            </div>
+            
 
             <div class="col-md-4">                                    
             <div class="form-group">
-            <label for="criterios_evidencias">Criterios y evidencias</label><br>
+            <label for="criterios_evidencias">Criterios y evidencias  <span style="cursor: pointer;" class="oi oi-info" data-toggle="tooltip" data-placement="right" title="Enliste las evidencias que recopilará para orientar la evaluación del aprendizaje." ></span></label><br>
             <label for="actividades_docentes" style="font-family: Roboto;font-size: 11px;color:#CCC;text-transform: uppercase;">Primera Session </label>
             <textarea rows="6" cols=""  class="form-control" name="criterios_evidencias" id="criterios_evidencias" aria-describedby="criterios_evidencias" placeholder="Criterios y evidencias" maxlength="1000"></textarea>
+            <small id="passwordHelpBlock" style="text-align: right;" class="form-text text-muted">
+Caracteres 1000 / <span id="caracteres3" ></span>  
+</small>   
+                          <script type="text/javascript">
+                          var limit3 = 1000;
+                          $(function() {
+                          $("#criterios_evidencias").on("input", function () {
+                          //al cambiar el texto del txt_detalle
+                          var init = $(this).val().length;
+                          total_characters3 = (limit3 - init);
+
+                          $('#caracteres3').html(total_characters3 + "");
+                          });
+                          });
+                          </script>
+
             </div>                                 
             </div>
 
@@ -239,7 +286,7 @@ $Query = "SELECT * FROM  desarrollo_sesiones  WHERE `CodUF` =  ".$ID_UF." AND Nu
 
             <div class="col-md-4">                                    
             <div class="form-group">
-            <label for="act-docente">Actividad docentes </label><br>
+             <label for="act-docente">Actividad docentes <span style="cursor: pointer;" class="oi oi-info" data-toggle="tooltip" data-placement="right" title="Describa las actividades que realizará antes y durante la sesión, sea ésta presencial o virtual, para la conducción de las estrategias de aprendizaje, también incluya las tareas." ></span> </label><br>
             <label for="actividades_docentes" style="font-family: Roboto;font-size: 11px;color:#CCC;text-transform: uppercase;">Primera Session </label>                               
             <textarea maxlength="1000" style="border: 0;background-color: #ccc;" readonly rows="6" cols="" class="form-control" name="act_docente" id="act_docente" aria-describedby="act_docente" placeholder="Actividad docentes"><?php echo $datos["Actividad_docentes"]; ?></textarea>
             </div>                                 
@@ -247,7 +294,7 @@ $Query = "SELECT * FROM  desarrollo_sesiones  WHERE `CodUF` =  ".$ID_UF." AND Nu
 
             <div class="col-md-4">                                    
             <div class="form-group">
-            <label for="act_estudiante">Actividad estudiantes</label><br>
+            <label for="act_estudiante">Actividad estudiantes  <span style="cursor: pointer;" class="oi oi-info" data-toggle="tooltip" data-placement="right" title="Describa las actividades que las y los estudiantes realizarán por cuenta propia, sin su apoyo o con una orientación mínima de su parte." ></span></label><br>
             <label for="actividades_docentes" style="font-family: Roboto;font-size: 11px;color:#CCC;text-transform: uppercase;">Primera Session </label>
             <textarea maxlength="1000" style="border: 0;background-color: #ccc;" readonly rows="6" cols=""  class="form-control" name="act_estudiante" id="act_estudiante" aria-describedby="act_estudiante" placeholder="Actividad estudiantes"><?php echo $datos["Actividad_estudiantes"]; ?></textarea>
             </div>                                 
@@ -255,7 +302,7 @@ $Query = "SELECT * FROM  desarrollo_sesiones  WHERE `CodUF` =  ".$ID_UF." AND Nu
 
             <div class="col-md-4">                                    
             <div class="form-group">
-            <label for="criterios_evidencias">Criterios y evidencias</label><br>
+             <label for="criterios_evidencias">Criterios y evidencias  <span style="cursor: pointer;" class="oi oi-info" data-toggle="tooltip" data-placement="right" title="Enliste las evidencias que recopilará para orientar la evaluación del aprendizaje." ></span></label><br>
             <label for="actividades_docentes" style="font-family: Roboto;font-size: 11px;color:#CCC;text-transform: uppercase;">Primera Session </label>
             <textarea maxlength="1000" style="border: 0;background-color: #ccc;" readonly rows="6" cols=""  class="form-control" name="criterios_evidencias" id="criterios_evidencias" aria-describedby="criterios_evidencias" placeholder="Criterios y evidencias"><?php echo $datos["Criterios_evidencias"]; ?></textarea>
             </div>                                 

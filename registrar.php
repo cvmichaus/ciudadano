@@ -75,7 +75,7 @@
     <div class="col-6">
      <div class="form-group">
           <label for="exampleFormControlInput1" style="height: 15px;width: 217px;color: #000000; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;">Clave de la secundaria</label>
-          <input type="text" class="form-control" style=" height: 30px;width: 217px;"name="clave_secundaria" id="clave_secundaria"  placeholder="Clave de la secundaria">
+          <input type="text" class="form-control" style=" height: 30px;width: 217px;" name="clave_secundaria" id="clave_secundaria"  placeholder="Clave de la secundaria">
           </div>
 
     </div>

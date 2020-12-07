@@ -24,7 +24,7 @@
 if($tipo_usuario == 0  OR $tipo_usuario == 1 ) {
   ?>
   <li class="nav-item">
-    <a class="nav-link" href="#" style="color:#868686;font-size: 16px;font-family: Roboto;font-weight: bold;">Foro</a>
+    <a class="nav-link" href="Foro.php" style="color:#868686;font-size: 16px;font-family: Roboto;font-weight: bold;">Foro</a>
   </li>
 <?php
 }

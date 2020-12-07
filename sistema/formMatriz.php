@@ -131,7 +131,7 @@ include ("menu.php");
                           
                             <div class="row">
                             <div class="col-md-12">
-                            <p style="font-family: Roboto;font-size: 11px;color:#a31d24;text-transform: uppercase;" > Desarrollo de las sesiones <span style="cursor: pointer;" class="oi oi-info" data-toggle="tooltip" data-placement="right" title="" ></span></p>
+                            <p style="font-family: Roboto;font-size: 11px;color:#a31d24;text-transform: uppercase;" > Matriz de valoración </p>
                             </div>
                             </div>
 
@@ -158,11 +158,28 @@ $Query = "SELECT * FROM  matriz  WHERE `CodUF` =  ".$ID_UF." AND NumSD = ".$CODS
           <thead>
           <tr>
           <th scope="col">COMPONENTE</th>
-          <th scope="col" style="color:#a31d24;text-transform: capitalize;">Inicial receptiva</th>
-          <th scope="col" style="color:#a31d24;text-transform: capitalize;">Basica</th>
-          <th scope="col" style="color:#a31d24;text-transform: capitalize;">Autonoma</th>
-          <th scope="col" style="color:#a31d24;text-transform: capitalize;">Estrategica</th>
-          </tr>
+          <th scope="col" style="color:#a31d24;text-transform: capitalize;">Inicial receptiva <span style="cursor: pointer;" class="oi oi-info" data-toggle="tooltip" data-placement="right" title="NO COGNITIVO: Elementos base necesarios para el desarrollo pleno de la competencia.
+
+METACOGNITIVO:  Elementos base necesarios para la comprensión y el desarrollo pleno posterior de la competencia. Teniendo como referencia la taxonomía de Bloom o de Marzano, los verbos que se pueden ocupar son del conocimiento y la comprensión.
+
+COGNITIVO: Elementos base necesarios para el desarrollo pleno de la competencia."></span></th>
+          <th scope="col" style="color:#a31d24;text-transform: capitalize;">Basica <span style="cursor: pointer;" class="oi oi-info" data-toggle="tooltip" data-placement="right" title="NO COGNITIVO: Los verbos que podemos considerar en este componente son 1) prototípicos de percepción sensorial. Acciones que anteceden y enriquecen la comprensión, la utilización, el análisis, la síntesis y la evaluación de los siguientes componentes, que se complementan con verbos para: 2) la comunicación que puede nacer de a) la solicitud, b) el intercambio 3) el registro y 4) la actividad colectiva, que se exige en un contexto escolar.
+
+METACOGNITIVO:  Teniendo como referencia la taxonomía de Bloom o de Marzano, los verbos más convenientes para ocupar son de aplicación, pero no se descartan los de análisis o síntesis.  
+
+COGNITIVO: Teniendo como referencia la taxonomía de Bloom o de Marzano, los verbos más convenientes para ocupar son de análisis o síntesis.
+"></span></th>
+          <th scope="col" style="color:#a31d24;text-transform: capitalize;">Autonoma <span style="cursor: pointer;" class="oi oi-info" data-toggle="tooltip" data-placement="right" title="NO COGNITIVO: En esta y la siguiente columna, para distinguir entre un mismo comportamiento o entre comportamientos, también nos podemos valer de las expresiones 'de manera', 'de forma' (destacada) o del adverbio completo como destacadamente, animadamente, enfáticamente, propositivamente, según se requiera.
+
+METACOGNITIVO:  Teniendo como referencia la taxonomía de Bloom o de Marzano, los verbos más convenientes para ocupar son de aplicación, pero no se descartan los de análisis, síntesis o evaluación.  
+
+COGNITIVO: Teniendo como referencia la taxonomía de Bloom o de Marzano, los verbos más convenientes para ocupar son los de síntesis o evaluación.  "></span></th>
+          <th scope="col" style="color:#a31d24;text-transform: capitalize;">Estrategica <span style="cursor: pointer;" class="oi oi-info" data-toggle="tooltip" data-placement="right" title="NO COGNITIVO: Expresa el desarrollo pleno del componente de la competencia.
+
+METACOGNITIVO:  Expresa el desarrollo pleno del componente de la competencia, apoyado en la dimensión no cognitiva. Teniendo como referencia la taxonomía de Bloom o de Marzano, los verbos más convenientes para ocuparen esta celda son los de síntesis o evaluación.   
+
+COGNITIVO: Expresa el desarrollo pleno de la competencia, pues además de sumar los niveles valorativos de la dimensión cognitiva, se realiza con base a los componentes meta cognitivo y no cognitivo. Teniendo como referencia la taxonomía de Bloom o de Marzano, los verbos más convenientes para ocupar son los de síntesis o evaluación. "></span></th>
+          </tr>   
           </thead>
           <tbody>
           <tr>
@@ -245,10 +262,27 @@ $Query = "SELECT * FROM  matriz  WHERE `CodUF` =  ".$ID_UF." AND NumSD = ".$CODS
           <thead>
           <tr>
           <th scope="col">COMPONENTE</th>
-          <th scope="col" style="color:#a31d24;text-transform: capitalize;">Inicial receptiva</th>
-          <th scope="col" style="color:#a31d24;text-transform: capitalize;">Basica</th>
-          <th scope="col" style="color:#a31d24;text-transform: capitalize;">Autonoma</th>
-          <th scope="col" style="color:#a31d24;text-transform: capitalize;">Estrategica</th>
+          <th scope="col" style="color:#a31d24;text-transform: capitalize;">Inicial receptiva <span style="cursor: pointer;" class="oi oi-info" data-toggle="tooltip" data-placement="right" title="NO COGNITIVO: Elementos base necesarios para el desarrollo pleno de la competencia.
+
+METACOGNITIVO:  Elementos base necesarios para la comprensión y el desarrollo pleno posterior de la competencia. Teniendo como referencia la taxonomía de Bloom o de Marzano, los verbos que se pueden ocupar son del conocimiento y la comprensión.
+
+COGNITIVO: Elementos base necesarios para el desarrollo pleno de la competencia."></span></th>
+          <th scope="col" style="color:#a31d24;text-transform: capitalize;">Basica <span style="cursor: pointer;" class="oi oi-info" data-toggle="tooltip" data-placement="right" title="NO COGNITIVO: Los verbos que podemos considerar en este componente son 1) prototípicos de percepción sensorial. Acciones que anteceden y enriquecen la comprensión, la utilización, el análisis, la síntesis y la evaluación de los siguientes componentes, que se complementan con verbos para: 2) la comunicación que puede nacer de a) la solicitud, b) el intercambio 3) el registro y 4) la actividad colectiva, que se exige en un contexto escolar.
+
+METACOGNITIVO:  Teniendo como referencia la taxonomía de Bloom o de Marzano, los verbos más convenientes para ocupar son de aplicación, pero no se descartan los de análisis o síntesis.  
+
+COGNITIVO: Teniendo como referencia la taxonomía de Bloom o de Marzano, los verbos más convenientes para ocupar son de análisis o síntesis.
+"></span></th>
+          <th scope="col" style="color:#a31d24;text-transform: capitalize;">Autonoma <span style="cursor: pointer;" class="oi oi-info" data-toggle="tooltip" data-placement="right" title="NO COGNITIVO: En esta y la siguiente columna, para distinguir entre un mismo comportamiento o entre comportamientos, también nos podemos valer de las expresiones 'de manera', 'de forma' (destacada) o del adverbio completo como destacadamente, animadamente, enfáticamente, propositivamente, según se requiera.
+
+METACOGNITIVO:  Teniendo como referencia la taxonomía de Bloom o de Marzano, los verbos más convenientes para ocupar son de aplicación, pero no se descartan los de análisis, síntesis o evaluación.  
+
+COGNITIVO: Teniendo como referencia la taxonomía de Bloom o de Marzano, los verbos más convenientes para ocupar son los de síntesis o evaluación.  "></span></th>
+          <th scope="col" style="color:#a31d24;text-transform: capitalize;">Estrategica <span style="cursor: pointer;" class="oi oi-info" data-toggle="tooltip" data-placement="right" title="NO COGNITIVO: Expresa el desarrollo pleno del componente de la competencia.
+
+METACOGNITIVO:  Expresa el desarrollo pleno del componente de la competencia, apoyado en la dimensión no cognitiva. Teniendo como referencia la taxonomía de Bloom o de Marzano, los verbos más convenientes para ocuparen esta celda son los de síntesis o evaluación.   
+
+COGNITIVO: Expresa el desarrollo pleno de la competencia, pues además de sumar los niveles valorativos de la dimensión cognitiva, se realiza con base a los componentes meta cognitivo y no cognitivo. Teniendo como referencia la taxonomía de Bloom o de Marzano, los verbos más convenientes para ocupar son los de síntesis o evaluación. "></span></th>
           </tr>
           </thead>
           <tbody>

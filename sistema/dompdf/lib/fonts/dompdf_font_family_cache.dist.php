@@ -112,4 +112,8 @@
   array (
     'normal' => DOMPDF_FONT_DIR . 'c130fcbbad0837c4642a3d90f7c971c2',
   ),
+  'roboto' => 
+  array (
+    'normal' => DOMPDF_FONT_DIR . 'ea089a6919fc89a35a7c9a3e9c48cec2',
+  ),
 ) ?>

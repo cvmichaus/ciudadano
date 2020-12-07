@@ -42,14 +42,14 @@ require("../class/cnmysql.php");
 
                                     if($res2 = $mysqli->query($cons2)) {
 
-                                            echo "exito...";
+                                            //echo "exito...";
 
                                               ?>
-                                              <!--
+                                              
 <script type="text/javascript">
-    window.location.href='VerUsu.php?codUsu=<?php //echo $codUsuario;?>';
+    window.location.href='VerUsu.php?codUsu=<?php echo $codUsuario;?>';
     </script>
--->
+
     <?php
 
 
