@@ -183,9 +183,10 @@ echo $FechaPeriodoActual = $Dia_PHP33.$esp3.$Mes_PHP33.$esp3.$Anio_PHP33; //FORM
 
 }else if($tipo_usuario == 0 ) {
 
-  $ConsultaPrincipal = "SELECT a.CodUF,a.Titulo,a.NSDidacticas,b.Grado,b.Grupo,b.Asignaturas,b.NumeroAlumnos,b.NumeroHoras,a.FechaAlta 
+  $ConsultaPrincipal = "SELECT a.CodUF,a.Titulo,a.NSDidacticas,b.Grado,b.Grupo,b.Asignaturas,b.NumeroAlumnos,b.NumeroHoras,a.FechaAlta,a.CodMaestro,u.Nombres,u.Apellidos 
             FROM euf as a 
-             LEFT JOIN datosidentgrupo as b  ON a.CodUF = b.CodUF";
+             LEFT JOIN datosidentgrupo as b  ON a.CodUF = b.CodUF
+             LEFT JOIN detalle_usuario as u ON a.CodMaestro = u.CodUsuario";
             if($ResQry = $mysqli->query($ConsultaPrincipal)) {
             while($data = mysqli_fetch_assoc($ResQry)){ 
             $CodUFxD = $data['CodUF'];  
@@ -210,6 +211,7 @@ echo $FechaPeriodoActual = $Dia_PHP33.$esp3.$Mes_PHP33.$esp3.$Anio_PHP33; //FORM
     $Dia_PHP33=$porciones55[2];
      $esp3="/";
 echo $FechaPeriodoActual = $Dia_PHP33.$esp3.$Mes_PHP33.$esp3.$Anio_PHP33; //FORMAMOS EL PERIODO ACTUAL
+   echo "<br>";echo "Docente:"; echo " &nbsp;"; echo $data['Nombres']; echo " &nbsp;"; echo $data['Apellidos']; 
 
 
       ?><br></span>

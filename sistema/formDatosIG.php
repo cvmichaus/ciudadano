@@ -53,19 +53,13 @@ session_start();
     white-space: pre-wrap;
 }
 </style>
-<body>
-   <div class="container">
+<body class="row m-0 bg-white justify-content-center align-items-center vh-100">
+   <div class="container-fluid">
     <?php
 include ("menu.php");
 ?>
      </div>
-  <!-- MAIN -->
-     <div id="wrapper">
-       <!-- Navigation -->
-
-        <!-- Navigation -->
-          <div id="page-wrapper">
-            <!-- Page Content -->
+  
              <div class="container-fluid">
                  <div class="row">
 
@@ -137,7 +131,23 @@ include ("menu.php");
 								<div class="col-md-6">
 								<p style="font-family: Roboto;font-size: 12px;color:#000;text-transform: uppercase;font-weight: bolder;" >Grado</p>
 
-								<textarea class="form-control" id="grado" required name="grado" aria-describedby="grado" placeholder="Escriba Aqui"></textarea>
+								<textarea class="form-control" id="grado" required name="grado" aria-describedby="grado" placeholder="Escriba Aqui" maxlength="50"></textarea>
+
+                <small id="passwordHelpBlock" style="text-align: right;" class="form-text text-muted">
+Caracteres 50 / <span id="caracteres1" ></span>  
+</small>   
+                          <script type="text/javascript">
+                          var limit1 = 50;
+                          $(function() {
+                          $("#grado").on("input", function () {
+                          //al cambiar el texto del txt_detalle
+                          var init = $(this).val().length;
+                          total_characters1 = (limit1 - init);
+
+                          $('#caracteres1').html(total_characters1 + "");
+                          });
+                          });
+                          </script>
                                 <input type="hidden" name="idusr" id="idusr" value="<?php echo $iduser; ?>">
                                  <input type="hidden" name="coduf" id="coduf" value="<?php echo $ID_UF; ?>">
                                  <input type="hidden" name="codigons" id="codigons" value="<?php echo $CodNS ?>">
@@ -147,7 +157,22 @@ include ("menu.php");
 								<div class="col-md-6">
 								<p style="font-family: Roboto;font-size: 12px;color:#000;text-transform: uppercase;font-weight: bolder;" >Asignaturas</p>
 
-								<textarea class="form-control" id="asignaturas" required name="asignaturas" aria-describedby="asignaturas" placeholder="Escriba Aqui"></textarea>
+								<textarea class="form-control" id="asignaturas" required name="asignaturas" aria-describedby="asignaturas" placeholder="Escriba Aqui" maxlength="100"></textarea>
+                <small id="passwordHelpBlock" style="text-align: right;" class="form-text text-muted">
+Caracteres 100 / <span id="caracteres2" ></span>  
+</small>   
+                          <script type="text/javascript">
+                          var limit2 = 100;
+                          $(function() {
+                          $("#asignaturas").on("input", function () {
+                          //al cambiar el texto del txt_detalle
+                          var init = $(this).val().length;
+                          total_characters2 = (limit2 - init);
+
+                          $('#caracteres2').html(total_characters2 + "");
+                          });
+                          });
+                          </script>
                                	</div>
 
 								</div>
@@ -156,21 +181,32 @@ include ("menu.php");
 								<div class="col-md-6">
 								<p style="font-family: Roboto;font-size: 12px;color:#000;text-transform: uppercase;font-weight: bolder;" >Grupo</p>
 
-								<textarea class="form-control" id="grupo" name="grupo" required aria-describedby="grupo" placeholder="Escriba Aqui"></textarea>
+								<textarea class="form-control" id="grupo" name="grupo" required aria-describedby="grupo" placeholder="Escriba Aqui" maxlength="99"></textarea>
+                 <small id="passwordHelpBlock" style="text-align: right;" class="form-text text-muted">
+Caracteres 99 / <span id="caracteres3" ></span>  
+</small>   
+                          <script type="text/javascript">
+                          var limit3 = 99;
+                          $(function() {
+                          $("#grupo").on("input", function () {
+                          //al cambiar el texto del txt_detalle
+                          var init = $(this).val().length;
+                          total_characters3 = (limit3 - init);
+
+                          $('#caracteres3').html(total_characters3 + "");
+                          });
+                          });
+                          </script>
                                	</div>
 
 								<div class="col-md-3">
 								<p style="font-family: Roboto;font-size: 12px;color:#000;text-transform: uppercase;font-weight: bolder;" >Numero Alumnos</p>
-
-								<input type="number"  class="form-control" required name="numero_alumnos" id="numero_alumnos" aria-describedby="numero_alumnos" placeholder="Numero Alumnos" value="0">
-                      
+								<input type="number"  class="form-control" required name="numero_alumnos" id="numero_alumnos" aria-describedby="numero_alumnos" placeholder="Numero Alumnos" min="1" max="999" value="0">
 								</div>
 
 								<div class="col-md-3">
 								<p style="font-family: Roboto;font-size: 12px;color:#000;text-transform: uppercase;font-weight: bolder;" >Numero Horas</p>
-
-								 <input type="number"  class="form-control" required name="numero_horas" id="numero_horas" aria-describedby="numero_horas" placeholder="numero_horas" value="0">                                        
-								</div>
+								 <input type="number"  class="form-control" required name="numero_horas" id="numero_horas" aria-describedby="numero_horas" placeholder="numero_horas" min="1" max="99" value="0"> </div>
 
 
 								</div>
@@ -199,9 +235,7 @@ include ("menu.php");
              <!-- Page Content -->
           </div>   
      </div>
-  </div> 
-</div>   
-      <!-- MAIN -->
+
 <?php
 include ("pie.php");
 ?>

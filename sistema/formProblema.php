@@ -54,22 +54,12 @@ session_start();
 </style>
 <body>
   <div class="container-fluid">
-      <div class="row align-items-start">
-              <div class="col-md-1">
-              </div>  
-
-               <div class="col-md-10">
-
-  
-
+     
 <?php
 include ("menu.php");
 ?>
-
               </div>  
-
-               <div class="col-md-1">
-              </div>  
+              
     </div>
      </div>
   <!-- MAIN -->

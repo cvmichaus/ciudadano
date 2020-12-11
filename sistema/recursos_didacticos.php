@@ -7,20 +7,17 @@ margin: 0 0 25px;">
 <?php
 session_start();
  
-
       set_time_limit(0);
       require("../class/cnmysql.php");
       date_default_timezone_set('America/Mexico_City');
       $fecha_del_dia=date('Y-m-d');//fecha actual
 
       $user = $_SESSION['UsuarioNombre'];
-      $iduser = $_SESSION['CodUsuario'];
+      $codusuario = $_GET['codusu'];
       $ns =  $_GET['ns'];
       $COD_UF = $_GET['coduf'];
 
-
 ?>
-
 
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 <script  src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
@@ -227,7 +224,7 @@ session_start();
     </tr>
 
     <?php
-$QueryTema = "SELECT * FROM  recursos_didacticos  WHERE `CodUF` =  ".$COD_UF." AND CodUsu = ".$iduser." ";
+$QueryTema = "SELECT * FROM  recursos_didacticos  WHERE `CodUF` =  ".$COD_UF." AND CodUsu = ".$codusuario." ";
       if($ResTema = $mysqli->query($QueryTema)) {
       
        $ExisteTema = mysqli_num_rows($ResTema);
@@ -327,7 +324,7 @@ Tamaño máx: 10 MB
           <label for="exampleFormControlInput1" style=" height: 15px; width: 290px;color: #A31D24;
   font-family: Roboto; font-size: 12px; letter-spacing: 0;line-height: 14px;">  Nombre del recurso didáctico</label>
           <input type="text" require class="form-control" style="  box-sizing: border-box;  height: 31px;  width: 271px;  border: 1px solid #B3B3B3;  border-radius: 5px;" name="nom_recursos" id="nom_recursos" placeholder="Nombre del recurso didáctico">
-            <input type="hidden" name="idusr" id="idusr" value="<?php echo $iduser; ?>">
+            <input type="hidden" name="idusr" id="idusr" value="<?php echo $codusuario; ?>">
             <input type="hidden" name="coduf" id="coduf" value="<?php echo $COD_UF; ?>">
             <input type="hidden" name="codSD" id="codSD" value="<?php echo $ns; ?>">
           </div>      

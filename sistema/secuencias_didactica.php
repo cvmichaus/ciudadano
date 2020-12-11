@@ -1,14 +1,14 @@
 <div class="col-md-12" style="padding-top: 20px;padding-right: 80px;padding-bottom: 20px;padding-left: 80px;margin: 0 0 25px;">
 <?php
 session_start();
+       set_time_limit(0);
 
-      set_time_limit(0);
       require("../class/cnmysql.php");
       date_default_timezone_set('America/Mexico_City');
       $fecha_del_dia=date('Y-m-d');//fecha actual
 
       $user = $_SESSION['UsuarioNombre'];
-      $iduser = $_SESSION['CodUsuario'];
+      $idusuario = $_GET['codusu'];
 
 $COD_UF = $_GET['coduf'];
 $CodNS = $_GET['ns'];
@@ -16,9 +16,6 @@ $tipo_usuario = $_SESSION['Perfil'];
        
 ?>
 <br>
-		
-
-
       <?php  
       $Condig = "SELECT * FROM  datosidentgrupo  WHERE `CodUF` =  ".$COD_UF." ";
       if($ResQryDig = $mysqli->query($Condig)) {
@@ -44,12 +41,7 @@ $tipo_usuario = $_SESSION['Perfil'];
             }
 
         while($datodig = mysqli_fetch_assoc($ResQryDig)){ 
-        
-
 ?>
-
- 
-
          <div class="row">
                 <div class="col-md-6">
                 <p style="font-family: Roboto;font-size: 12px;color:#000;text-transform: uppercase;font-weight: bolder;" >Grado</p>
@@ -62,8 +54,6 @@ $tipo_usuario = $_SESSION['Perfil'];
 
                 <label class="form-control" id="asignaturas" name="asignaturas" aria-describedby="asignaturas" style="border: 0;background-color: #FFF;" readonly><?php echo $datodig["Asignaturas"]; ?></label>
                                 </div>
-
-
                 </div>
 
                 <div class="row">
@@ -84,34 +74,29 @@ $tipo_usuario = $_SESSION['Perfil'];
                 <p style="font-family: Roboto;font-size: 12px;color:#000;text-transform: uppercase;font-weight: bolder;" >Numero Horas</p>
 
                  <label type="text" readonly style="border: 0;background-color: #FFF;" class="form-control" name="numero_horas" id="numero_horas" aria-describedby="numero_horas"><?php echo $datodig["NumeroHoras"]; ?></label>
-                                         
-
-                </div>
-
-
+               </div>
                 </div>
      <?php     
       }
     }
   ?>
-    
-    
 		<div class="row" style="width:100%">
 		<div class="col-md-12" style="width:100%">
 		<hr>
 		</div>
 		</div>  
 
-		<!-- SECUENCIAS DIDACTICAS -->
+	<!-- SECUENCIAS DIDACTICAS -->
+<!-- SECUENCIAS DIDACTICAS -->
      <div clas="row">
       <div class="col-12" style="width: 100%">
           <?php
-                $D2 = $mysqli->query("SELECT * FROM secuencias_didacticas WHERE codMaestro = ".$iduser." AND codUF = ".$COD_UF." ");
+                $D2 = $mysqli->query("SELECT * FROM  secuencias_didacticas WHERE codMaestro = ".$idusuario." AND codUF = ".$COD_UF." ");
                       $row_cnt2 = $D2->num_rows;
                        
                        if ($row_cnt2 == 0){
                           echo "sin secuencias didacticas";
-                       } else{
+                       }else{
                            //echo $row_cnt2;
                                 while($datoSec = mysqli_fetch_assoc($D2)){ 
                                   ?>
@@ -119,8 +104,7 @@ $tipo_usuario = $_SESSION['Perfil'];
   <div class="card">
     <div class="card-header" id="heading<?php echo $datoSec["NumSD"]; ?>" >
       <h5 class="mb-0">
-         <a style="text-decoration: none;color:#666666;" href="DelSecuencia.php?codUF=<?php echo $COD_UF; ?>&CodM=<?php echo $iduser; ?>&codSD=<?php echo $datoSec["codSD"]; ?>" data-toggle="tooltip" data-placement="right" title="Eliminar Secuencia <?php echo $datoSec["NumSD"]; ?>"> <i class="fas fa-trash fa-sm"></i></a> 
-
+         <a style="text-decoration: none;color:#666666;" href="DelSecuencia.php?codUF=<?php echo $COD_UF; ?>&CodM=<?php echo $idusuario; ?>&codSD=<?php echo $datoSec["codSD"]; ?>" data-toggle="tooltip" data-placement="right" title="Eliminar Secuencia <?php echo $datoSec["NumSD"]; ?>"> <i class="fas fa-trash fa-sm"></i></a> 
           &nbsp;&nbsp;&nbsp;&nbsp; 
         <?php
         $QueryE = "SELECT * FROM  matriz  WHERE `CodUF` =  ".$COD_UF." AND NumSD = ".$datoSec["NumSD"]." ";
@@ -204,14 +188,12 @@ $tipo_usuario = $_SESSION['Perfil'];
     
       <div class="col-md-2">
         <br><br>
-        <a href="addSecuencia.php?codUF=<?php echo $COD_UF; ?>&CodM=<?php echo $iduser; ?>" class="btn btn-outline-danger btn-sm" style="border-radius: 5px; background-color: #A31D24;color: #FFFFFF;  font-family: Roboto;
+        <a href="addSecuencia.php?codUF=<?php echo $COD_UF; ?>&CodM=<?php echo $idusuario; ?>" class="btn btn-outline-danger btn-sm" style="border-radius: 5px; background-color: #A31D24;color: #FFFFFF;  font-family: Roboto;
   font-size: 12px;  " >Agregar secuencia</a>
 
       </div>
         <div class="col-md-8">
-       
       </div>
-      
     </div>
-
  </div>
+ 

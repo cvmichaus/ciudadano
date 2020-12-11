@@ -12,10 +12,8 @@ session_start();
 
        $ID_UF = base64_decode($_GET['coduf']); 
        $NS_UF = $_GET['codns']; 
-        $tipo_usuario = $_SESSION['Perfil'];
+      $tipo_usuario = $_SESSION['Perfil'];
        
-       
-
  ?>
 <!doctype html>
 <html lang="en">
@@ -216,7 +214,7 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
                                       <i class="fas fa-file fa-sm"></i> Información general</a>
                                       </li>
 
-                                      <li  class="nav-item" onclick="ejecuta_ajax('secuencias_didactica.php','coduf=<?php echo $data['CodUF']; ?>&ns=<?php echo $data['NSDidacticas']; ?>','contenidos')" >
+                                      <li  class="nav-item" onclick="ejecuta_ajax('secuencias_didactica.php','coduf=<?php echo $data['CodUF']; ?>&ns=<?php echo $data['NSDidacticas']; ?>&codusu=<?php echo $iduser; ?>','contenidos')" >
                                      <a <?php
                                                 if(isset($_GET["reenvio"])) {
                                                   if($_GET["reenvio"] == 2){ 
@@ -230,7 +228,7 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
                                           <i class="fas fa-book-open fa-sm"></i> Secuencia didáctica</a>
                                       </li>
 
-                                      <li class="nav-item" onclick="ejecuta_ajax('recursos_didacticos.php','coduf=<?php echo  $ID_UF; ?>&ns=<?php echo $data['NSDidacticas']; ?>','contenidos')">
+                                      <li class="nav-item" onclick="ejecuta_ajax('recursos_didacticos.php','coduf=<?php echo  $ID_UF; ?>&ns=<?php echo $data['NSDidacticas']; ?>&codusu=<?php echo $iduser; ?>','contenidos')">
                                      <a <?php
                                                 if(isset($_GET["reenvio"])) {
                                                   if($_GET["reenvio"] == 4){ 
