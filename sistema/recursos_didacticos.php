@@ -42,21 +42,14 @@ session_start();
   font-size: 12px;
   letter-spacing: 0.75px;
   line-height: 15px;">
-        HACE FALTA MÁS TEXTO EXPLICATIVO
+        
         </p>
         </div>
         </div>  
 
         <div class="row" >
         <div class="col-md-12">
-<?php
-$QueryTema = "SELECT * FROM  recursos_didacticos  WHERE `CodUF` =  ".$COD_UF." AND CodUsu = ".$iduser." ";
-      if($ResTema = $mysqli->query($QueryTema)) {
-      
-       $ExisteTema = mysqli_num_rows($ResTema);
-       
-        if(empty($ExisteTema)){
-        ?>
+
 <table class="table">
   <tbody>
     <tr>
@@ -232,20 +225,22 @@ $QueryTema = "SELECT * FROM  recursos_didacticos  WHERE `CodUF` =  ".$COD_UF." A
            <i class="fas fa-eye fa-sm"></i> 
             <i class="fas fa-download fa-sm"></i> </td>
     </tr>
-  </tbody>
-</table>
-        <?php
-      }else{
-      ?>
-      <table class="table">
-      <tbody>
-      <?php        
-      while($datos = mysqli_fetch_assoc($ResTema)){ 
-      ?>
 
-        <tr>
+    <?php
+$QueryTema = "SELECT * FROM  recursos_didacticos  WHERE `CodUF` =  ".$COD_UF." AND CodUsu = ".$iduser." ";
+      if($ResTema = $mysqli->query($QueryTema)) {
+      
+       $ExisteTema = mysqli_num_rows($ResTema);
+       
+        if(empty($ExisteTema)){
+      
+           }else{
+
+           while($datos = mysqli_fetch_assoc($ResTema)){ 
+              ?>
+                 <tr>
         <th scope="row"> <input type="checkbox" aria-label="Checkbox for following text input"></th>
-        <td style="color: #A31D24;font-family: Lato; font-size: 14px; font-weight: bold; letter-spacing: 0; line-height: 17px;"><?php echo $datos["cod_recdid"]; ?>.- <?php echo $datos["Nombre"]; ?></td>
+        <td style="color: #A31D24;font-family: Lato; font-size: 14px; font-weight: bold; letter-spacing: 0; line-height: 17px;"><?php echo $r = 20 +$datos["cod_recdid"]; ?>.- <?php echo $datos["Nombre"]; ?></td>
         <td></td>
         <td> <i class="fas fa-share-alt fa-sm"></i> 
     <a style="cursor: pointer;" data-toggle="modal" data-target="#exampleModalCenter<?php echo $datos["cod_recdid"]; ?>" ><i class="fas fa-eye fa-sm"></i></a> 
@@ -270,16 +265,14 @@ $QueryTema = "SELECT * FROM  recursos_didacticos  WHERE `CodUF` =  ".$COD_UF." A
   </div>
 </div>
 
-
-      <?php
-      }
-      ?>
-      </tbody>
-      </table>
-      <?php
-      }
-    }
-?>
+              <?php
+            }
+         }
+      } 
+        ?>
+  </tbody>
+</table>
+   
           
 
         

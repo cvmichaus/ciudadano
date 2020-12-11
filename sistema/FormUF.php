@@ -22,7 +22,7 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title></title>
   <link rel="stylesheet" href="estilo.css">
- <link href="../bootstrap-4.5.2-dist/css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" href="../bootstrap.min.css">
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../bootstrap-4.5.2-dist/js/bootstrap.js"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -36,48 +36,58 @@ session_start();
 <body class="row m-0 bg-white justify-content-center align-items-center vh-100">
   
   <div class="container-fluid">
-      <div class="row align-items-start">
-              <div class="col-md-1">
-              </div>  
-
-               <div class="col-md-10">
-
-  
-
-<?php
-include ("menu.php");
-?>
-
-              </div>  
-
-               <div class="col-md-1">
-              </div>  
-    </div>
-     </div>
-  </div>
+    
+    <?php require("menu.php"); ?>
+   </div>
 
 
-  <div id="page-wrapper">
+<div class="container-fluid" style="position: relative;width: 100%;height: auto;min-height: 450px;overflow: hidden;text-align: justify;">
 
-      <div class="row align-items-start">
-              <div class="col-md-1">
-              </div> 
+      <div class="row">
+          <div class="col-1"></div> 
+            <div class="col-10">
+              <div class="row" style="padding-bottom: 20px;padding-top: 20px;">
+                                  <div class="col-3">
+                                    <?php
+                                       if($tipo_usuario == 0){
+                                        ?>
+                                         <a href="home.php"  style="color: #a31d24;font-size: 12px;text-decoration: none;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar </a>
+                                          <?php
+                                          }
+                                          else if ($tipo_usuario == 1){
+                                          ?>
+                                           <a href="home.php"  style="color: #a31d24;font-size: 12px;text-decoration: none;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar </a>
+                                          <?php
+                                          }                                         
+                                          else if ($tipo_usuario == 2){
+                                        ?>
+                                         <a href="home.php"  style="color: #a31d24;font-size: 12px;text-decoration: none;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar </a>
+                                        <?php
+                                       }
 
-              <div class="col-md-10">
+                                    ?>
+                                    
+                                  </div>
+                                   <div class="col-3">
+                                     
+                                  </div>
+                                  <div class="col-3">
+                                     
+                                  </div>
+                                  <div class="col-3">
+                                     
+                                  </div>
+                                                                   
+                                </div>
 
-                  <div class="row">
-                            <div class="col-md-12">
-                            <a href="home.php" style="color:#a31d24;"> <- Regresar</a>
-                            </div>
-                            </div>
+                                <div class="row">
+                               <div class="col-md-12">
+                                <h4>Elementos de la Unidad de Formación</h4>
+                                </div>
+                                </div>
 
-                            <div class="row">
-                            <div class="col-md-12">
-                            <h1>Elementos de la Unidad de Formación</h1>
-                            </div>
-                            </div>
 
-                            <div class="row">
+                                 <div class="row">
                             <div class="col-md-12">
                             <p style="font-family: Roboto;font-size: 11px;color:#000;text-transform: uppercase;" >creación de la unidad de formación</p>
                             </div>
@@ -94,8 +104,8 @@ include ("menu.php");
                             <p style="font-family: Roboto;font-size: 11px;color:#000;" >Todos los campos son obligatorios, puedes guardar datos que tengas en el momento y continuar después.</p>
                             </div>
                             </div>
-                    
-                     <form method="post" action="DBUF.php">
+
+                            <form method="post" action="DBUF.php">
 
                             <div class="row">
                             <div class="col-md-12">
@@ -309,7 +319,7 @@ Caracteres 1000 / <span id="pcaractere6" ></span>
                             <div class="col-md-2">
                                 <div class="form-group">
                                 
-                                <input type="number" class="form-control" id="nsecuencias" name="nsecuencias" aria-describedby="nsecuencias" required placeholder="Escriba Aqui">
+                                <input type="number" class="form-control" id="nsecuencias" name="nsecuencias"  min="1" aria-describedby="nsecuencias" required placeholder="Escriba Aqui">
                                
                                 </div>
                             </div>
@@ -327,21 +337,26 @@ Caracteres 1000 / <span id="pcaractere6" ></span>
                                   </div>
                             </div>
 
+                            <div class="row"><div class="col-md-12"><br><br></div></div>
+
                           </form>
-                      
-              </div> 
 
-              <div class="col-md-1">
-              </div>  
-                                 
-                                 
-        </div>
-        <br>
-<?php
-include ("pie.php");
-?>
 
+
+
+            </div> 
+              <div class="col-1"></div>      
+      </div>
   </div>
+
+
+<div class="container-fluid">
+<div class="row">
+    <div class="col-sm-12"> 
+    <?php include("pie.php"); ?>
+    </div>
+</div>
+</div>
 
 
 

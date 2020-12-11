@@ -158,6 +158,14 @@ form.example::after {
   font-weight: bold;
   letter-spacing: 0;
   line-height: 24px;">Docentes</label>
+
+  <?php
+       if(isset($_GET["existes"])){
+        ?>
+         <center><label style="color: #000000; font-family: Roboto;  font-size: 12px;  font-weight: bold;  letter-spacing: 0;  text-align: center;padding-left: 10px;">El correo con el que intentaste registrarte  ya esta utilizado  dentro del sistema, favor de utilizar otro correo electronico </label></center>
+         <?php
+        }
+    ?>
                  </div>
             </div>
 

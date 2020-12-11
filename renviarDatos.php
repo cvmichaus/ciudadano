@@ -10,6 +10,8 @@ $correo = $_POST["correo"];
 
 $traerid = "SELECT CodUsuario,correo,Clave FROM `usuarios` WHERE  correo = '".$correo."' AND  estatus = '1' ";
 
+//alejandro.lopezgonzalez@outlook.com
+
 if($resid = $mysqli->query($traerid)) {
 							$data = $resid->fetch_array();
 							$UsuarioCod =  $data["CodUsuario"];

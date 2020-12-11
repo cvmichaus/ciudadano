@@ -10,6 +10,7 @@ session_start();
       $user = $_SESSION['UsuarioNombre'];
       $iduser = $_SESSION['CodUsuario'];
        $tipo_usuario = $_SESSION['Perfil'];
+       $codart=$_GET['codart'];
        
 
  ?>
@@ -78,132 +79,163 @@ form.example::after {
 
                  </div>
             </div>
-               <div class="row">
-                    <div class="col-sm-6">
-                       <form class="example" action="/action_page.php">
-  <input type="text" name="search" style="box-sizing: border-box;
-  height: 21px;
-  width: 325px;
-  border: 1px solid #B3B3B3;
-  border-radius: 5px;">
-  <button type="submit" style="height: 20px;
-  width: 90px;color: #A31D24;
-  font-family: Roboto;
-  font-size: 8px;
-  font-weight: bold;
-  letter-spacing: 0;
-  line-height: 9px;
-  background-color: #FFFFFF;
-  text-align: center;"><i class="fa fa-search"> Buscar</i></button>
-</form>
-                    </div>
- <?php
-if($tipo_usuario == 0  OR $tipo_usuario == 1 ) {
-  ?>
-                     <div class="col-sm-6" style="text-align: right; height: 30px; width: 253px;color: #808080; font-family: Roboto; font-size: 12px;letter-spacing: 0;line-height: 14px;"  >
-                        <a href="FormArticulo.php" class="btn btn-danger btn-sm" style="background-color: #a31d24;color: #FFF; font-family: Roboto; font-size: 12px;letter-spacing: 0;line-height: 14px;">Crear un articulo nuevo</a>
 
-                      
+               <div class="row" style="padding-bottom: 20px;padding-top: 20px;">
+                                  <div class="col-3">
+                                    <?php
+                                       if($tipo_usuario == 0){
+                                        ?>
+                                         <a href="Foro.php"  style="color: #a31d24;font-size: 12px;text-decoration: none;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar </a>
+                                          <?php
+                                          }
+                                          else if ($tipo_usuario == 1){
+                                          ?>
+                                           <a href="Foro.php"  style="color: #a31d24;font-size: 12px;text-decoration: none;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar </a>
+                                          <?php
+                                          }                                         
+                                          else if ($tipo_usuario == 2){
+                                        ?>
+                                         <a href="Foro.php"  style="color: #a31d24;font-size: 12px;text-decoration: none;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar </a>
+                                        <?php
+                                       }
 
-                     </div>
-                    <?php
-                  }
-                    ?>
-               </div>
-               
-               <div class="row">
-                 <div class="col-sm-12" style="padding-bottom: 40px;">
-
-                 </div>
-            </div>
-
-             <div class="row">
-                 <div class="col-sm-12" style="padding-bottom: 40px;">
-                    <label style="color: #2B2B2B;
-  font-family: Roboto;
-  font-size: 24px;
-  font-weight: bold;
-  letter-spacing: 0;
-  line-height: 28px;
-  text-align: center;">FORO</label>
-                 </div>
-            </div>
-              <div class="row">
-                 <div class="col-sm-12" style="padding-bottom: 40px;height: 76px; width: 998px;">
-                    <label style="color: #2B2B2B; font-family: Roboto; font-size: 16px; letter-spacing: 0; line-height: 19px; text-align: justify;"><strong style="font-weight: bold;">CCIUDADANO</strong> abre este espacio para la discusión, el compañerismo y el apoyo mutuo
-                 </div>
-            </div>
-<div class="row">
-	
-            <?php
-echo ' ';
-
-       ?>
-<div class="col-12" style="align-items: center;padding-left: 200px;">
-	
- 
-<?php 
-   $QueryE = "SELECT * FROM  articulos as a  LEFT JOIN detalle_usuario as u ON a.CodUsu = u.CodUsuario ";
+                                    ?>
+                                    
+                                  </div>
+                                   <div class="col-md-3">
+                                     
+                                  </div>
+                                   <div class="col-md-3">
+                                     
+                                  </div>
+                                   <div class="col-md-3">
+                                      
+                                  </div>
+                                </div>
+       <?php
+ $QueryE = "SELECT * FROM  articulos as a  LEFT JOIN detalle_usuario as u ON a.CodUsu = u.CodUsuario WHERE codArticulo = ".$codart." ";
       if($ResE = $mysqli->query($QueryE)) {
       
        while($datoA = mysqli_fetch_assoc($ResE)){ 
-      
 
-  ?>  
-  <div style="height: auto; width: 746px; align-items: center;">
+       ?>
 
- 	<div class="container" style="height: 286px; width: 746px; border-radius: 10px; background-color: #FFFFFF;  box-shadow: 0 2px 4px 0 #D4D4D4;align-items: center;">
- 	<div class="row">
- 		<div class="col-12">
- 	<label style="color: #2B2B2B; font-family: Roboto; font-size: 16px; font-weight: bold;  letter-spacing: 0; line-height: 19px;padding-top: 20px;"><?php echo $datoA["Titulo"]; ?></label><br>
- 	</div>
- </div>
- <div class="row" style="padding-top: 20px;">
- 	<div class="col-8" >
- 	<img src="fotos/<?php if (empty($datoA["avatar"])){ echo "avatar.png"; }else{ echo $datoA["avatar"]; }?>" class="rounded-circle" width="25px;" >	<label style="color: #666666; font-family: Roboto;  font-size: 12px; letter-spacing: 0; line-height: 14px;"> <?php echo $datoA["Nombres"]; ?> <?php echo $datoA["Apellidos"]; ?> </label> <i class="fa fa-clock-o" aria-hidden="true"></i> <label style="color: #666666;font-family: Roboto; font-size: 12px;letter-spacing: 0;line-height: 14px;"> <?php echo $datoA["FechaAlta"]; ?> <?php echo $datoA["HoraAlta"]; ?></label><br>
- 	</div>	
- 	<div class="col-4" style="text-align: left;">
- 		<i class="fa fa-envelope-o" aria-hidden="true"></i> <i class="fa fa-whatsapp" aria-hidden="true"></i><i class="fa fa-facebook" aria-hidden="true"></i><i class="fa fa-twitter" aria-hidden="true"></i>
- 	</div>
+           <div class="row">
+  
+            <div class="col-sm-3" style=" height: 378px;width: 239px; border-radius: 10px;
+  background-color: #FFFFFF; box-shadow: 0 2px 4px 0 #D4D4D4;">
+                  <label style="padding-top: 20px; color: #2B2B2B; font-family: Roboto; font-size: 14px; letter-spacing: 0;line-height: 16px;">                    
+                    Sobre el autor
+                  </label>
+                    <br>
+                    <center>
+<img src="fotos/<?php if (empty($datoA["avatar"])){ echo "avatar.png"; }else{ echo $datoA["avatar"]; }?>" class="rounded-circle"  style="height: 120px;width: 120px;padding-bottom: 20px;color: #000000; font-family: Roboto; font-size: 16px; font-weight: bold; letter-spacing: 0;line-height: 19px;" >
+</center>
+  <br>
+  <label style="padding-bottom: 20px;color: #00000;font-family: Roboto;  font-size: 16px; letter-spacing: 0; line-height: 14px;"> <?php echo $datoA["Nombres"]; ?> <?php echo $datoA["Apellidos"]; ?> </label>
+  <br>
+  <label style="padding-bottom: 20px;  color: #A31D24;font-family: Roboto;font-size: 12px; letter-spacing: 0;  line-height: 14px;">Docente en:</label>
+  <br>
+  <label style="padding-bottom: 20px;  color: #000000; font-family: Roboto; font-size: 12px;  letter-spacing: 0;  line-height: 14px;"><?php echo $datoA["TipoSecundaria"]; ?></label>
+  <br>
+  <label style="padding-bottom: 20px;"><?php echo $datoA["NombreEscuela"]; ?></label>
+
+                  </div>
+                  <div class="col-1"></div>
+            <div class="col-sm-8" style=" height: 1115px;  width: 746px; border-radius: 10px;  background-color: #FFFFFF;  box-shadow: 0 2px 4px 0 #D4D4D4;">
+                  <div class="row">
+                     <div class="col-12">
+<label style="  color: #2B2B2B; font-family: Roboto; font-size: 16px;  font-weight: bold; letter-spacing: 0; line-height: 19px;padding-top: 40px;">
+                [Título, ej. La importancia de la educación en México]
+              </label>
+                     </div> 
+                  </div>
+
+                  <div class="row">
+                    <div class="co-4"> <img src="fotos/<?php if (empty($datoA["avatar"])){ echo "avatar.png"; }else{ echo $datoA["avatar"]; }?>" class="rounded-circle" width="25px;" ></div>
+                     <div class="col-5">
+                       <label style="  color: #666666;font-family: Lato;font-size: 12px;letter-spacing: 0; line-height: 15px;"> <?php echo $datoA["Nombres"]; ?> <?php echo $datoA["Apellidos"]; ?> <i class="fa fa-clock-o" aria-hidden="true"></i> <label style="color: #666666;font-family: Roboto; font-size: 12px;letter-spacing: 0;line-height: 14px;"> <?php echo $datoA["FechaAlta"]; ?> <?php echo $datoA["HoraAlta"]; ?>
+               </label></label> 
+                     </div>
+                      <div class="col-4"> </div>
+                       
+                  </div>
+                  
+              
+              <br>
+
+                <br>
+                <?php echo nl2br($datoA["DetalleArt"]); ?>
+            </div>
+
  </div>
 
- <div class="row">
- <div class="col-12">
- 	<label style="color: #2B2B2B;font-family: Roboto;font-size: 14px;letter-spacing: 0;line-height: 16px;padding-top: 20px;">
- 		<?php echo substr(nl2br($datoA["DetalleArt"]),0,250); ?>...
-  </label>
- </div>	
- </div>
-
-  <div class="row">
- <div class="col-4">
- 	<label style="color: #A31D24;font-family: Roboto;font-size: 12px; letter-spacing: 0; line-height: 14px;padding-top: 20px;">
- 		<i class="fa fa-comments-o" aria-hidden="true"></i> 5 comentarios
-  </label>
- </div>	
-  <div class="col-4">
- 	<label style="color: #2B2B2B;font-family: Roboto;font-size: 14px;letter-spacing: 0;line-height: 16px;padding-top: 20px;">
-  </label>
- </div>	
-  <div class="col-4" style="text-align: right;">
- 	<label style="  color: #808080; font-family: Lato; font-size: 14px; letter-spacing: 0;  line-height: 17px; text-align: center;padding-top: 20px;">
- 		<a href="DetalleArticulo.php?codart=<?php echo $datoA["CodArticulo"]; ?>" class="btn btn-danger btn-sm" style="height: 30px; width: 83px;
-  color: #ffffff; font-family: Lato; font-size: 14px; letter-spacing: 0;  line-height: 17px;  text-align: center;"> Ver </a>
-  </label>
- </div>	
- </div>
-  </div>
-  <br><br>
- <?php 
-  }
+            </div>
+            <?php
+   }
 }
-  ?>  
- </div>
+            ?>
+
   
  </div>  
 
-   
-                    
+   <div class="row"  style="align-items: center;">
+     
+   </style>>
+      <div class="col-12">
+        <center>
+      <label style=" color: #2B2B2B; font-family: Roboto; font-size: 24px;  font-weight: bold;
+  letter-spacing: 0;  line-height: 28px;text-align: center;">Comentarios</label>
+</center>
+    </div>
+   </div>
+
+    <div class="row">
+      <div class="col-12">
+     <hr>
+    </div>
+   </div>
+
+
+     <div class="row">
+      <div class="col-4"></div>
+      <div class="col-5">
+     <form>
+       <div class="form-group">
+    <label for="exampleInputEmail1">
+        <?php
+      $ConsultaPrincipal = "SELECT *  FROM usuarios as u
+      INNER JOIN detalle_usuario as d  ON u.CodUsuario = d.CodUsuario 
+      LEFT JOIN secundarias as s  ON u.CodUsuario = s.CodUsu
+      WHERE u.CodUsuario = ".$iduser." ";
+
+      if($resqryUsuario = $mysqli->query($ConsultaPrincipal)) {
+      while($data = mysqli_fetch_assoc($resqryUsuario)){ 
+                                  ?>
+          <img src="fotos/<?php if (empty($data["avatar"])){ echo "avatar.png"; }else{ echo $data["avatar"]; }?>" class="rounded-circle" width="20px;" > <label style="  color: #4D4D4D; font-family: Roboto; font-size: 12px; font-weight: bold; letter-spacing: 0; line-height: 14px;"> <?php echo $data["Nombres"]; ?> <?php echo $data["Apellidos"]; ?> </label> 
+                                  <?php
+                                }
+                                }    
+                                  ?>
+    </label>
+    <textarea type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></textarea>
+
+    <button type="submit" class="btn btn-danger" style=" color: #FFFFFF;  font-family: Roboto;
+  font-size: 12px;  letter-spacing: 0;  line-height: 14px;  text-align: center">Opinar</button>
+    
+  </div>
+     </form>
+    </div>
+    <div class="col-4"></div>
+   </div>
+
+     <div class="row">
+      <div class="col-12">
+     <hr>
+    </div>
+   </div>
+
+
 
            </div> 
 

@@ -22,6 +22,17 @@ $hora_actual= strftime("%H:%M:%S");
 		$nombre_secundaria = $_POST["nombre_secundaria"];
 		$clave_secundaria = $_POST["clave_secundaria"]; 
 
+		$existeMail = "SELECT * FROM `usuarios` WHERE correo = '".$correo."'  ";
+
+						if($resMail = $mysqli->query($existeMail)) {
+									?>
+									<script type="text/javascript">
+									window.location.href='FormDocentes.php?existes=1';
+									</script>
+									<?php
+
+						}else{
+
 		 $target_dir = "fotos/";
                 $target_file = $target_dir . basename($_FILES["foto"]["name"]);
 
@@ -176,6 +187,6 @@ $hora_actual= strftime("%H:%M:%S");
             }
                 }
             
-           
+   }          
 }
 ?>

@@ -245,7 +245,8 @@ form.example::after {
 
                  <div class="col-md-12">
                  <input type="hidden" name="codUF" id="codUF" value="<?php echo $CodUF; ?>">
-   <input type="hidden" name="codigoNS" id="codigoNS" value="<?php echo $codigoNS; ?>">    
+   <input type="hidden" name="codigoNS" id="codigoNS" value="<?php echo $codigoNS; ?>">  
+    <input type="hidden" name="CodDocente" id="CodDocente" value="<?php echo $iduser; ?>">    
     <center><input name="enviar" class="btn btn-lg btn-primary btn-block btn-xs" type="submit" style=" height: 40px;width: 160px;color: #808080;  font-family: Roboto; font-size: 12px;letter-spacing: 0;line-height: 14px;border: 1px solid #D4D4D4;
     border-radius: 10px; background-color: #FFFFFF; font-weight: bolder;text-align: center;" value="Guardar"></center><br>
 

@@ -28,7 +28,15 @@
           </div>
           </div>
 <!--height:452px;-->
-  <div class="row" style="box-sizing: border-box; width: 495px;height:452px; border: 1px solid #D4D4D4; border-radius: 10px;">  
+  <div class="row" style="box-sizing: border-box; width: 495px;height:480px; border: 1px solid #D4D4D4; border-radius: 10px;">  
+
+    <?php
+       if(isset($_GET["existes"])){
+        ?>
+         <center><label style="color: #000000; font-family: Roboto;  font-size: 12px;  font-weight: bold;  letter-spacing: 0;  text-align: center;padding-left: 10px;">El correo con el que intentaste registrarte  ya esta utilizado  dentro del sistema, favor de utilizar otro correo electronico </label></center>
+         <?php
+        }
+    ?>
 
      <form class="form-signin" method="POST"  action="registrarse.php">
 <div class="row" style="padding-left: 15px;">

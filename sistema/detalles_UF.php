@@ -29,7 +29,7 @@ session_start();
   
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" >
+ <link rel="stylesheet" href="../bootstrap.min.css">
 
   <link rel="stylesheet" href="EstiloSis.css">
   <link data-require="sweet-alert@*" data-semver="0.4.2" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
@@ -65,7 +65,7 @@ session_start();
 }
 ?>  class="row m-0 bg-white justify-content-center align-items-center vh-100">
     
-    <div class="container-sm">
+    <div class="container">
     
     <?php require("menu.php"); ?>
    </div>
@@ -76,21 +76,21 @@ session_start();
            <div class="col-sm-10">           
 
               <div class="row" style="padding-bottom: 20px;padding-top: 20px;">
-                                  <div class="col-md-3">
+                                  <div class="col-3">
                                     <?php
                                        if($tipo_usuario == 0){
                                         ?>
-                                         <a href="home.php"  style="color: #a31d24;">&nbsp;<- Regresar </a>
+                                         <a href="home.php"  style="color: #a31d24;font-size: 12px;text-decoration: none;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar </a>
                                           <?php
                                           }
                                           else if ($tipo_usuario == 1){
                                           ?>
-                                           <a href="home.php"  style="color: #a31d24;">&nbsp;<- Regresar </a>
+                                           <a href="home.php"  style="color: #a31d24;font-size: 12px;text-decoration: none;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar </a>
                                           <?php
                                           }                                         
                                           else if ($tipo_usuario == 2){
                                         ?>
-                                         <a href="home.php"  style="color: #a31d24;">&nbsp;<- Regresar </a>
+                                         <a href="home.php"  style="color: #a31d24;font-size: 12px;text-decoration: none;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar </a>
                                         <?php
                                        }
 
@@ -116,7 +116,7 @@ session_start();
 
         <div class="row" style="margin-right: 35px;">
                                     <div class="col-md-12">
-                                    <label style="color: #a31d24;font-weight: bolder;text-indent: 20pt; "><?php echo $data['Titulo']; ?> </label>
+                                    <label style=" height: 24px; width: 872px;color: #A31D24; font-family: Roboto; font-size: 20px;letter-spacing: 0; line-height: 24px;"><?php echo $data['Titulo']; ?> </label>
                                     </div>
                                     </div>
 
@@ -266,7 +266,7 @@ onclick="ejecuta_ajax('estudiantes.php','coduf=<?php //echo $data['CodUF']; ?>',
                                     </div>
                                     </div>
                                     <div class="row">
-                                      <div id="contenidos" class="container-sm">
+                                      <div id="contenidos" class="container">
                                       
                                      </div>
                                     </div>                            

@@ -14,7 +14,17 @@ require("class/cnmysql.php");
 			$clave_secundaria = $_POST["clave_secundaria"]; 
 			$correo = $_POST["correo"]; 
 			$password = $_POST["pass"]; 
-			
+
+$existeMail = "SELECT * FROM `usuarios` WHERE correo = '".$correo."'  ";
+
+						if($resMail = $mysqli->query($existeMail)) {
+									?>
+									<script type="text/javascript">
+									window.location.href='registrar.php?existes=1';
+									</script>
+									<?php
+
+						}else{
 
 $cons01 = "INSERT INTO `usuarios` (`CodUsuario`, `Usuario`, `Clave`, `Perfil`, `estatus`, `enlinea`, `correo`) VALUES (NULL,'".$nombre."', '".$password."', '1',  '0' , '0','".$correo."')";
 
@@ -131,8 +141,8 @@ $cons3 = "INSERT INTO `secundarias` (`CodSec`,`CodUsu`,`Tipo`,`Nombre`,`Clave`) 
 
 
 															if(!$mail3->Send()) {
-															echo "Mailer Error: " . $mail3->ErrorInfo;
-															//header("Location: index.php?error=9");
+															//echo "Mailer Error: " . $mail3->ErrorInfo;
+															header("Location: index.php?error=9");
 
 															} else {
 
@@ -152,4 +162,6 @@ $cons3 = "INSERT INTO `secundarias` (`CodSec`,`CodUsu`,`Tipo`,`Nombre`,`Clave`) 
 						}else{echo "error al traer id";}
 
 					}else{echo "error al insertar usuario";}
+}
+			
 ?>

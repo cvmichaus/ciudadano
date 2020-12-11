@@ -35,26 +35,11 @@ session_start();
 </head>
 <body>
   
-  <div class="container-fluid">
-      <div class="row align-items-start">
-              <div class="col-md-1">
-              </div>  
+   <div class="container-fluid">
+    
+    <?php require("menu.php"); ?>
+   </div>
 
-               <div class="col-md-10">
-
-  
-
-<?php
-include ("menu.php");
-?>
-
-              </div>  
-
-               <div class="col-md-1">
-              </div>  
-    </div>
-     </div>
-  </div>
 
 
   <div id="page-wrapper">
@@ -65,28 +50,39 @@ include ("menu.php");
 
               <div class="col-md-10">
 
-                  <div class="row">
-                            <div class="col-md-12">
-                            <?php
+                 <div class="row" style="padding-bottom: 20px;padding-top: 20px;">
+                                  <div class="col-3">
+                                    <?php
                                        if($tipo_usuario == 0){
                                         ?>
-                                         <a href="home.php"  style="color: #a31d24;">&nbsp;<- Regresar </a>
+                                         <a href="home.php"  style="color: #a31d24;font-size: 12px;text-decoration: none;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar </a>
                                           <?php
                                           }
                                           else if ($tipo_usuario == 1){
                                           ?>
-                                           <a href="home.php"  style="color: #a31d24;">&nbsp;<- Regresar </a>
+                                           <a href="home.php"  style="color: #a31d24;font-size: 12px;text-decoration: none;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar </a>
                                           <?php
                                           }                                         
                                           else if ($tipo_usuario == 2){
                                         ?>
-                                         <a href="home.php"  style="color: #a31d24;">&nbsp;<- Regresar </a>
+                                         <a href="home.php"  style="color: #a31d24;font-size: 12px;text-decoration: none;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar </a>
                                         <?php
                                        }
 
                                     ?>
-                            </div>
-                            </div>
+                                    
+                                  </div>
+                                   <div class="col-3">
+                                     
+                                  </div>
+                                  <div class="col-3">
+                                     
+                                  </div>
+                                  <div class="col-3">
+                                     
+                                  </div>
+                                                                   
+                                </div>
 
                             <div class="row">
                             <div class="col-md-12">
@@ -147,7 +143,7 @@ include ("menu.php");
                             <div class="col-md-12">
                                 <div class="form-group">
                                 <label for="proyeccion" style="font-family: Roboto;font-size: 12px;color:#000;">¿Mi Unidad de Formación se realizará en el marco de una asignatura; proyecto escolar; la resolución de un problema que abordamos profesores del mismo grado, pero de distintas asignaturas; la formación por practica in situ; entre otros? </label>
-                                <textarea class="form-control" id="proyeccion" name="proyeccion" aria-describedby="proyeccion" placeholder="Escriba Aqui" maxlength="150"><?php echo $datosig["Proyeccion"]; ?></textarea>
+                                <textarea class="form-control" id="proyeccion" name="proyeccion" aria-describedby="proyeccion" placeholder="Escriba Aqui" maxlength="1000"><?php echo $datosig["Proyeccion"]; ?></textarea>
                                
                                 </div>
                             </div>
@@ -163,7 +159,7 @@ include ("menu.php");
                             <div class="col-md-12">
                                 <div class="form-group">
                                 <label for="evaluacion" style="font-family: Roboto;font-size: 12px;color:#000;">¿En qué contexto me propongo desarrollar la Unidad de Formación?, ¿Cuál ha sido el acercamiento de mis estudiantes al tema de los derechos económicos, sociales, culturales, ambientales?, ¿Cuál es el perfil de mis estudiantes? ¿Qué conocimientos ya poseen mis estudiantes? ¿Cuáles son las capacidades, destrezas y habilidades que ya dominan mis estudiantes? ¿Qué valores, actitudes y comportamientos predominan en mis estudiantes?</label>
-                                <textarea class="form-control" id="evaluacion" name="evaluacion" aria-describedby="evaluacion" placeholder="Escriba Aqui" maxlength="150"><?php echo $datosig["EvaluacionD"]; ?></textarea>
+                                <textarea class="form-control" id="evaluacion" name="evaluacion" aria-describedby="evaluacion" placeholder="Escriba Aqui" maxlength="5000"><?php echo $datosig["EvaluacionD"]; ?></textarea>
                                
                                 </div>
                             </div>
@@ -180,7 +176,7 @@ include ("menu.php");
                             <div class="col-md-12">
                                 <div class="form-group">
                                 <label for="finalidad" style="font-family: Roboto;font-size: 12px;color:#000;">¿Qué relaciones se construyen entre la asignatura en la que se desarrollara la Unidad de Formación con el entorno y las situaciones problema? ¿De qué sirven las competencias enmarcadas en esta Unidad de Formación (entre otras las referidas al CCP) a mis estudiantes?</label>
-                                <textarea class="form-control" id="finalidad" name="finalidad" aria-describedby="finalidad" placeholder="Escriba Aqui" maxlength="150"><?php echo $datosig["Finalidad"]; ?></textarea>
+                                <textarea class="form-control" id="finalidad" name="finalidad" aria-describedby="finalidad" placeholder="Escriba Aqui" maxlength="1000"><?php echo $datosig["Finalidad"]; ?></textarea>
                                
                                 </div>
                             </div>
@@ -197,7 +193,7 @@ include ("menu.php");
                             <div class="col-md-12">
                                 <div class="form-group">
                                 <label for="competencias" style="font-family: Roboto;font-size: 12px;color:#000;">¿Qué competencia o competencias CCP empatan con mis competencias, propósitos de enseñanza, aprendizaje esperados, eje SEP o indicaciones de logro?</label>
-                                <textarea class="form-control" id="competencias" name="competencias" aria-describedby="competencias" placeholder="Escriba Aqui" maxlength="150"><?php echo $datosig["Competencias"]; ?></textarea>
+                                <textarea class="form-control" id="competencias" name="competencias" aria-describedby="competencias" placeholder="Escriba Aqui" maxlength="2000"><?php echo $datosig["Competencias"]; ?></textarea>
                                
                                 </div>
                             </div>
@@ -218,7 +214,7 @@ include ("menu.php");
                                 ¿Cuáles son las actividades de desarrollo?<br>
                                 ¿Cuáles son las actividades de cierre?<br>
                                 </label>
-                                <textarea class="form-control" id="didactica" name="didactica" aria-describedby="didactica" placeholder="Escriba Aqui" maxlength="150"><?php echo $datosig["DisenioSD"]; ?></textarea>
+                                <textarea class="form-control" id="didactica" name="didactica" aria-describedby="didactica" placeholder="Escriba Aqui" maxlength="1000"><?php echo $datosig["DisenioSD"]; ?></textarea>
                                
                                 </div>
                             </div>
@@ -243,7 +239,7 @@ include ("menu.php");
                             <div class="col-md-2">
                                 <div class="form-group">
                                 
-                                <input type="number" class="form-control" id="nsecuencias" name="nsecuencias" aria-describedby="nsecuencias" value="<?php echo $datosig["NSDidacticas"]; ?>" required placeholder="Escriba Aqui">
+                                <input type="number" class="form-control" id="nsecuencias" name="nsecuencias" min="<?php echo $datosig['NSDidacticas']; ?>" aria-describedby="nsecuencias" value="<?php echo $datosig["NSDidacticas"]; ?>" required placeholder="Escriba Aqui">
                                
                                 </div>
                             </div>

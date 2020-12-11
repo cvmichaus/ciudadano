@@ -23,7 +23,7 @@ session_start();
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title></title>
   <link rel="stylesheet" href="EstiloSis.css">
- <link href="../bootstrap-4.5.2-dist/css/bootstrap.css" rel="stylesheet">
+ <link rel="stylesheet" href="../bootstrap.min.css">
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../bootstrap-4.5.2-dist/js/bootstrap.js"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -54,24 +54,10 @@ session_start();
 }
 </style>
 <body>
-   <div class="container-fluid">
-      <div class="row align-items-start">
-              <div class="col-md-1">
-              </div>  
-
-               <div class="col-md-10">
-
-  
-
-<?php
+   <div class="container">
+    <?php
 include ("menu.php");
 ?>
-
-              </div>  
-
-               <div class="col-md-1">
-              </div>  
-    </div>
      </div>
   <!-- MAIN -->
      <div id="wrapper">

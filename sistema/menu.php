@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-ligth bg-ligth" id="menu_rec" style="height: 80px; width: 1100px; background-color: #F0F0F0;">
+<nav class="navbar navbar-expand-md navbar-ligth bg-ligth" id="menu_rec" style="height: 80px; width: 100%; background-color: #F0F0F0;">
   <div class="container-fluid">
     <a class="navbar-brand" href="home.php">
       <img class="logo horizontal-logo" src="../img/site_logo.png" style="height: 26px;width: 155px;" alt="forecastr logo" >
@@ -6,7 +6,7 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="padding-left: 377px;">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="padding-left: 46%;">
       <ul class="navbar-nav ">
        
   <!--

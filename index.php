@@ -43,6 +43,7 @@
          <label style="height: 56px; width: 272px; color: #000000;  font-family: Roboto;  font-size: 12px;  font-weight: bold;  letter-spacing: 0;  line-height: 28px;  text-align: center;">No pudimos reenviar tu informacion de acceso ya que tu correo no esta en el sistema. Favor de ingresar un correo valido </label><br><br>
          <?php
         }
+       
         ?>
         </div>
         </div>
