@@ -36,7 +36,7 @@ if($resid = $mysqli->query($traerid)) {
 															$mail3->SMTPAuth = true;
 															$mail3->IsHTML(true);
 															//Authentication
-															$mail3->Username = "registrociudadano@urbanistica.mx";
+															$mail3->Username = "Alejandro@urbanistica.mx";
 															$mail3->Password = "Rueville10!";
 															//Set Params
 															$mail3->SetFrom("registrociudadano@urbanistica.mx");

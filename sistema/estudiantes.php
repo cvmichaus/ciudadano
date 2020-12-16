@@ -304,16 +304,16 @@ input[type=number]::-webkit-outer-spin-button {
   text-align: center;
 }
 </style>
-<form>
+   <form method="post" action="AddGrupos.php" id="from1">
     <div class="row" style="align-items: center;text-align: center;padding-bottom: 20px;">
     <div class="col-md-6" >
         <label style="color: #A31D24;font-family: Roboto; font-size: 14px; font-weight: bold; letter-spacing: 0;  line-height: 16px; text-align: center;">
           ¿De cuántos estudiantes se conformarán tus grupos?
         </label>
        <div class="number-input">
-  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
+  <a style="cursor: pointer;" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ><i class="fa fa-minus fa-3x" aria-hidden="true"></i></a>
   <input id="numero_estudiantes" name="numero_estudiantes" class="quantity" min="0" name="quantity" value="1" type="number">
-  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+  <a style="cursor: pointer;" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"><i class="fa fa-plus fa-3x" aria-hidden="true"></i></a>
 </div>
     </div>
     <div class="col-md-6">
@@ -323,9 +323,9 @@ input[type=number]::-webkit-outer-spin-button {
         </label>
         <br>
        <div class="number-input">
-  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
+  <a style="cursor: pointer;" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ><i class="fa fa-minus fa-3x" aria-hidden="true"></i></a>
   <input id="numero_grupos" name="numero_grupos" class="quantity" min="0" name="quantity" value="1" type="number">
-  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+  <a style="cursor: pointer;" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"><i class="fa fa-plus fa-3x" aria-hidden="true"></i></a>
 </div>
 
     </div>
@@ -341,7 +341,7 @@ Deseo que el sistema cree los grupos
       </div>
     </div>
   </center>
-  </form>
+ 
 
   <div class="row">
     <div class="col-3">
@@ -351,11 +351,11 @@ Deseo que el sistema cree los grupos
     <div class="col-3">
     </div>
      <div class="col-3">
-     <form method="post" action="FormEstudiante.php" id="from1">
+  
   
   <input type="hidden" name="codUF" id="codUF" value="<?php echo $_GET["coduf"]; ?>">
    <input type="hidden" name="codigoNS" id="codigoNS" value="<?php echo $_GET["ns"]; ?>">
-  <button  class="btn btn-danger" id="btnNuevousu" style="font-family: Roboto;font-size: 12px;color:#fff;" > <i class="fas fa-plus fa-sm"></i> Agregar estudiante </button> 
+  <button  class="btn btn-danger" id="btnNuevousu" style="font-family: Roboto;font-size: 12px;color:#fff;" > <i class="fas fa-plus fa-sm"></i> Crear Grupo </button> 
   </form> 
     </div>
   </div>

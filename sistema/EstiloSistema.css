@@ -1,0 +1,237 @@
+@font-face {
+      font-family: "Roboto";
+      src: url("../font/Roboto-Regular.ttf");
+
+    }
+#navbarNavDropdown{
+	padding-left: 78%
+}
+#inicio{
+	 padding-top: 30px;
+}
+#regresar{
+  color: #A31D24;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 16px;
+  padding-top: 30px;
+  text-decoration: none;
+  font-style: normal;  
+}
+
+#bienvenidos{
+	  color: #2B2B2B;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 28px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+#buscador{
+	   color: #A31D24;
+  font-family: Roboto;
+  font-size: 8px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 9px;
+  text-align: center;
+    padding-top: 20px;
+
+}
+#bienvenida{
+	  color: #2B2B2B;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 28px;
+  text-align: center;
+    padding-top: 20px;
+}
+#btnuf{
+  height: 30px;
+  width: 253px;
+  color: #ffffff;
+  font-family: Roboto;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 14px;
+  text-align: center;
+  background-color: #A31D24;
+}
+#crearuf{
+	  color: #2B2B2B;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 28px;
+  text-align: center;
+    padding-top: 20px;
+  padding-bottom: 20px;
+}
+#textod{
+	  color: #2B2B2B;
+  font-family: Roboto;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 19px;
+  text-align: justify;
+  padding-bottom: 20px;
+}
+#unidadesdeformacion{
+	  color: #2B2B2B;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 28px;
+  padding-bottom: 20px;
+}
+#contenidouf{
+	color: #A31D24;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 16px;
+    padding-bottom: 20px;
+}
+#titulo{
+	 color: #2B2B2B;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 28px;
+  text-align: center;
+}
+#txt{
+ color: #2B2B2B;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 16px;
+  text-align: justify;
+}
+
+#carrusel{
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#pie{
+	height: 177px
+	background-color: #FAFAFA;
+	font-family: Roboto;
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+#contactanos_titulo{
+	  color: #000000;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 16px;
+}
+#contactanos_dir{
+	 color: #000000;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 16px;
+  height: 48px;
+  width: 213px;
+}
+#txtbf{
+	 color: #000000;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 16px;
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 1207px) {
+	#navbarNavDropdown{
+	padding-left: 58%
+}
+}
+
+@media only screen and (min-width: 1200px) {
+		#navbarNavDropdown{
+			padding-left: 45%;
+	}
+}
+
+
+
+@media only screen and (min-width: 1224px) {
+#navbarNavDropdown{
+			padding-left: 56%;
+	}
+}
+
+@media only screen and (min-width:992px) {
+#navbarNavDropdown{
+				padding-left: 40%;
+	}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 768px) {
+#navbarNavDropdown{
+				padding-left: 0%;
+				font-size: 12px;
+	
+	}
+	#contactanos_titul{
+		font-size: 12px;
+		}
+		#contactanos_dir{
+
+		font-size: 12px;
+
+		}
+		#txtbf{
+		font-size: 12px;
+		}
+}
+
+@media only screen and (min-width: 480px) {
+#navbarNavDropdown{
+				padding-left: 36%;
+	}
+		#contactanos_titul{
+		font-size: 12px;
+		}
+		#contactanos_dir{
+
+		font-size: 12px;
+
+		}
+		#txtbf{
+		font-size: 12px;
+		}
+}
+
+@media only screen and (min-width: 400px) {
+#navbarNavDropdown{
+			
+	}
+		#contactanos_titul{
+		font-size: 12px;
+		}
+		#contactanos_dir{
+
+		font-size: 12px;
+
+		}
+		#txtbf{
+		font-size: 12px;
+		}
+}
+

@@ -3,7 +3,7 @@
  <div class="container">
  <div class="row align-items-center">
    <div class="col-3">
-     <img src="../img/CCIUDADANO_footerlogo.png"   height="37px" width="239px" alt="">
+     <img src="../img/CCIUDADANO_footerlogo.png"  class="img-fluid"  height="37px" width="239px" alt="">
     </div>
     
     <div class="col-1">

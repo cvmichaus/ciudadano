@@ -125,8 +125,8 @@ if($tipo_usuario == 0  OR $tipo_usuario == 1 ) {
   text-align: center;">¡Bienvenido!</label>
                  </div>
             </div>
-              <div class="row">
-                 <div class="col-sm-12" style="padding-bottom: 40px;height: 76px; width: 998px;">
+              <div class="row" id="bienvenido">
+                 <div class="col-sm-12" style="padding-bottom: 40px;height: 76px; width: 998px;padding-bottom: 30px;">
                     <label style="color: #2B2B2B; font-family: Roboto; font-size: 16px; letter-spacing: 0; line-height: 19px; text-align: justify;"><strong style="font-weight: bold;">CCIUDADANO</strong> es un programa especial del <strong style="font-weight: bold;">Centro de Investigaciones y Estudios en Antropología Social CIESAS</strong> fundado en 2007, cuyo objetivo es el <label style="color:#A31D24;">fortalecimiento del trabajo de organizaciones y grupos ciudadanos</label> interesados en involucrarse de manera organizada, informada, y responsable en procesos de toma de decisiones públicas en el ámbito local y comunitario. A esto lo llamamos <label style="color:#A31D24;">Control Ciudadano de lo Público.</label>
                  </div>
             </div>

@@ -97,6 +97,7 @@
 
     </div>
 
+<!--
       <div class="col-6">
      <div class="form-group">
           <label for="exampleFormControlInput1" style="height: 15px;width: 217px;color: #000000; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;">Crear contraseña</label>
@@ -104,7 +105,30 @@
           </div>
 
     </div>
+  -->
 
+
+      <div class="col-6">
+          <div class="form-group">
+          <label for="exampleFormControlInput1" style="  height: 15px;width: 290px;color: #000000;
+          font-family: Roboto; font-size: 12px;letter-spacing: 0;line-height: 14px;">Contraseña</label>
+        <div class="input-group" id="show_hide_password">
+      <input class="form-control" type="password" id="pass" name="pass" placeholder="Ingresar tu contraseña" style=" height: 30px; width: 270px;">
+      <div class="input-group-addon">
+        <a href=""><i class="fa fa-eye-slash" style=" color: #A31D24;" aria-hidden="true"></i></a>
+      </div>
+          </div>
+      </div>
+    </div>
+      <style>
+            .fa {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+
+}
+          </style>
+<!--
       <div class="col-6">
      <div class="form-group">
           <label for="exampleFormControlInput1" style="height: 15px;width: 217px;color: #000000; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;">Confirmar contraseña</label>
@@ -112,6 +136,27 @@
           </div>
 
     </div>
+-->
+      <div class="col-6">
+          <div class="form-group">
+          <label for="exampleFormControlInput1" style="  height: 15px;width: 290px;color: #000000;
+          font-family: Roboto; font-size: 12px;letter-spacing: 0;line-height: 14px;">Confirmar Contraseña</label>
+        <div class="input-group" id="show_hide_password">
+      <input class="form-control" type="password"  name="pass2" id="pass2" placeholder="Contraseña" onblur="validar_form();" data-toggle="tooltip" data-placement="right" title="La contraseña debe de tener entre 8 a 12 caracteres, una letra Mayúscula, un Numero y un carácter especial (!#$%&?!¡)." style=" height: 30px; width: 270px;">
+      <div class="input-group-addon">
+        <a href=""><i class="fa fa-eye-slash" style=" color: #A31D24;" aria-hidden="true"></i></a>
+      </div>
+          </div>
+      </div>
+    </div>
+      <style>
+            .fa {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+
+}
+          </style>
 
     <div class="col-md-12">    
     <center><input name="enviar" class="btn btn-lg btn-primary btn-block btn-xs" type="submit" style=" height: 40px;width: 160px;color: #808080;  font-family: Roboto; font-size: 12px;letter-spacing: 0;line-height: 14px;border: 1px solid #D4D4D4;
@@ -142,7 +187,7 @@
  <div class="container">
  <div class="row align-items-center">
    <div class="col-3">
-     <img src="img/CCIUDADANO_footerlogo.png"   height="37px" width="239px" alt="">
+     <img src="img/CCIUDADANO_footerlogo.png"  class="img-fluid"   height="37px" width="239px" alt="">
     </div>
     
     <div class="col-1">
@@ -292,5 +337,22 @@ $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();   
 });
 </script>
+   <script>
+  
+$(document).ready(function() {
+    $("#show_hide_password a").on('click', function(event) {
+        event.preventDefault();
+        if($('#show_hide_password input').attr("type") == "text"){
+            $('#show_hide_password input').attr('type', 'password');
+            $('#show_hide_password i').addClass( "fa-eye-slash" );
+            $('#show_hide_password i').removeClass( "fa-eye" );
+        }else if($('#show_hide_password input').attr("type") == "password"){
+            $('#show_hide_password input').attr('type', 'text');
+            $('#show_hide_password i').removeClass( "fa-eye-slash" );
+            $('#show_hide_password i').addClass( "fa-eye" );
+        }
+    });
+});
+          </script>
 </body>
 </html> 

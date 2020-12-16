@@ -178,27 +178,13 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
                                   </div>
                                 </div>
                                 
-                                <div class="row">
+                                <div class="row" id="menu_detalles">
                                     <div class="col-md-12" style="text-align: center;vertical-align: middle; width: 100%;">
                                       <br>
                                     <center>
                                       <ul class="nav nav-tabs">
-                                         <li class="nav-item">
-                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                     
-                                                                           
-                                      </li>
-
-                                      <li class="nav-item"  onclick="ejecuta_ajax('informacion_generl.php','coduf=<?php echo $data['CodUF']; ?>','contenidos')">
+                                         
+                                      <li class="nav-item" id="navitem"  onclick="ejecuta_ajax('informacion_generl.php','coduf=<?php echo $data['CodUF']; ?>','contenidos')">
                                      <a 
                                           <?php
                                                 if(isset($_GET["reenvio"])) {
@@ -214,7 +200,7 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
                                       <i class="fas fa-file fa-sm"></i> Información general</a>
                                       </li>
 
-                                      <li  class="nav-item" onclick="ejecuta_ajax('secuencias_didactica.php','coduf=<?php echo $data['CodUF']; ?>&ns=<?php echo $data['NSDidacticas']; ?>&codusu=<?php echo $iduser; ?>','contenidos')" >
+                                      <li  class="nav-item" id="navitem" onclick="ejecuta_ajax('secuencias_didactica.php','coduf=<?php echo $data['CodUF']; ?>&ns=<?php echo $data['NSDidacticas']; ?>&codusu=<?php echo $iduser; ?>','contenidos')" >
                                      <a <?php
                                                 if(isset($_GET["reenvio"])) {
                                                   if($_GET["reenvio"] == 2){ 
@@ -228,7 +214,7 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
                                           <i class="fas fa-book-open fa-sm"></i> Secuencia didáctica</a>
                                       </li>
 
-                                      <li class="nav-item" onclick="ejecuta_ajax('recursos_didacticos.php','coduf=<?php echo  $ID_UF; ?>&ns=<?php echo $data['NSDidacticas']; ?>&codusu=<?php echo $iduser; ?>','contenidos')">
+                                      <li class="nav-item" id="navitem" onclick="ejecuta_ajax('recursos_didacticos.php','coduf=<?php echo  $ID_UF; ?>&ns=<?php echo $data['NSDidacticas']; ?>&codusu=<?php echo $iduser; ?>','contenidos')">
                                      <a <?php
                                                 if(isset($_GET["reenvio"])) {
                                                   if($_GET["reenvio"] == 4){ 
@@ -244,7 +230,7 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
 onclick="ejecuta_ajax('estudiantes.php','coduf=<?php //echo $data['CodUF']; ?>','contenidos')"
 
 -->
-                                      <li class="nav-item" onclick="ejecuta_ajax('estudiantes.php','coduf=<?php echo $data['CodUF']; ?>&ns=<?php echo $data['NSDidacticas']; ?>','contenidos')">
+                                      <li class="nav-item" id="navitem" onclick="ejecuta_ajax('estudiantes.php','coduf=<?php echo $data['CodUF']; ?>&ns=<?php echo $data['NSDidacticas']; ?>','contenidos')">
                                      <a <?php
                                                 if(isset($_GET["reenvio"])) {
                                                   if($_GET["reenvio"] == 4){ 
@@ -255,6 +241,20 @@ onclick="ejecuta_ajax('estudiantes.php','coduf=<?php //echo $data['CodUF']; ?>',
 
                                                 }
                                           ?> class="nav-link" class="nav-link" id="estudiantes-tab" data-toggle="tab" style="cursor: pointer;" role="tab" aria-controls="estudiantes" aria-selected="false" ><i class="fas fa-users fa-sm"></i> Estudiantes</a>
+                                      </li>
+
+
+                                      <li class="nav-item" id="navitem" onclick="ejecuta_ajax('revision.php','coduf=<?php echo $data['CodUF']; ?>&ns=<?php echo $data['NSDidacticas']; ?>','contenidos')">
+                                     <a <?php
+                                                if(isset($_GET["reenvio"])) {
+                                                  if($_GET["reenvio"] == 5){ 
+                                                          echo 'class="nav-link active"';
+                                                  }else{
+                                                           echo 'class="nav-link"';
+                                                  }
+
+                                                }
+                                          ?> class="nav-link" class="nav-link" id="revision-tab" data-toggle="tab" style="cursor: pointer;" role="tab" aria-controls="revision" aria-selected="false" ><i class="fas fa-users fa-sm"></i> Revisión de actividades</a>
                                       </li>
 
                                      

@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-md navbar-ligth bg-ligth" id="menu_rec" style="height: 80px; width: 100%; background-color: #F0F0F0;">
+  <link rel="stylesheet" href="EstiloSis.css">
+<nav class="navbar navbar-expand-md navbar-ligth bg-ligth" id="menu_rec">
   <div class="container-fluid">
     <a class="navbar-brand" href="home.php">
       <img class="logo horizontal-logo" src="../img/site_logo.png" style="height: 26px;width: 155px;" alt="forecastr logo" >
@@ -6,25 +7,25 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="padding-left: 46%;">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" >
       <ul class="navbar-nav ">
        
   <!--
   <li class="nav-item">
-    <a class="nav-link" href="#" style="color:#868686;font-size: 16px;font-family: Roboto;font-weight: bold;">Sobre este programa</a>
+    <a class="nav-link" href="#" id="menulink">Sobre este programa</a>
   </li>
 -->
-  <li class="nav-item">
-    <a class="nav-link" href="home.php" style="color:#868686;font-size: 16px;font-family: Roboto;font-weight: bold;">Unidades de formación</a>
+  <li class="nav-item" id="menuitem">
+    <a class="nav-link" href="home.php" id="menulink">Unidades de formación</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="quienes_somos.php" style="color:#868686;font-size: 16px;font-family: Roboto;font-weight: bold;">Quienes somos</a>
+  <li class="nav-item" id="menuitem">
+    <a class="nav-link" href="quienes_somos.php" id="menulink">Quienes somos</a>
   </li>
               <?php
 if($tipo_usuario == 0  OR $tipo_usuario == 1 ) {
   ?>
-  <li class="nav-item">
-    <a class="nav-link" href="Foro.php" style="color:#868686;font-size: 16px;font-family: Roboto;font-weight: bold;">Foro</a>
+  <li class="nav-item" id="menuitem">
+    <a class="nav-link" href="Foro.php" id="menulink">Foro</a>
   </li>
 <?php
 }
@@ -34,7 +35,7 @@ if($tipo_usuario == 0){
   ?>
 <!--
  <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  style="color:#868686;font-size: 16px;font-family: Roboto;font-weight: bold;">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  id="menulink">
           Admin
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -44,8 +45,8 @@ if($tipo_usuario == 0){
         </div>
       </li>
 -->
-  <li class="nav-item">
-    <a class="nav-link" href="administracion.php" style="color:#868686;font-size: 16px;font-family: Roboto;font-weight: bold;">Admin</a>
+  <li class="nav-item" id="menuitem">
+    <a class="nav-link" href="administracion.php" id="menulink">Admin</a>
   </li>
   <?php
 }
