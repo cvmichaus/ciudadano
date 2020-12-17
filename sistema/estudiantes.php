@@ -335,8 +335,8 @@ input[type=number]::-webkit-outer-spin-button {
        <div class="col-md-12">
 Deseo que el sistema cree los grupos 
         <div class="custom-control custom-switch">
-  <input type="checkbox" class="custom-control-input" id="customSwitch1" name="customSwitch1" style="height: 22.55px; width: 50px; border-radius: 10px; background-color: #A31D24;">
-  <label class="custom-control-label" for="customSwitch1"> Yo deseo crear los grupos</label>
+  <input type="checkbox" class="custom-control-input" id="elegir" name="elegir" style="height: 22.55px; width: 50px; border-radius: 10px; background-color: #A31D24;">
+  <label class="custom-control-label" for="elegir"> Yo deseo crear los grupos</label>
 </div> 
       </div>
     </div>
