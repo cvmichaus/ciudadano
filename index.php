@@ -69,7 +69,7 @@
           letter-spacing: 0;
           line-height: 14px;">Correo</label>
           <input type="text" class="form-control" style=" height: 30px;
-          width: 290px;" name="username" id="username" placeholder="Ingresar tu correo">
+          width: 290px;" name="username" id="username" onkeyup="habilitar();" placeholder="Ingresar tu correo">
           <?php
           if(isset($_GET["error"])) {
           ?>
@@ -142,8 +142,16 @@
 
 
           <div class="form-group" style="text-align: center;">
-          <input type="submit" name="enviar" style=" height: 40px;width: 160px;color: #808080;  font-family: Roboto; font-size: 12px;letter-spacing: 0;line-height: 14px;border: 1px solid #D4D4D4;
+          <input type="submit" disabled name="enviar" id="boton" style=" height: 40px;width: 160px;color: #808080;  font-family: Roboto; font-size: 12px;letter-spacing: 0;line-height: 14px;border: 1px solid #D4D4D4;
           border-radius: 10px; background-color: #FFFFFF; font-weight: bolder;text-align: center;" value="Ingresar">
+          <script type="text/javascript">
+          	function habilitar(){
+          	document.getElementById("boton").disabled=false;
+          	document.getElementById("boton").style.backgroundColor="#A31D24";
+          	document.getElementById("boton").style.color="#FFF";
+          	document.getElementById("boton").style.cursor="pointer";
+          }
+          </script>
           </div>
           </form>        
           </div>

@@ -8,6 +8,16 @@ require("class/cnmysql.php");
 
 $correo = $_POST["correo"]; 
 
+$traerDMail = "SELECT port,host,username,password FROM `mailing`WHERE codMail = 1 ";
+
+						if($ResDmail = $mysqli->query($traerDMail)) {
+						   $DatosMail = $ResDmail->fetch_array();
+							$puerto =  $DatosMail["port"];
+							$host =  $DatosMail["host"];
+							$username =  $DatosMail["username"];
+							$passmail =  $DatosMail["password"];
+
+
 $traerid = "SELECT CodUsuario,correo,Clave FROM `usuarios` WHERE  correo = '".$correo."' AND  estatus = '1' ";
 
 //alejandro.lopezgonzalez@outlook.com
@@ -28,19 +38,18 @@ if($resid = $mysqli->query($traerid)) {
 															$mail3->IsSMTP();
 
 															$mail3->CharSet="UTF-8";
-															$mail3->Host = "smtp.office365.com";
+															$mail3->Host = $host;
 															//$mail3->SMTPDebug = 2;
-															$mail3->Port = 587; //465 or 587
+															$mail3->Port = $puerto; //465 or 587
 
 															$mail3->SMTPSecure = 'tls';
 															$mail3->SMTPAuth = true;
 															$mail3->IsHTML(true);
 															//Authentication
-															$mail3->Username = "Alejandro@urbanistica.mx";
-															$mail3->Password = "Rueville10!";
+															$mail3->Username = $username;
+															$mail3->Password = $passmail;
 															//Set Params
-															$mail3->SetFrom("registrociudadano@urbanistica.mx");
-															//$mail3->AddAddress($CorreoEmpleado2);
+															$mail3->SetFrom($username);
 															$mail3->AddAddress($Usuariocorreo);
 
 
@@ -145,5 +154,6 @@ if($resid = $mysqli->query($traerid)) {
 								</script>
 								<?php
 						}
+					}
 
 ?>

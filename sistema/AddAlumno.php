@@ -28,7 +28,14 @@ $hora_actual= strftime("%H:%M:%S");
              $codns =$_POST["codigoNS"];
              $CodDocente =$_POST["CodDocente"];
 			
-			
+$traerDMail = "SELECT port,host,username,password FROM `mailing`WHERE codMail = 1 ";
+
+						if($ResDmail = $mysqli->query($traerDMail)) {
+						   $DatosMail = $ResDmail->fetch_array();
+							$puerto =  $DatosMail["port"];
+							$host =  $DatosMail["host"];
+							$username =  $DatosMail["username"];
+							$passmail =  $DatosMail["password"];			
 
 
 $cons01 = "INSERT INTO `usuarios` ( `Usuario`, `Clave`, `Perfil`, `estatus`, `enlinea`, `correo`) VALUES ('".$nombre."', '".$password."', '2',  '0' , '0','".$correo."')";
@@ -71,23 +78,23 @@ $cons01 = "INSERT INTO `usuarios` ( `Usuario`, `Clave`, `Perfil`, `estatus`, `en
 															require("PHPMailer-master/src/Exception.php");
 
 
+															
 															$mail3 = new PHPMailer\PHPMailer\PHPMailer();
 															$mail3->IsSMTP();
 
 															$mail3->CharSet="UTF-8";
-															$mail3->Host = "smtp.office365.com";
+															$mail3->Host = $host;
 															//$mail3->SMTPDebug = 2;
-															$mail3->Port = 587; //465 or 587
+															$mail3->Port = $puerto; //465 or 587
 
 															$mail3->SMTPSecure = 'tls';
 															$mail3->SMTPAuth = true;
 															$mail3->IsHTML(true);
 															//Authentication
-															$mail3->Username = "registrociudadano@urbanistica.mx";
-															$mail3->Password = "Rueville10!";
+															$mail3->Username = $username;
+															$mail3->Password = $passmail;
 															//Set Params
-															$mail3->SetFrom("registrociudadano@urbanistica.mx");
-															//$mail3->AddAddress($CorreoEmpleado2);
+															$mail3->SetFrom($username);
 															$mail3->AddAddress($correo);
 
 
@@ -213,5 +220,5 @@ Code
   } else {
     header("Location: ../index.php");
   }
- 
+ }
  ?>

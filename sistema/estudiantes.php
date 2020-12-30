@@ -298,64 +298,152 @@ input[type=number]::-webkit-outer-spin-button {
   padding: .5rem;
   border: solid #ddd;
   border-width: 0 2px;
-  font-size: 2rem;
-  height: 3rem;
+  font-size: 1rem;
+  height: 2rem;
   font-weight: bold;
   text-align: center;
 }
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 23px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #A31D24;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
 </style>
-   <form method="post" action="AddGrupos.php" id="from1">
-    <div class="row" style="align-items: center;text-align: center;padding-bottom: 20px;">
-    <div class="col-md-6" >
-        <label style="color: #A31D24;font-family: Roboto; font-size: 14px; font-weight: bold; letter-spacing: 0;  line-height: 16px; text-align: center;">
-          ¿De cuántos estudiantes se conformarán tus grupos?
-        </label>
-       <div class="number-input">
-  <a style="cursor: pointer;" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ><i class="fa fa-minus fa-3x" aria-hidden="true"></i></a>
-  <input id="numero_estudiantes" name="numero_estudiantes" class="quantity" min="0" name="quantity" value="1" type="number">
-  <a style="cursor: pointer;" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"><i class="fa fa-plus fa-3x" aria-hidden="true"></i></a>
-</div>
+   
+    
+<div style=" display: flex; justify-content: center; align-items: center;">
+<div style="text-align: justify;padding-right: 20px;padding-top: 20px;padding-bottom: 20px;height: 365px; width:692px; border-radius: 10px; background-color: #F0F0F0;">
+  
+  <div class="row" style="text-align: justify;padding-left: 130px;">
+    <div class="col-12">
+Deseo que el sistema cree los equipos
+        <label class="switch">
+          <!--
+  <input type="checkbox" name="chk" id="chk" onChange="ejecuta_ajax('equipos.php','chkphp='+chk.checked+'','grupos')">
+          -->
+  <input type="checkbox" name="chk" id="chk" onChange="ejecuta_ajax('equipos.php','chkphp='+chk.checked+'&coduf='+codUF.value+'','grupos')">
+  <span class="slider round"></span>
+</label>
+Deseo hacerlo yo
     </div>
-    <div class="col-md-6">
-
-<label style="color: #A31D24;font-family: Roboto; font-size: 14px; font-weight: bold; letter-spacing: 0;  line-height: 16px; text-align: center;">
-         Número total de grupos: 
-        </label>
-        <br>
-       <div class="number-input">
-  <a style="cursor: pointer;" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ><i class="fa fa-minus fa-3x" aria-hidden="true"></i></a>
-  <input id="numero_grupos" name="numero_grupos" class="quantity" min="0" name="quantity" value="1" type="number">
-  <a style="cursor: pointer;" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"><i class="fa fa-plus fa-3x" aria-hidden="true"></i></a>
 </div>
 
+<div class="row" style="text-align: justify;padding-left: 20px;">
+ <div class="col-12">
+   <div id="grupos"> 
+    <from>
+    <div class="row">
+      <?php
+      $D4 = $mysqli->query("SELECT * FROM  estudiantes WHERE CodUF =".$COD_UF."  ");
+                      $row_cnt4 = $D4->num_rows;
+                        
+      ?>
+        <div class="col-4" style="text-align: center;">
+                  <label style="color: #A31D24;font-family: Roboto; font-size: 12px; font-weight: bold; letter-spacing: 0;  line-height: 16px; text-align: center;">
+                  ¿De cuántos estudiantes se conformarán tus equipos?
+                  </label>
+                  <br>
+                  <div class="number-input">
+                  <a style="cursor: pointer;" onclick="this.parentNode.querySelector('input[type=number]').stepDown();verificar();" ><i class="fa fa-minus fa-2x" aria-hidden="true"></i></a>
+                  <input id="numero_estudiantes" name="numero_estudiantes" onchange="verificar();" class="quantity" min="0" max="<?php echo $row_cnt4; ?>" name="quantity" value="<?php echo $row_cnt4; ?>" type="number">
+                  <a style="cursor: pointer;" onclick="this.parentNode.querySelector('input[type=number]').stepUp();verificar();" class="plus"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
+                  </div>
+        </div>
+         <div class="col-4">
+          
+        </div>
+         <div class="col-4">
+                  <label style="color: #A31D24;font-family: Roboto; font-size: 12px; font-weight: bold; letter-spacing: 0;  line-height: 16px; text-align: center;">
+                  Número total de equipos: 
+                  </label>
+                  <br><br>
+                  <div class="number-input">
+                  <a style="cursor: pointer;" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></a>
+                  <input id="numero_grupos" name="numero_grupos" class="quantity" min="0" name="quantity" value="1" disabled="disabled" type="number">
+                  <a style="cursor: pointer;" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></a>
+                  </div>
+          
+        </div>
     </div>
-    </div> 
-<center>
-    <div class="row" style="align-items: center;text-align: center;padding-left: 0px;padding-top: 20px;padding-bottom: 20px;height: 201px; width: 392px; border-radius: 10px; background-color: #F0F0F0;">
-       <div class="col-md-12">
-Deseo que el sistema cree los grupos 
-        <div class="custom-control custom-switch">
-  <input type="checkbox" class="custom-control-input" id="elegir" name="elegir" style="height: 22.55px; width: 50px; border-radius: 10px; background-color: #A31D24;">
-  <label class="custom-control-label" for="elegir"> Yo deseo crear los grupos</label>
-</div> 
-      </div>
-    </div>
-  </center>
- 
-
-  <div class="row">
-    <div class="col-3">
-    </div>
-     <div class="col-3">
-    </div>
-    <div class="col-3">
-    </div>
-     <div class="col-3">
-  
-  
+     <div class="row">
+       <div class="col-4">
+          
+        </div>
+         <div class="col-4">
+     <input type="hidden" name="numrealestudiantes" id="numrealestudiantes" value="<?php echo $row_cnt4; ?>">       
   <input type="hidden" name="codUF" id="codUF" value="<?php echo $_GET["coduf"]; ?>">
    <input type="hidden" name="codigoNS" id="codigoNS" value="<?php echo $_GET["ns"]; ?>">
-  <button  class="btn btn-danger" id="btnNuevousu" style="font-family: Roboto;font-size: 12px;color:#fff;" > <i class="fas fa-plus fa-sm"></i> Crear Grupo </button> 
-  </form> 
-    </div>
+  <button  class="btn btn-danger" id="btnCrearEquipos" name="btnCrearEquipos" disabled="disabled" style="font-family: Roboto;font-size: 12px;color:#fff;height: 40px;
+  width: 160px;" > Crear equipos </button> 
+        </div>
+         <div class="col-4">
+          
+        </div>
+     </div>
   </div>
+</from>
+ </div>  
+</div>
+ 
+</div>
+</div>
+
+
+ 
+
+

@@ -13,13 +13,15 @@ session_start();
       $COD_UF = $_GET['coduf'];
 
 ?>
-   
+
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+<script  src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
 <div class="col-md-12" style="padding-top: 20px;padding-right: 80px;padding-bottom: 20px;padding-left: 80px;margin: 0 0 25px;">
 
 <br>
-
-    <div class="row" >
+        <div class="row" >
        
         <div class="col-md-12">
         <p style="color: #000000; font-family: Roboto; font-size: 12px;  letter-spacing: 0;  line-height: 14px;" >
@@ -40,23 +42,27 @@ session_start();
         </div>
         </div>  
 
-          <div class="row" >
+        <div class="row" >
         <div class="col-md-12">
-            <form action="enviar_actividades.php" method="POST">
-                  <table class="table">
+<form action="enviar_actividades.php" method="POST">
+<table class="table">
   <tbody>
      <tr>
       <th scope="row"> 
-        <input type="checkbox" onClick="ActivarCasilla(this);" /> 
-        
+           <input type="checkbox" id="seleccionar-todos" onclick="seleccionatodos()"> 
       </th>
-      <td style="color: #000;font-family: Lato; font-size: 14px; font-weight: bold; letter-spacing: 0; line-height: 17px;"> Marcar / Desmarcar Todos</td>
+      <td style="color: #000;font-family: Lato; font-size: 14px; font-weight: bold; letter-spacing: 0; line-height: 17px;"> Seleccionar todos</td>
       <td></td>
       <td>  </td>
     </tr>
 
-   
+   <script>
+     function seleccionatodos(){
+      alert("Todos");
+     }
+    </script>
 
+    <div id="listado">
     <tr>
       <th scope="row"> <input type="checkbox" aria-label="Checkbox for following text input"></th>
       <td style="color: #A31D24;font-family: Lato; font-size: 14px; font-weight: bold; letter-spacing: 0; line-height: 17px;"> 1. Reconocimiento inicial de la problemática</td>
@@ -251,6 +257,9 @@ $QueryTema = "SELECT * FROM  recursos_didacticos  WHERE `CodUF` =  ".$COD_UF." A
     <a style="cursor: pointer;" data-toggle="modal" data-target="#exampleModalCenter<?php echo $datos["cod_recdid"]; ?>" ><i class="fas fa-eye fa-sm"></i></a> 
      <a href="RecursosDidacticos/<?php echo $datos["Archivo"]; ?>" ><i class="fas fa-download fa-sm"></i></a> </td>
         </tr>
+
+
+
               <?php
             }
          }
@@ -259,17 +268,39 @@ $QueryTema = "SELECT * FROM  recursos_didacticos  WHERE `CodUF` =  ".$COD_UF." A
 </div>
   </tbody>
 </table>
+   
+               
+          <div class="row" >
+    
+      <div class="col-md-2">
+        <a  data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-danger btn-sm" style="height: 40px; width: 197px; border-radius: 5px; background-color: #A31D24;color: #FFF;" > <i class="fa fa-plus fa-sm" aria-hidden="true"></i> Agregar recursos</a>
 
-            </form>
-        </div>
       </div>
 
-      <div class="row"> 
-        <div class="col-3"></div>
-        <div class="col-3"></div>
-        <div class="col-3"></div>
-        <div class="col-3">
-          <?php
+        <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter<?php echo $datos["cod_recdid"]; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"><?php echo $datos["Nombre"]; ?></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <embed src="RecursosDidacticos/<?php echo $datos["Archivo"]; ?>" frameborder="0" width="100%" height="500px">
+      </div>
+    
+    </div>
+  </div>
+</div>
+
+        <div class="col-md-8">
+       
+      </div>
+
+       <div class="col-md-2">
+        <?php
         $QueryGrupo = "SELECT * FROM  grupos  WHERE `CodUF` =  ".$COD_UF." AND CodUsu = ".$codusuario." ";
       if($ResGrupo = $mysqli->query($QueryGrupo)) {
       
@@ -278,7 +309,7 @@ $QueryTema = "SELECT * FROM  recursos_didacticos  WHERE `CodUF` =  ".$COD_UF." A
         if(empty($ExisteGrupo)){
           ?>
  <button style="color: #ffffff; font-family: Roboto;
-  font-size: 12px; letter-spacing: 0; line-height: 14px; text-align: center;" type="submit" class="btn btn-danger" disabled data-toggle="tooltip" data-placement="right" title="Este boton esta desabilitado hasta que se creen los grupos con alumnos asignados" >Enviar Actividades</button>
+  font-size: 12px; letter-spacing: 0; line-height: 14px; text-align: center;" type="submit" class="btn btn-danger" disabled title="no hay grupos creados por eso se desabilito el boton">Enviar Actividades</button>
           <?php
         }else{
          ?>
@@ -290,17 +321,26 @@ $QueryTema = "SELECT * FROM  recursos_didacticos  WHERE `CodUF` =  ".$COD_UF." A
       }
 
         ?>
-        </div>
+       
+
       </div>
+      
+    </div> 
 
-       <div class="row" >
-          <div class="col-2">
-              <a  data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-danger btn-sm" style="height: 40px; width: 197px; border-radius: 5px; background-color: #A31D24;color: #FFF;" > <i class="fa fa-plus fa-sm" aria-hidden="true"></i> Agregar recursos</a>
+        </div>
+        </div>  
+</form>
+
+        <div class="row" >
+        <div class="col-md-12">
+        <p >
+            
+        </p>
+        </div>
+        </div>  
 
 
-          </div>
-
-                <!-- Modal -->
+      <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -383,17 +423,24 @@ if(imgsize > 10000){
   </div>
 </div>
 
-          <div class="col-8">
+        <div class="row" >
+        <div class="col-md-12" style="width: 100%;">
+        <p style="font-family: Roboto;font-size: 12px;color:#000;text-transform: uppercase;font-weight: bolder;" >
             
-          </div>
+        </p>
+        </div>
+        </div>  
 
-          <div class="col-2">
-            
-          </div>
-
-       </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
  
+  <div class="row">
+    <div class="col-md-12">
+    <p>
+      
+    </p>
+    </div>
+    </div>                               
+ 
+ </div>
    <?php
   } else {
     header("Location: ../index.php");

@@ -152,3 +152,8 @@ $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();   
 });
 
+
+function chkbox(){
+    alert("esto es un mensaje...");
+    }
+    

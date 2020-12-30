@@ -25,7 +25,7 @@ session_start();
     <!-- Bootstrap CSS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+<script src="popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
  <link rel="stylesheet" href="../bootstrap.min.css">
 
@@ -200,7 +200,7 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
                                       <i class="fas fa-file fa-sm"></i> Información general</a>
                                       </li>
 
-                                      <li  class="nav-item" id="navitem" onclick="ejecuta_ajax('secuencias_didactica.php','coduf=<?php echo $data['CodUF']; ?>&ns=<?php echo $data['NSDidacticas']; ?>&codusu=<?php echo $iduser; ?>','contenidos')" >
+    <li  class="nav-item" id="navitem" onclick="ejecuta_ajax('secuencias_didactica.php','coduf=<?php echo $data['CodUF']; ?>&ns=<?php echo $data['NSDidacticas']; ?>&codusu=<?php echo $iduser; ?>','contenidos')" >
                                      <a <?php
                                                 if(isset($_GET["reenvio"])) {
                                                   if($_GET["reenvio"] == 2){ 
@@ -214,22 +214,22 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
                                           <i class="fas fa-book-open fa-sm"></i> Secuencia didáctica</a>
                                       </li>
 
-                                      <li class="nav-item" id="navitem" onclick="ejecuta_ajax('recursos_didacticos.php','coduf=<?php echo  $ID_UF; ?>&ns=<?php echo $data['NSDidacticas']; ?>&codusu=<?php echo $iduser; ?>','contenidos')">
+
+ <li  class="nav-item" id="navitem" onclick="ejecuta_ajax('recursos_didacticos.php','coduf=<?php echo $data['CodUF']; ?>&ns=<?php echo $data['NSDidacticas']; ?>&codusu=<?php echo $iduser; ?>','contenidos')" >
                                      <a <?php
                                                 if(isset($_GET["reenvio"])) {
-                                                  if($_GET["reenvio"] == 4){ 
+                                                  if($_GET["reenvio"] == 3){ 
                                                           echo 'class="nav-link active"';
                                                   }else{
                                                            echo 'class="nav-link"';
                                                   }
 
                                                 }
-                                          ?> class="nav-link" class="nav-link" id="estudiantes-tab" data-toggle="tab" style="cursor: pointer;" role="tab" aria-controls="estudiantes" aria-selected="false" ><i class="fas fa-copy fa-sm"></i>  Recursos didácticos</a>
+                                          ?> class="nav-link"  id="recursos-tab" data-toggle="tab" style="cursor: pointer;"  role="tab" aria-controls="recursos" aria-selected="false" >
+                                          <i class="fas fa-book-open fa-sm"></i> Recursos didácticos</a>
                                       </li>
-<!--
-onclick="ejecuta_ajax('estudiantes.php','coduf=<?php //echo $data['CodUF']; ?>','contenidos')"
 
--->
+
                                       <li class="nav-item" id="navitem" onclick="ejecuta_ajax('estudiantes.php','coduf=<?php echo $data['CodUF']; ?>&ns=<?php echo $data['NSDidacticas']; ?>','contenidos')">
                                      <a <?php
                                                 if(isset($_GET["reenvio"])) {
@@ -455,6 +455,39 @@ $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();   
 });
 </script>
+<script type="text/javascript">
+  function ActivarCasilla(casilla) 
+{
+  miscasillas=document.getElementsByTagName('input'); //Rescatamos controles tipo Input
+  for(i=0;i<miscasillas.length;i++) //Ejecutamos y recorremos los controles
+  {
+    if(miscasillas[i].type == "checkbox") // Ejecutamos si es una casilla de verificacion
+    {
+      miscasillas[i].checked=casilla.checked; // Si el input es CheckBox se aplica la funcion ActivarCasilla
+    }
+  }
+}
+</script>
+<script>
+function verificar(){
+  var estudiantesphp = document.getElementById("numero_estudiantes").value;
+  //alert("numero de estudiantes "+estudiantesphp);
+  var numeroreal = document.getElementById("numrealestudiantes").value;
+  //alert("numero real  de estudiantes "+numeroreal);
+ var res = numeroreal / estudiantesphp;
+ //alert("resultado "+res);
+  if(numeroreal % estudiantesphp === 0){
+    document.getElementById("numero_grupos").value = res;
+     // alert("Ya se puede crear el grupo");
+      document.getElementById("btnCrearEquipos").disabled=false;
+  }else{
+    document.getElementById("numero_grupos").value = 0;
+    // alert("eliga otro numero que sea divisible");
+      document.getElementById("btnCrearEquipos").disabled=true;
+  }
+}
+</script>
+
 
 </body>
 
