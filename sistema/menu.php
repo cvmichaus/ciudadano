@@ -22,7 +22,7 @@
     <a class="nav-link" href="quienes_somos.php" id="menulink">Quienes somos</a>
   </li>
               <?php
-if($tipo_usuario == 0  OR $tipo_usuario == 1 ) {
+if($tipo_usuario == 0  OR $tipo_usuario == 1 OR $tipo_usuario == 3 ) {
   ?>
   <li class="nav-item" id="menuitem">
     <a class="nav-link" href="Foro.php" id="menulink">Foro</a>

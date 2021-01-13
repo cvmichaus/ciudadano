@@ -1,8 +1,22 @@
 <?php
+require("class/cnmysql.php");
+
+$traerDMail = "SELECT port,host,username,password FROM `mailing`WHERE codMail = 1 ";
+
+						if($ResDmail = $mysqli->query($traerDMail)) {
+						   $DatosMail = $ResDmail->fetch_array();
+							$puerto =  $DatosMail["port"];
+							$host =  $DatosMail["host"];
+							$username =  $DatosMail["username"];
+							$passmail =  $DatosMail["password"];
+
+
+
 $correo="michusvalentin@gmail.com";
 $nombre="Carlos";
 $password="12345";
 
+//PHPMAILER
 require("PHPMailer-master/src/PHPMailer.php");
 require("PHPMailer-master/src/SMTP.php");
 require("PHPMailer-master/src/Exception.php");
@@ -21,10 +35,10 @@ $mail3->SMTPAuth = true;
 $mail3->IsHTML(true);
 //Authentication
 //registrociudadano@urbanistica.mx
-$mail3->Username = "Alejandro@urbanistica.mx";
-$mail3->Password = "Rueville10!";
+$mail3->Username = "recursos.humanos@wri.org";
+$mail3->Password = "WRIm3x1c086!";
 //Set Params
-$mail3->SetFrom("Alejandro@urbanistica.mx");
+$mail3->SetFrom($username);
 //$mail3->AddAddress($CorreoEmpleado2);
 $mail3->AddAddress($correo);
 
@@ -97,11 +111,35 @@ Contactanos
 </html>
 ';
 
+$mail3->SMTPOptions = array(
+'ssl' => array(
+    'verify_peer' => false,
+    'verify_peer_name' => false,
+    'allow_self_signed' => true
+));
+
 if(!$mail3->Send()) {
 echo "Mailer Error: " . $mail3->ErrorInfo;
 } else {
 //header("Location: index.php");  
 echo "se mando mail";
 } 
+
+
+/*
+//FUNCION MAIL PARA EL SERVER
+ ini_set( 'display_errors', 1 );
+        error_reporting( E_ALL );
+        $from = "recursos.humanos@wri.org";
+        $to = "alejandro.lopez@wri.org";
+        $subject = "Alta en el Sistema de Solicitud de Vacaciones WRI 2";
+        $message = "PHP mail works just fine";
+        $headers = "From:" . $from;
+        mail($correo,$subject,$message, $headers);
+        echo "The email message was sent.";
+ */   
+
+}
+
 ?>
 

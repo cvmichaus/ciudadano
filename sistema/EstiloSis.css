@@ -4,6 +4,20 @@
 
     }
 
+
+    @font-face {
+      font-family: "Lato";
+      src: url("../font/Lato-Bold.ttf");
+
+    }
+
+
+    @font-face {
+      font-family: "Lato2";
+      src: url("../font/Lato-Thin.ttf");
+
+    }
+
     body{
       font-family: Roboto;
       font-size: 12px;

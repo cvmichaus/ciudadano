@@ -27,7 +27,7 @@ $ObtenCod = "SELECT  NSDidacticas FROM `euf` WHERE  `CodUF` = '".$coduf."' and C
 //echo '<script language="javascript">alert(" Se guardo lasecuencia didactica ");</script>';
 						?>	
 	<script type="text/javascript">
-	window.location.href='detalles_UF.php?coduf=<?php echo base64_encode($coduf); ?>&codns=<?php echo $resN ;?>&reenvio=2';
+	window.location.href='detalles_UF.php?coduf=<?php echo base64_encode($coduf); ?>&codns=<?php echo $resN ;?>&reenvio=2&iduser=<?php echo $CodM;?>';
 	</script>
 	<?php
 							}

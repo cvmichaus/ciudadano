@@ -8,11 +8,12 @@ session_start();
       $fecha_del_dia=date('Y-m-d');//fecha actual
 
       $user = $_SESSION['UsuarioNombre'];
-      $iduser = $_SESSION['CodUsuario'];
+      $iduser = $_GET['iduser'];
 
        $ID_UF = base64_decode($_GET['coduf']); 
        $NS_UF = $_GET['codns']; 
       $tipo_usuario = $_SESSION['Perfil'];
+
        
  ?>
 <!doctype html>
@@ -25,13 +26,15 @@ session_start();
     <!-- Bootstrap CSS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   
-<script src="popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
  <link rel="stylesheet" href="../bootstrap.min.css">
 
   <link rel="stylesheet" href="EstiloSis.css">
   <link data-require="sweet-alert@*" data-semver="0.4.2" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
   <script src="https://kit.fontawesome.com/d6e77194d9.js" crossorigin="anonymous"></script>
 
 
@@ -41,58 +44,98 @@ session_start();
  if(isset($_GET["reenvio"])) {
       if($_GET["reenvio"] == 2){
          ?>
-        onload="ejecuta_ajax('secuencias_didactica.php','coduf=<?php echo $ID_UF; ?>&ns=<?php echo $NS_UF; ?>','contenidos')"
+        onload="ejecuta_ajax('secuencias_didactica.php','coduf=<?php echo $ID_UF; ?>&ns=<?php echo $NS_UF; ?>&iduser=<?php echo $iduser; ?>','contenidos')"
       <?php
       }else if($_GET["reenvio"] == 3){
          ?>
-        onload="ejecuta_ajax('recursos_didacticos.php','coduf=<?php echo $ID_UF; ?>&ns=<?php echo $NS_UF; ?>','contenidos')"
+        onload="ejecuta_ajax('recursos_didacticos.php','coduf=<?php echo $ID_UF; ?>&ns=<?php echo $NS_UF; ?>&iduser=<?php echo $iduser; ?>','contenidos')"
       <?php
       }else if($_GET["reenvio"] == 4){
          ?>
-        onload="ejecuta_ajax('estudiantes.php','coduf=<?php echo $ID_UF; ?>&ns=<?php echo $NS_UF; ?>','contenidos')"
+        onload="ejecuta_ajax('estudiantes.php','coduf=<?php echo $ID_UF; ?>&ns=<?php echo $NS_UF; ?>&iduser=<?php echo $iduser; ?>','contenidos')"
       <?php
   }else{
       ?>
-        onload="ejecuta_ajax('informacion_generl.php','coduf=<?php echo $ID_UF; ?>&ns=<?php echo $NS_UF; ?>','contenidos')"
+        onload="ejecuta_ajax('informacion_generl.php','coduf=<?php echo $ID_UF; ?>&ns=<?php echo $NS_UF; ?>&iduser=<?php echo $iduser; ?>&NS_UF=<?php echo $NS_UF; ?>','contenidos')"
       <?php
   }
 }else{
   ?>
-        onload="ejecuta_ajax('informacion_generl.php','coduf=<?php echo $ID_UF; ?>&ns=<?php echo $NS_UF; ?>','contenidos')"
+        onload="ejecuta_ajax('informacion_generl.php','coduf=<?php echo $ID_UF; ?>&ns=<?php echo $NS_UF; ?>&iduser=<?php echo $iduser; ?>&NS_UF=<?php echo $NS_UF; ?>','contenidos')"
       <?php
 }
 ?>  class="row m-0 bg-white justify-content-center align-items-center vh-100">
+
+
     
     <div class="container">
-    
+
+
     <?php require("menu.php"); ?>
    </div>
 
  <div class="container-fluid" style="position: relative;width: 100%;height: auto;min-height: 450px;overflow: hidden;text-align: justify;">
+<?php
+if(isset($_GET["tema"])){
+  if($_GET["tema"] == 1){
+?>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+<strong>Se han guardado satisfactoriamente la INFORMACION de TEMA en la Secuencia Didactica.</strong>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<?php
+}if($_GET["tema"] == 0){
+  ?>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+<strong>No se han guardado satisfactoriamente la INFORMACION de  TEMA en la Secuencia Didactica, intentelo nuevamente.</strong>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<?php
+}
+
+}else{
+
+}
+
+if(isset($_GET["temamod"])){
+
+
+if($_GET["temamod"] == 1){
+?>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+<strong>Se han guardado satisfactoriamente los CAMBIOS del TEMA en la Secuencia Didactica.</strong>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<?php
+}if($_GET["temamod"] == 0){
+  ?>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+<strong>No se han guardado satisfactoriamente los CAMBIOS del TEMA en la Secuencia Didactica, intentelo nuevamente.</strong>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<?php
+}
+
+}else{
+  
+}
+?>
 <div class="row">
            <div class="col-sm-1"></div> 
            <div class="col-sm-10">           
 
               <div class="row" style="padding-bottom: 20px;padding-top: 20px;">
                                   <div class="col-3">
-                                    <?php
-                                       if($tipo_usuario == 0){
-                                        ?>
-                                         <a href="home.php"  style="color: #a31d24;font-size: 12px;text-decoration: none;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar </a>
-                                          <?php
-                                          }
-                                          else if ($tipo_usuario == 1){
-                                          ?>
-                                           <a href="home.php"  style="color: #a31d24;font-size: 12px;text-decoration: none;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar </a>
-                                          <?php
-                                          }                                         
-                                          else if ($tipo_usuario == 2){
-                                        ?>
-                                         <a href="home.php"  style="color: #a31d24;font-size: 12px;text-decoration: none;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar </a>
-                                        <?php
-                                       }
-
-                                    ?>
+    <a href="home.php"  style="color: #a31d24;font-size: 12px;text-decoration: none;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar </a>
+                                       
                                     
                                   </div>
                                    <div class="col-md-3">
@@ -120,12 +163,12 @@ session_start();
 
         <div class="row">
                                   <div class="col-md-4">
-                                          <a href="#" class="btn btn-secondary btn-sm" >
-                                           <i class="fas fa-download fa-sm"></i> Descargar </a>
-                                            <a href="#" class="btn btn-secondary btn-sm" >
-                                             <i class="fas fa-print fa-sm"></i> Imprimir </a>
-                                              <a href="#" class="btn btn-secondary btn-sm" > 
-                                                <i class="fas fa-share-alt fa-sm"></i> Compartir </a>                                        
+<a href="descargar_secuencia.php?cods=<?php echo $NS_UF; ?>&codUF=<?php echo $ID_UF; ?>" class="btn btn-outline-secondary btn-sm" style="color: #1F1D21; font-family: Roboto; font-size: 8px; font-weight: bold; letter-spacing: 0; line-height: 9px; text-align: center;  border-radius: 15px;background-color: #CCCCCC;">
+<i class="fas fa-download fa-sm"></i> Descargar </a>
+<a href="#"  style="color: #1F1D21; font-family: Roboto; font-size: 8px; font-weight: bold; letter-spacing: 0; line-height: 9px; text-align: center;  border-radius: 15px;background-color: #CCCCCC;" class="btn btn-outline-secondary btn-sm" >
+<i class="fas fa-print fa-sm"></i> Imprimir </a>
+<a href="#"  style="color: #1F1D21; font-family: Roboto; font-size: 8px; font-weight: bold; letter-spacing: 0; line-height: 9px; text-align: center;  border-radius: 15px;background-color: #CCCCCC;" class="btn btn-outline-secondary btn-sm" > 
+<i class="fas fa-share-alt fa-sm"></i> Compartir </a>                                        
                                   </div>
                                    <div class="col-md-2">
                                      
@@ -141,7 +184,7 @@ session_start();
                                 <form method="post" action="EliminarUF.php" id="from1">
   <input type="hidden" id="codigoUF" name="codigoUF" value="<?php echo $ID_UF; ?>">
 <input type="hidden" name="codigoNS" id="codigoNS" value="<?php echo $NS_UF; ?>">
-  <button  class="btn btn-light" id="btnEliminar" style="font-family: Roboto;font-size: 12px;color:#a31d24;text-transform: capitalize;font-weight: bold;cursor: pointer;" > <i class="fas fa-trash fa-sm"></i> Eliminar UF </button> 
+  <button  class="btn btn-light" id="btnEliminar" style="color: #A31D24;font-family: Roboto;font-size: 8px;font-weight: bold;letter-spacing: 0;  line-height: 9px; text-align: center;cursor: pointer;"> <i class="fas fa-trash fa-sm"></i> Eliminar unidad </button> 
   </form> 
 
 
@@ -184,7 +227,7 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
                                     <center>
                                       <ul class="nav nav-tabs">
                                          
-                                      <li class="nav-item" id="navitem"  onclick="ejecuta_ajax('informacion_generl.php','coduf=<?php echo $data['CodUF']; ?>','contenidos')">
+                                      <li class="nav-item" id="navitem"  onclick="ejecuta_ajax('informacion_generl.php','coduf=<?php echo $data['CodUF']; ?>&iduser=<?php echo $_SESSION['CodUsuario']; ?>&NS_UF=<?php echo $NS_UF; ?>','contenidos')">
                                      <a 
                                           <?php
                                                 if(isset($_GET["reenvio"])) {
@@ -200,7 +243,7 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
                                       <i class="fas fa-file fa-sm"></i> Información general</a>
                                       </li>
 
-    <li  class="nav-item" id="navitem" onclick="ejecuta_ajax('secuencias_didactica.php','coduf=<?php echo $data['CodUF']; ?>&ns=<?php echo $data['NSDidacticas']; ?>&codusu=<?php echo $iduser; ?>','contenidos')" >
+    <li  class="nav-item" id="navitem" onclick="ejecuta_ajax('secuencias_didactica.php','coduf=<?php echo $data['CodUF']; ?>&ns=<?php echo $data['NSDidacticas']; ?>&iduser=<?php echo $iduser; ?>','contenidos')" >
                                      <a <?php
                                                 if(isset($_GET["reenvio"])) {
                                                   if($_GET["reenvio"] == 2){ 
@@ -471,6 +514,7 @@ $(document).ready(function(){
 <script>
 function verificar(){
   var estudiantesphp = document.getElementById("numero_estudiantes").value;
+
   //alert("numero de estudiantes "+estudiantesphp);
   var numeroreal = document.getElementById("numrealestudiantes").value;
   //alert("numero real  de estudiantes "+numeroreal);
@@ -479,15 +523,61 @@ function verificar(){
   if(numeroreal % estudiantesphp === 0){
     document.getElementById("numero_grupos").value = res;
      // alert("Ya se puede crear el grupo");
-      document.getElementById("btnCrearEquipos").disabled=false;
+      //document.getElementById("btnCrearEquipos").disabled=false;
+      document.getElementById('btnCrearEquipos').style.visibility = "inherit";
+      document.getElementById('numero_grupos_php').value = document.getElementById('numero_grupos').value;
+       document.getElementById('numero_estudiantes_php').value = document.getElementById('numero_estudiantes').value;
   }else{
     document.getElementById("numero_grupos").value = 0;
     // alert("eliga otro numero que sea divisible");
-      document.getElementById("btnCrearEquipos").disabled=true;
+      //document.getElementById("btnCrearEquipos").disabled=true;
+      document.getElementById('btnCrearEquipos').style.visibility = "hidden";
   }
 }
 </script>
 
+<script>
+function busqueda(){
+var nombre = document.getElementById("q").value;
+var uf = document.getElementById("cod_UF").value;
+ vcapa = document.getElementById("vcapa");
+    //instanciamos el objetoAjax
+    ajax = objetoAjax();
+    //Abrimos una conexión AJAX pasando como parámetros el método de envío, y el archivo que realizará las operaciones deseadas
+    ajax.open("POST", "ajax.php", true);
+    //cuando el objeto XMLHttpRequest cambia de estado, la función se inicia
+    ajax.onreadystatechange = function() {
+    //Cuando se completa la petición, mostrará los resultados
+    if (ajax.readyState == 4){
+    //El método responseText() contiene el texto de nuestro 'consultar.php'. Por ejemplo, cualquier texto que mostremos por un 'echo'
+    vcapa.value = (ajax.responseText)
+    }
+    }
+    //Llamamos al método setRequestHeader indicando que los datos a enviarse están codificados como un formulario.
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    //enviamos las variables a 'consulta.php'
+    // document.getElementById("btnsol").style.visibility = "visible";
+    ajax.send("&nombre="+nombre+"&uf="+uf);
+}
+
+
+  function objetoAjax(){
+                        var xmlhttp = false;
+                        try {
+                        xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+                        } catch (e) {
+                        try {
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                        } catch (E) {
+                        xmlhttp = false; }
+                        }
+                        if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+                        xmlhttp = new XMLHttpRequest();
+                        }
+                        return xmlhttp;
+                        }
+                        
+</script>
 
 </body>
 

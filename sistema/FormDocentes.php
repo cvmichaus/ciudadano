@@ -173,7 +173,7 @@ form.example::after {
 
             <div class="row">
                  <div class="col-sm-3" style="box-sizing: border-box; height: 437px;width: 300px; border: 1px solid #D4D4D4; border-radius: 10px; background-color: #FFFFFF;">
-                  <label style="color: #666666; font-family: Lato; font-size: 12px; letter-spacing: 0;  line-height: 15px;padding-top: 20px;">DATOS USUARIO</label>
+                  <label style="color: #666666; font-family: Lato; font-size: 12px; letter-spacing: 0;  line-height: 15px;padding-top: 20px;">DATOS BÁSICOS</label>
 
                   <form method="post" action="AddDocente.php" enctype="multipart/form-data">
 
@@ -253,11 +253,11 @@ form.example::after {
 
                  <div class="col-sm-8" style="box-sizing: border-box; height: 337px;width: 663px; border: 1px solid #D4D4D4; border-radius: 10px;background-color: #FFFFFF;">
 
-                  <label style="color: #666666; font-family: Lato; font-size: 12px; letter-spacing: 0;  line-height: 15px;padding-top: 20px;">DATOS SECUNDARIA</label>
+                  <label style="color: #666666; font-family: Lato; font-size: 12px; letter-spacing: 0;  line-height: 15px;padding-top: 20px;">ESCUELA DONDE LABORA</label>
 
                   
                 <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label" style="text-align: left;" >Tipo de secundaria:</label>
+          <label for="inputEmail3" class="col-sm-2 col-form-label" style="text-align: left;" >Escuela</label>
           <select name="tipo_escuela" id="tipo_escuela"  class="form-control" style=" height: 30px;width: 454px;" placeholder="Tipo de Secundaria">
         <option value="">Seleccione</option>
         <option value="Secundaria General">Secundaria General </option>
@@ -269,16 +269,16 @@ form.example::after {
           </div>
 
               <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-2 col-form-label" style="text-align: left;">Nombre de la secundaria</label>
+                <label for="inputEmail3" class="col-sm-2 col-form-label" style="text-align: left;">Nombre de la escuela</label>
                 <div class="col-sm-10">
-                <input type="text" style=" height: 30px;width: 452px;" class="form-control" name="nombre_secundaria" id="nombre_secundaria" placeholder="Nombre de la secundaria">
+                <input type="text" style=" height: 30px;width: 452px;" class="form-control" name="nombre_secundaria" id="nombre_secundaria" placeholder="Nombre de la escuela">
                 </div>
                 </div>
 
                  <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-2 col-form-label" style="text-align: left;">Clave de la secundaria</label>
+                <label for="inputEmail3" class="col-sm-2 col-form-label" style="text-align: left;">Clave de la escuela</label>
                 <div class="col-sm-10">
-                <input type="text" style=" height: 30px;width: 452px;" class="form-control" name="clave_secundaria" id="clave_secundaria"  placeholder="Clave de la secundaria">
+                <input type="text" style=" height: 30px;width: 452px;" class="form-control" name="clave_secundaria" id="clave_secundaria"  placeholder="Clave de la escuela">
                 </div>
                 </div>
 

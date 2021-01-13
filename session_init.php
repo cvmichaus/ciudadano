@@ -68,6 +68,18 @@ if(isset($_POST["enviar"])) {
 											header("Location: sistema/home.php");
 
 											}
+											else if($perfil == 3){/*PUBLICO EN GENERAL*/
+
+											session_start();
+											$_SESSION["logueado"] = TRUE;
+											$_SESSION['CodUsuario'] = $row["CodUsuario"];
+											$_SESSION['UsuarioNombre'] = $row["Usuario"];
+											$_SESSION['Perfil'] = $row["Perfil"];
+											//$_SESSION['ImagenAvatar'] = $row["imagen"];
+											//echo '<script language="javascript">alert("Perfil Admin");</script>';
+											header("Location: sistema/home.php");
+
+											}
 											else{
 											//echo '<script language="javascript">alert("Sin Perfil");</script>';
 											header("Location: index.php?error=perfil");

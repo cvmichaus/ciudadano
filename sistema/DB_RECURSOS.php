@@ -24,7 +24,7 @@ if($resrecursos = $mysqli->query($consrecursos)) {
 
 	?>
 	<script type="text/javascript">
-	window.location.href='detalles_UF.php?coduf=<?php echo base64_encode($coduf); ?>&codns=<?php echo $codSD ;?>&reenvio=2';
+	window.location.href='detalles_UF.php?coduf=<?php echo base64_encode($coduf); ?>&codns=<?php echo $codSD ;?>&reenvio=2&iduser=<?php echo $idusr ;?>';
 	</script>
 	<?php
 

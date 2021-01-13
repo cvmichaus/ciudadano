@@ -101,7 +101,9 @@
 width: 200px;
 height:40px;
 }
-
+#fcontacto{
+ padding-left: 30px;text-align: left;
+}
 
 }
 
@@ -112,6 +114,9 @@ height:40px;
 width: 130px;
 height:51px;
 }
+#fcontacto{
+  padding-left: 100px;text-align: left;
+}
 
 }
 
@@ -121,6 +126,9 @@ height:51px;
 width: 330px;
 height:51px;
 }
+#fcontacto{
+   padding-left: 30px;text-align: left;
+}
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -128,5 +136,8 @@ height:51px;
 	.logo{
 width: 330px;
 height:51px;
+}
+#fcontacto{
+  padding-left: 120px;text-align: left;
 }
 }

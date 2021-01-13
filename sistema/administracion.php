@@ -23,51 +23,6 @@ session_start();
      <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 
-<script type="text/javascript" language="javascript" src="datatables/jquery.dataTables.min.js"></script>
-<script type="text/javascript" language="javascript" src="datatables/dataTables.buttons.min.js"></script>
-<script type="text/javascript" language="javascript" src="datatables/buttons.flash.min.js"></script>
-<script type="text/javascript" language="javascript" src="datatables/jszip.min.js"></script>
-<script type="text/javascript" language="javascript" src="datatables/pdfmake.min.js"></script>
-<script type="text/javascript" language="javascript" src="datatables/vfs_fonts.js"></script>
-<script type="text/javascript" language="javascript" src="datatables/buttons.html5.min.js"></script>
-<script type="text/javascript" language="javascript" src="datatables/buttons.print.min.js"></script>
-
-<link rel="stylesheet" type="text/css" href="datatables/query.dataTables.min.css">
-  <link rel="stylesheet" type="text/css" href="datatables/buttons.dataTables.min.css">
-
-
-<script type="text/javascript" language="javascript" class="init">
- $(document).ready(function() {
-        var selected = [];
-        $('#example2').DataTable( {
-         "lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]],
-          dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ],
-            stateSave: true,
-            "order": [[ 1, "desc" ]],
-        } );
-
-        $('#example2 tbody').on('click', 'tr', function () {
-            var id = this.id;
-            var index = $.inArray(id, selected);
-
-            if ( index === -1 ) {
-                selected.push( id );
-            } else {
-                selected.splice( index, 1 );
-            }
-
-            $(this).toggleClass('selected');
-        } );
-
-    } )
-
-
-</script>
-
-
    <link rel="stylesheet" href="../bootstrap.min.css">
      
    <script src="https://kit.fontawesome.com/d6e77194d9.js" crossorigin="anonymous"></script>
@@ -184,8 +139,7 @@ form.example::after {
 <div style="height: 88px; width: 100%;border-radius: 10px; background-color: #FFFFFF; box-shadow: 0 2px 4px 0 #D4D4D4;">
             <div class="row">
                  <div class="col-sm-12" style="padding-top: 10px;padding-left: 100px;">
-                  <label style=" height: 17px;  width: 58px; color: #A31D24;font-family: Lato;
-  font-size: 14px; font-weight: bold;letter-spacing: 0; line-height: 17px;">Resumen</label>
+                  <label style=" height: 17px;  width: 58px; color: #A31D24;font-family: Lato;font-size: 14px; font-weight: bold;letter-spacing: 0;line-height: 17px;">Resumen</label>
                  </div>
             </div>
 
@@ -200,7 +154,7 @@ form.example::after {
                         ?>
                       
                      </span><br>
-                       <label style=" height: 15px;  width: 52px; color: #1F1D21;  font-family: Lato;  font-size: 12px; font-weight: bold; letter-spacing: 0; line-height: 15px;">Docentes</label>
+                       <label style=" height: 15px;  width: 52px; color: #1F1D21;  font-family: Lato2;  font-size: 12px; font-weight: bold; letter-spacing: 0; line-height: 15px;">Docentes</label>
                     </div>
 
                      <div class="col-sm-3" >
@@ -211,7 +165,7 @@ form.example::after {
                         echo $row_cnt2;
                         ?>
                         </span><br>
-                       <label style=" height: 15px;  width: 52px; color: #1F1D21;  font-family: Lato;  font-size: 12px; font-weight: bold; letter-spacing: 0; line-height: 15px;">Secundarias</label>
+                       <label style=" height: 15px;  width: 52px; color: #1F1D21;  font-family: Lato2;  font-size: 12px; font-weight: bold; letter-spacing: 0; line-height: 15px;">Secundarias</label>
                      </div>
 
                       <div class="col-sm-3" >
@@ -222,7 +176,7 @@ form.example::after {
                         echo $row_cnt4;
                         ?>
                         </span><br>
-                       <label style=" height: 15px;  width: 52px; color: #1F1D21;  font-family: Lato;  font-size: 12px; font-weight: bold; letter-spacing: 0; line-height: 15px;">Estudiantes</label>
+                       <label style=" height: 15px;  width: 52px; color: #1F1D21;  font-family: Lato2;  font-size: 12px; font-weight: bold; letter-spacing: 0; line-height: 15px;">Estudiantes</label>
                      </div>
 
                       <div class="col-sm-3" >
@@ -233,7 +187,7 @@ form.example::after {
                         echo $row_cnt3;
                         ?>
                         </span><br>
-                       <label style=" height: 15px;  width: 202px; color: #1F1D21;  font-family: Lato;  font-size: 12px; font-weight: bold; letter-spacing: 0; line-height: 15px;">Unidades de formación</label>
+                       <label style=" height: 15px;  width: 202px; color: #1F1D21;  font-family: Lato2;  font-size: 12px; font-weight: bold; letter-spacing: 0; line-height: 15px;">Unidades de formación</label>
                      </div>
                </div>
        </div>
@@ -258,7 +212,7 @@ form.example::after {
                  <div class="col-sm-12" style="padding-bottom: 20px; padding-top: 10px;">
                     <table id="example2" class="table table-striped table-bordered" style="width:100%">
         <thead>
-            <tr style="text-align: center;vertical-align: middle;">
+            <tr style="text-align: center;vertical-align: middle;  color: #000000;  font-family: Roboto; font-size: 12px; font-weight: bold;  letter-spacing: 0;  line-height: 14px;">
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Correo electrónico</th>
@@ -276,7 +230,7 @@ form.example::after {
   if($ResQry = $mysqli->query($ConsultaPrincipal)) {
   while($data = mysqli_fetch_assoc($ResQry)){ 
           ?>
-            <tr style="text-align: center;vertical-align: middle;">
+            <tr style="text-align: center;vertical-align: middle;  font-family: Lato2;  font-size: 10px;  letter-spacing: 0;  line-height: 12px;">
                 <td><?php echo $data["CodUsuario"];?></td>
                 <td><?php echo $data["Nombres"];?> <?php echo $data["Apellidos"]?></td>
                 <td><?php echo $data["correo"];?></td>
@@ -349,7 +303,7 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
               <div class="col-3">
               </div>
                 <div class="col-3">
-                   <a class="btn btn-sm btn-primary btn-block" href="FormDocentes.php" style="background-color:#a31d24;color:#fff;font-size: 15px;height: 40px; width: 178px;" ><i class="fas fa-plus fa-lg"></i> Agregar usuario
+                   <a class="btn btn-sm btn-primary btn-block" href="FormDocentes.php" style="background-color:#a31d24;color:#fff;font-size: 15px;height: 40px; width: 178px;" > <i class="fas fa-plus fa-lg"></i> Agregar usuario
  </a>
 
                 </div>

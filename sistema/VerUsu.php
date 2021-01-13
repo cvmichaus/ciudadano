@@ -35,50 +35,38 @@ session_start();
 
 </head>
 
-<body>
-   <div class="container-fluid">
-      <div class="row align-items-start">
-              <div class="col-md-1">
-              </div>  
-
-               <div class="col-md-10">
-
-  
-
+<body class="row m-0 bg-white justify-content-center align-items-center vh-100">
+   
+   <div class="container">
 <?php
 include ("menu.php");
-?>
-
-              </div>  
-
-               <div class="col-md-1">
-              </div>  
+?>     
     </div>
-     </div>
-  </div>
-  <!-- MAIN -->
-     <div id="wrapper">
-       <!-- Navigation -->
 
-        <!-- Navigation -->
-          <div id="page-wrapper">
-            <!-- Page Content -->
+  
+  <!-- MAIN -->
+    
              <div class="container-fluid">
                  <div class="row">
-                       <div class="col-md-12">
+                       <div class="col-md-1">
+                       </div>
+
+                              <div class="col-md-10">
                              <div class="white-box">
 
-<div class="row">
+  <div class="row">
                                   <div class="col-md-3">
-                                      <a href="home.php"  style="color: #a31d24;">&nbsp;<- Regresar </a>
+                                       <a href="home.php"  style="color: #a31d24;font-size: 12px;text-decoration: none;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar </a>
                                   </div>
                                    <div class="col-md-3">
                                      
-                                  </div>
-                                   <div class="col-md-3">
+                                  
                                      
                                   </div>
                                    <div class="col-md-3">
+                                      
+                                  </div>
+                                  <div class="col-md-3">
                                       
                                   </div>
                                 </div>
@@ -91,9 +79,11 @@ include ("menu.php");
                                       
                                   </div>  
                                    <div class="col-3" style="text-align: right;">
-                                    <form method="post" action="EliminarDocente.php" id="from1">
+  
+  <form method="post" action="EliminarDocente.php" id="from1">
   <input type="hidden" id="codUsu" name="codUsu" value="<?php echo $codUsu; ?>">
-  <button  class="btn btn-light" id="btnEliminar" style="font-family: Roboto;font-size: 12px;color:#a31d24;text-transform: capitalize;font-weight: bold;cursor: pointer;" ><span class="oi oi-trash"></span> Eliminar Usuario</button> 
+ 
+  <button  class="btn btn-light" id="btnEliminar" style="color: #A31D24; font-family: Roboto;font-size: 8px;  font-weight: bold; letter-spacing: 0; line-height: 9px; text-align: center;border-color:#A31D24; " ><i class="fa fa-trash" aria-hidden="true"></i> Eliminar Usuario</button> 
   </form> 
 
 
@@ -129,7 +119,7 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
                                   </div>   
                                   <div class="col-3">                                  
 
-                                     <button type="button" class="btn btn-light" style="font-family: Roboto;font-size: 12px;color:#a31d24;text-transform: capitalize;font-weight: bold;"><span  class="oi oi-key"></span> Resetear Contraseña</button>
+                                     <button type="button" class="btn btn-light" style="color: #A31D24; font-family: Roboto;font-size: 8px;  font-weight: bold; letter-spacing: 0; line-height: 9px; text-align: center;border-color:#A31D24; "><i class="fa fa-cog" aria-hidden="true"></i> Resetear  Contraseña</button>
 
                                   </div>                               
                                 </div>
@@ -153,13 +143,11 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
                                      <input type="hidden" id="codUsuario" name="codUsuario" value="<?php echo $codUsu; ?>">
                                   <div class="row" style="width:100%;" >
                                 <div class="col-4" style="border: 1px solid #000000;-moz-border-radius: 7px;-webkit-border-radius: 7px;padding: 10px; ">
-                                 <label style="text-transform: uppercase;font-family: Roboto;font-size: 12px;font-weight: bolder; text-align: left;vertical-align: middle;font-color:#ccc;">Datos Basicos</label>
+                                 <label style="text-transform: uppercase;font-family: Roboto;font-size: 12px;font-weight: bolder; text-align: left;vertical-align: middle;font-color:#ccc;">DATOS BÁSICOS</label>
                                  <br>
-                                 <center><img src="fotos/<?php  if(isset($data['avatar'])){
-                                    echo $data['avatar'];
-                                   } else if(empty($data['avatar'])){ echo "avatar.png";}else{
-                                    echo "avatar.png";
-                                   }  ?>" alt="" style="height: 120px; width: 120px;" width="25%" class="rounded-circle" ></center>
+                                 <center><img src="fotos/<?php if(empty($data['avatar'])){
+                                   echo "avatar.png";
+                                   }else{ echo $data['avatar']; }  ?>" alt="" style="height: 120px; width: 120px;" width="25%" class="rounded-circle" ></center>
                                  <br>
                                  <label style="  color: #A31D24; font-family: Roboto; font-size: 12px;  letter-spacing: 0; line-height: 14px;font-weight: bold;">Nomnbre(s)</label>
                                  <br>
@@ -190,7 +178,7 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
                                    </label>
                                 </div>
                                 <div class="col-8"  style="border: 1px solid #000000;-moz-border-radius: 7px;-webkit-border-radius: 7px;padding: 10px;">
-                                  <label style="text-transform: uppercase;font-family: Roboto;font-size: 12px;font-weight: bolder; text-align: left;vertical-align: middle;font-color:#ccc;">Secundaria donde Labora</label>
+                                  <label style="text-transform: uppercase;font-family: Roboto;font-size: 12px;font-weight: bolder; text-align: left;vertical-align: middle;font-color:#ccc;">ESCUELA DONDE LABORA</label>
                                   <br>
                                    <label>
                                     <div class="row">
@@ -258,8 +246,7 @@ document.querySelector('#from1').addEventListener('submit', function(e) {
                  </div>
              </div>
              <!-- Page Content -->
-          </div>   
-     </div>
+  
       <!-- MAIN -->
 <?php
 include ("pie.php");

@@ -8,7 +8,7 @@ session_start();
       $fecha_del_dia=date('Y-m-d');//fecha actual
 
       $user = $_SESSION['UsuarioNombre'];
-      $iduser = $_SESSION['CodUsuario'];
+      $iduser = $_GET['iduser'];
        $tipo_usuario = $_SESSION['Perfil'];
        $codart=$_GET['codart'];
        
@@ -25,7 +25,11 @@ session_start();
      <script src="../bootstrap.bundle.min.js"></script>
    <script src="https://kit.fontawesome.com/d6e77194d9.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="EstiloSis.css">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script src="popper.min.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
 
+<link href="open-iconic-master/font/css/open-iconic-bootstrap.css" rel="stylesheet">
   </head>
   <style>
 body 
@@ -71,6 +75,52 @@ form.example::after {
    </div>
 
  <div class="container-fluid" style="position: relative;width: 100%;height: auto;min-height: 450px;overflow: hidden;text-align: justify;">
+  <?php
+if(isset($_GET["elimino"])){
+  if($_GET["elimino"] == 1){
+?>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+<strong>Se han eliminado  satisfactoriamente el comentario.</strong>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<?php
+}if($_GET["elimino"] == 0){
+  ?>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+<strong>No se ha podido eliminar el comentario , intentelo nuevamente.</strong>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<?php
+}
+}
+?>
+  <?php
+if(isset($_GET["mod"])){
+  if($_GET["mod"] == 1){
+?>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+<strong>Se han modificado  satisfactoriamente el comentario.</strong>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<?php
+}if($_GET["mod"] == 0){
+  ?>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+<strong>No se ha podido modificar el comentario , intentelo nuevamente.</strong>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<?php
+}
+}
+?>
 <div class="row">
            <div class="col-sm-1"></div> 
            <div class="col-sm-10">
@@ -113,7 +163,8 @@ form.example::after {
                                   </div>
                                 </div>
        <?php
- $QueryE = "SELECT * FROM  articulos as a  LEFT JOIN detalle_usuario as u ON a.CodUsu = u.CodUsuario WHERE codArticulo = ".$codart." ";
+ $QueryE = "SELECT * FROM  articulos as a  
+ LEFT JOIN detalle_usuario as u ON a.CodUsu = u.CodUsuario WHERE codArticulo = ".$codart." ";
       if($ResE = $mysqli->query($QueryE)) {
       
        while($datoA = mysqli_fetch_assoc($ResE)){ 
@@ -200,7 +251,8 @@ form.example::after {
      <div class="row">
       <div class="col-4"></div>
       <div class="col-5">
-     <form>
+
+     <form action="addComentario.php" method="POST">
        <div class="form-group">
     <label for="exampleInputEmail1">
         <?php
@@ -215,11 +267,12 @@ form.example::after {
           <img src="fotos/<?php if (empty($data["avatar"])){ echo "avatar.png"; }else{ echo $data["avatar"]; }?>" class="rounded-circle" width="20px;" > <label style="  color: #4D4D4D; font-family: Roboto; font-size: 12px; font-weight: bold; letter-spacing: 0; line-height: 14px;"> <?php echo $data["Nombres"]; ?> <?php echo $data["Apellidos"]; ?> </label> 
                                   <?php
                                 }
-                                }    
+                                }   
                                   ?>
     </label>
-    <textarea type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></textarea>
-
+    <input type="hidden" name="codarticulo" id="codarticulo"  value="<?php echo $codart; ?>">
+    <input type="hidden" name="iduser" id="iduser"  value="<?php echo $iduser; ?>">
+    <textarea class="form-control" id="exampleInputEmail1" id="comentario" name="comentario" aria-describedby="emailHelp" placeholder="Tu opinion"></textarea>
     <button type="submit" class="btn btn-danger" style=" color: #FFFFFF;  font-family: Roboto;
   font-size: 12px;  letter-spacing: 0;  line-height: 14px;  text-align: center">Opinar</button>
     
@@ -232,6 +285,104 @@ form.example::after {
      <div class="row">
       <div class="col-12">
      <hr>
+    </div>
+   </div>
+
+
+     <div class="row">
+      <div class="col-12">
+    <?php
+        $QueryArticulo = "SELECT * FROM  comentarios as c 
+        INNER JOIN detalle_usuario as d ON d.codUsuario = c.CodUsu 
+        WHERE c.CodArticulo= '".$codart."' ORDER BY FAlta DESC ";
+      if($ResArticulo = $mysqli->query($QueryArticulo)) {
+      
+       while($datoArticulo = mysqli_fetch_assoc($ResArticulo)){ 
+
+          ?>
+          <center>
+    <div style="height: auto; width: 746px; align-items: center;">
+    <div class="container" style="height: 286px; width: 746px; border-radius: 10px; background-color: #FFFFFF;  box-shadow: 0 2px 4px 0 #D4D4D4;align-items: center;">
+     <?php
+if($datoArticulo["CodUsu"] === $iduser){
+?> 
+
+    <div class="row" style="padding-top: 20px;">
+  <div class="col-8" >
+  <img src="fotos/<?php if (empty($datoArticulo["avatar"])){ echo "avatar.png"; }else{ echo $datoArticulo["avatar"]; }?>" class="rounded-circle" width="25px;" >  <label style="color: #666666; font-family: Roboto;  font-size: 12px; letter-spacing: 0; line-height: 14px;"> <?php echo $datoArticulo["Nombres"]; ?> <?php echo $datoArticulo["Apellidos"]; ?> </label> <i class="fa fa-clock-o" aria-hidden="true"></i> <label style="color: #666666;font-family: Roboto; font-size: 12px;letter-spacing: 0;line-height: 14px;"> <?php echo $datoArticulo["FechaAlta"]; ?> <?php echo $datoArticulo["HoraAlta"]; ?></label><br>
+  </div>  
+  <div class="col-4" style="text-align: left;">    
+
+<a  onclick="activar_edicion_opinion();" style="color:#FFFFFF;background-color: #28a745;" id="botonEditar" name="botonEditar" class="btn btn-outline-success btn-sm" > <i class="fas fa-edit fa-sm"></i>Editar </a>
+
+<a href="Delcomentario.php?IdComentario=<?php echo $datoArticulo["CodComentario"]; ?>&codUsu=<?php echo $datoArticulo["CodUsu"]; ?>&CodArticulo=<?php echo $codart; ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash fa-sm"></i> Eliminar</a>
+
+  </div>
+ </div>
+
+<form action="DB_MOD_Opinion.php" method="POST">
+   
+  <div class="row">
+ <div class="col-12" style="text-align: left;">
+  <input type="hidden" name="idcomentario" id="idcomentario"  value="<?php echo $datoArticulo["CodComentario"]; ?>">
+  <input type="hidden" name="codarticulo2" id="codarticulo2"  value="<?php echo $codart; ?>">
+    <input type="hidden" name="iduser2" id="iduser2"  value="<?php echo $iduser; ?>">
+    <textarea  style="border: 0;background-color: #ccc;"  readonly rows="5" cols="50"  class="form-control" id="comentario2" name="comentario2" aria-describedby="emailHelp" placeholder="Tu opinion"><?php echo $datoArticulo["Comentario"]; ?></textarea>
+  <input type="submit" id="botonGuardaMod" name="botonGuardaMod" style="visibility: hidden;background-color: #c82333;color:#FFFFFF;" class="btn btn-outline-danger btn-sm" value="Guardar Modificaciones">
+
+  </label>
+ </div> 
+ </div>
+</form>
+      <script>
+      function activar_edicion_opinion(){
+
+      document.getElementById('comentario2').readOnly = false ;
+      document.getElementById('comentario2').style.backgroundColor = "white";   
+      alert("Ya puedes editar tu Opinion");
+      document.getElementById('botonGuardaMod').style.visibility = "inherit";
+      document.getElementById('botonEditar').style.visibility = "hidden";
+
+
+      }
+      </script>
+
+
+ <?php
+}else{
+?>
+ <div class="row" style="padding-top: 20px;">
+  <div class="col-8" >
+  <img src="fotos/<?php if (empty($datoArticulo["avatar"])){ echo "avatar.png"; }else{ echo $datoArticulo["avatar"]; }?>" class="rounded-circle" width="25px;" >  <label style="color: #666666; font-family: Roboto;  font-size: 12px; letter-spacing: 0; line-height: 14px;"> <?php echo $datoArticulo["Nombres"]; ?> <?php echo $datoArticulo["Apellidos"]; ?> </label> <i class="fa fa-clock-o" aria-hidden="true"></i> <label style="color: #666666;font-family: Roboto; font-size: 12px;letter-spacing: 0;line-height: 14px;"> <?php echo $datoArticulo["FechaAlta"]; ?> <?php echo $datoArticulo["HoraAlta"]; ?></label><br>
+  </div>  
+  <div class="col-4" style="text-align: left;">
+    
+    
+  </div>
+ </div>
+
+  <div class="row">
+ <div class="col-12" style="text-align: left;">
+  <label style="color: #2B2B2B;font-family: Roboto;font-size: 14px;letter-spacing: 0;line-height: 16px;padding-top: 20px;">
+     <?php echo nl2br($datoArticulo["Comentario"]); ?>
+  </label>
+ </div> 
+ </div>
+<?php
+}
+?>
+ 
+
+
+
+    </div>
+    </div>
+  </center>
+   <br><br>
+          <?php
+       }
+     }
+    ?>
     </div>
    </div>
 

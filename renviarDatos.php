@@ -27,8 +27,23 @@ if($resid = $mysqli->query($traerid)) {
 							$UsuarioCod =  $data["CodUsuario"];
 							$Usuariocorreo =  $data["correo"];
 							$UsuarioClave =  $data["Clave"];
+							
+							ini_set('display_errors',1);
+							error_reporting(E_ALL);
+							$from ="rh@cciudadano.mx";
+							$to =$correo;
+							$subject="Reenvio de Datos para el Sistema de CCIUDADANO";
+							$message='¡A continuacion se te proporcionara tu contraseña para el portal de CCIUDADANO ! Clave='.$UsuarioClave.' ';
+							$headers ="From" . $from;
+							mail($to,$subject,$message,$headers);
+							?>
+							<script type="text/javascript">
+							window.location.href='index.php';
+							</script>
+							<?php
 
 
+/*
 							require("PHPMailer-master/src/PHPMailer.php");
 															require("PHPMailer-master/src/SMTP.php");
 															require("PHPMailer-master/src/Exception.php");
@@ -142,7 +157,7 @@ if($resid = $mysqli->query($traerid)) {
 															<?php
 
 															}
-
+*/
 
 
 

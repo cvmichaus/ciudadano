@@ -8,7 +8,7 @@ session_start();
       $fecha_del_dia=date('Y-m-d');//fecha actual
 
       $user = $_SESSION['UsuarioNombre'];
-      $iduser = $_SESSION['CodUsuario'];
+      $iduser = $_GET['idusuario'];
 
       $CodNS = $_GET['codns'];
       $tipo_usuario = $_SESSION['Perfil'];

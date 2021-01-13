@@ -56,16 +56,29 @@
 
     </div>
 
-        <div class="col-12">
+        <div class="col-6">
      <div class="form-group">
-          <label for="exampleFormControlInput1" style="height: 15px;width: 217px;color: #000000; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;">Tipo de secundaria:</label>
-          <select name="tipo_escuela" id="tipo_escuela"  class="form-control" style=" height: 30px;width: 452px;" placeholder="Tipo de Secundaria">
+          <label for="exampleFormControlInput1" style="height: 15px;width: 217px;color: #000000; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;">Escuela:</label>
+          <select name="tipo_escuela" id="tipo_escuela"  class="form-control" style=" height: 40px;width: 210px;" placeholder="Tipo de Secundaria">
         <option value="">Seleccione</option>
-        <option value="Secundaria General">Secundaria General </option>
-        <option value="Tele-secundaria">Tele-secundaria</option>
-         <option value="Secundaria Técnica">Secundaria Técnica</option>
-          <option value="Secundaria Federal">Secundaria Federal</option>
-          <option value="Secundaria Mixta">Secundaria Mixta</option>
+        <option value="Secundaria">Secundaria</option>
+        <option value="Preparatoria">Preparatoria</option>
+        <option value="Universidad">Universidad</option>
+         <option value="Licenciatura">Licenciatura</option>
+          <option value="Maestria">Maestria</option>
+          <option value="Doctorado">Doctorado</option>
+      </select>
+          </div>
+
+    </div>
+
+    <div class="col-6">
+     <div class="form-group">
+          <label for="exampleFormControlInput1" style="height: 15px;width: 217px;color: #000000; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;">Tipo de Usuario:</label>
+          <select name="tipo_usuario" id="tipo_usuario"  class="form-control" style=" height: 40px;width:200px;" placeholder="Tipo de usuario">
+        <option value="">Seleccione</option>
+        <option value="1">Maestro</option>
+        <option value="3">Publico en general</option>
       </select>
           </div>
 
@@ -74,16 +87,16 @@
 
     <div class="col-6">
      <div class="form-group">
-          <label for="exampleFormControlInput1" style="height: 15px;width: 217px;color: #000000; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;">Nombre de la secundaria</label>
-          <input type="text" class="form-control" style=" height: 30px;width: 217px;" name="nombre_secundaria" id="nombre_secundaria"  placeholder="Nombre(s)">
+          <label for="exampleFormControlInput1" style="height: 15px;width: 217px;color: #000000; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;">Nombre de la escuela</label>
+          <input type="text" class="form-control" style=" height: 30px;width: 217px;" name="nombre_secundaria" id="nombre_secundaria"  placeholder="Nombre de la escuela">
           </div>
 
     </div>
 
     <div class="col-6">
      <div class="form-group">
-          <label for="exampleFormControlInput1" style="height: 15px;width: 217px;color: #000000; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;">Clave de la secundaria</label>
-          <input type="text" class="form-control" style=" height: 30px;width: 217px;" name="clave_secundaria" id="clave_secundaria"  placeholder="Clave de la secundaria">
+          <label for="exampleFormControlInput1" style="height: 15px;width: 217px;color: #000000; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;">Clave de la escuela</label>
+          <input type="text" class="form-control" style=" height: 30px;width: 217px;" name="clave_secundaria" id="clave_secundaria"  placeholder="Clave de la escuela">
           </div>
 
     </div>
@@ -92,12 +105,21 @@
           <div class="col-12">
      <div class="form-group">
           <label for="exampleFormControlInput1" style="height: 15px;width: 217px;color: #000000; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;">Correo</label>
-         <input type="email" name="correo" id="correo"  class="form-control" style=" height: 30px;width: 452px;" placeholder="Correo">
+         <input type="email" name="correo" id="correo"  class="form-control" style=" height: 30px;width: 465px;" placeholder="Correo">
           </div>
 
     </div>
 
 <!--
+     <div class="col-6">
+     <div class="form-group">
+          <label for="exampleFormControlInput1" style="height: 15px;width: 217px;color: #000000; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;">Cédula profesional</label>
+          <input type="text" class="form-control" style=" height: 30px;width: 217px;" name="cedula_profesional" id="cedula_profesional"  placeholder="Cédula profesional">
+          </div>
+
+    </div>
+
+
       <div class="col-6">
      <div class="form-group">
           <label for="exampleFormControlInput1" style="height: 15px;width: 217px;color: #000000; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;">Crear contraseña</label>
@@ -170,7 +192,7 @@
 
    <div class="row align-items-center" >
                <div class="col-12" style="text-align: right;">
-                <a href="index.php" class="espera-si-tengo-un" >
+                <a href="index.php" style="color: #666666;font-family: Lato;font-size: 12px;letter-spacing: 0;line-height: 15px;text-align: right;" >
         ¡Espera! Sí tengo una cuenta.</a>
                </div>
            </div>
@@ -186,6 +208,7 @@
 <footer class="container-fluid text-center" style="background-color:#d6d6d6;width: 100%;padding-bottom: 20px;">
  <div class="container">
  <div class="row align-items-center">
+
    <div class="col-3">
      <img src="img/CCIUDADANO_footerlogo.png"  class="img-fluid"   height="37px" width="239px" alt="">
     </div>
@@ -194,24 +217,26 @@
 
     </div>
 
-     <div class="col-3"  style="text-align: left;color: #000000; font-family: Roboto; font-size: 14px;
+     <div class="col-4"  style="text-align: left;color: #000000; font-family: Roboto; font-size: 14px;
   letter-spacing: 0; line-height: 16px;  text-align: left;">
   <br>
       <center><label class="contactanos"> Contáctanos </label></center><br>
-<span class="telefono">
+<div style="text-align: center;">
+  <div id="fcontacto" style="padding-left: 120px;text-align: left;">
     <img src="img/Phone.png" width="5%">
      Teléfono : 54 87 71 10<br>
     Calle Miguel Hidalgo s/n esquina<br>
     Mariano Matamoros, 14000<br>
      Ciudad de México
-  </span>
+  </div>
+</div>
     </div>
 
      <div class="col-1">
 
     </div>
 
-     <div class="col-4" style="text-align: left;color: #000000; font-family: Roboto; font-size: 14px;
+     <div class="col-3" style="text-align: left;color: #000000; font-family: Roboto; font-size: 14px;
   letter-spacing: 0; line-height: 16px;  text-align: center;">
 
        <label class="contactanos"> Síguenos en </label><br>

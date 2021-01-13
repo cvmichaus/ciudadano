@@ -30,7 +30,17 @@
 
         <div class="row align-items-center">
         <div class="col-12" style="text-align: center;">
+          <?php
+         if(isset($_GET["validado"])){
+        ?>
+        <label class="alert alert-success" role="alert" style="height: 76px;width: 272px;color: #000000;font-family: Roboto;font-size: 14px; font-weight: bold;letter-spacing: 0;  line-height: 28px;text-align: center;">Se ha verificado correctamente tu cuenta, ya puedes iniciar sesión.</label>
         <?php
+        }
+         if(isset($_GET["novalidado"])){
+        ?>
+        <label class="alert alert-warning" role="alert" style="height: 76px;width: 292px;color: #000000;font-family: Roboto;font-size: 12px; font-weight: bold;letter-spacing: 0;  line-height: 28px;text-align: center;">No se ha podido verificar correctamente tu cuenta, revísalo con el administrador del sitio.</label>
+        <?php
+        }
         if(isset($_GET["adios"])){
         ?>
         <label class="has-cerrado-sesion">Has cerrado sesión.<br>
@@ -40,7 +50,7 @@
         }
         if(isset($_GET["olvide"])){
         ?>
-         <label style="height: 56px; width: 272px; color: #000000;  font-family: Roboto;  font-size: 12px;  font-weight: bold;  letter-spacing: 0;  line-height: 28px;  text-align: center;">No pudimos reenviar tu informacion de acceso ya que tu correo no esta en el sistema. Favor de ingresar un correo valido </label><br><br>
+         <label  style="height: 56px; width: 272px; color: #000000;  font-family: Roboto;  font-size: 12px;  font-weight: bold;  letter-spacing: 0;  line-height: 28px;  text-align: center;">No pudimos reenviar tu informacion de acceso ya que tu correo no esta en el sistema. Favor de ingresar un correo valido </label><br><br>
          <?php
         }
        
@@ -237,13 +247,15 @@
   letter-spacing: 0; line-height: 16px;  text-align: left;">
   <br>
       <center><label class="contactanos"> Contáctanos </label></center><br>
-<span class="telefono">
+<div style="text-align: center;">
+  <div id="fcontacto" style="padding-left: 120px;text-align: left;">
     <img src="img/Phone.png" width="5%">
      Teléfono : 54 87 71 10<br>
     Calle Miguel Hidalgo s/n esquina<br>
     Mariano Matamoros, 14000<br>
      Ciudad de México
-  </span>
+  </div>
+</div>
     </div>
 
      <div class="col-1">

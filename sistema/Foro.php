@@ -178,7 +178,13 @@ echo ' ';
   <div class="row">
  <div class="col-4">
  	<label style="color: #A31D24;font-family: Roboto;font-size: 12px; letter-spacing: 0; line-height: 14px;padding-top: 20px;">
- 		<i class="fa fa-comments-o" aria-hidden="true"></i> 5 comentarios
+ 		<i class="fa fa-comments-o" aria-hidden="true"></i> 
+    <?php
+                $D1 = $mysqli->query("SELECT * FROM  comentarios as u  WHERE u.CodArticulo ='".$datoA["CodArticulo"]."'  ");
+                      $row_cnt = $D1->num_rows;
+                        echo $row_cnt;
+                        ?>
+                         comentarios
   </label>
  </div>	
   <div class="col-4">
@@ -187,7 +193,7 @@ echo ' ';
  </div>	
   <div class="col-4" style="text-align: right;">
  	<label style="  color: #808080; font-family: Lato; font-size: 14px; letter-spacing: 0;  line-height: 17px; text-align: center;padding-top: 20px;">
- 		<a href="DetalleArticulo.php?codart=<?php echo $datoA["CodArticulo"]; ?>" class="btn btn-danger btn-sm" style="height: 30px; width: 83px;
+ 		<a href="DetalleArticulo.php?codart=<?php echo $datoA["CodArticulo"]; ?>&iduser=<?php echo $iduser;?>" class="btn btn-danger btn-sm" style="height: 30px; width: 83px;
   color: #ffffff; font-family: Lato; font-size: 14px; letter-spacing: 0;  line-height: 17px;  text-align: center;"> Ver </a>
   </label>
  </div>	

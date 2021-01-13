@@ -27,7 +27,7 @@ $cons01 = "INSERT INTO `euf` (`CodUF`, `Titulo`, `Proyeccion`, `EvaluacionD`, `F
 
 if($res1 = $mysqli->query($cons01)) {
 
-	//echo '<script language="javascript">alert("Se agrego a la tabla EUF ");</script>'; 
+//echo '<script language="javascript">alert("Se agrego a la tabla EUF ");</script>'; 
 
 
 $traerUF = "SELECT CodUF FROM euf WHERE Titulo= '".$titulo."' AND NSDidacticas = '".$nsecuencias."' AND  CodMaestro = '".$idusr."' AND FechaAlta = '".$fecha_actual."' AND HoraAlta = '".$hora_actual."'  ";
@@ -36,7 +36,7 @@ $traerUF = "SELECT CodUF FROM euf WHERE Titulo= '".$titulo."' AND NSDidacticas =
 							$dataUF = $resUF->fetch_array();
 							$CodUF =  $dataUF["CodUF"];
 
-	//echo '<script language="javascript">alert(" revisar en BD '.$traerUF.' ");</script>';						
+//echo '<script language="javascript">alert(" revisar en BD '.$traerUF.' ");</script>';						
 
 		//echo '<script language="javascript">alert(" Se obtuvo el CODUF '.$CodUF.' ");</script>'; 
 	//CREAMOS LA secuancias didacticas
@@ -47,7 +47,7 @@ $traerUF = "SELECT CodUF FROM euf WHERE Titulo= '".$titulo."' AND NSDidacticas =
  				$x=1;
 					while ($i != $numero_secuencias) {
 
-	//echo '<script language="javascript">alert(" entro al while de numero de secuencias ");</script>'; 
+//echo '<script language="javascript">alert(" entro al while de numero de secuencias ");</script>'; 
 
 					$nombreSD="Secuencia Didactica ".$x; 					
 
@@ -62,7 +62,7 @@ $traerUF = "SELECT CodUF FROM euf WHERE Titulo= '".$titulo."' AND NSDidacticas =
 
  				}
 
-	//echo '<script language="javascript">alert(" Deberia mandar al home  ");</script>'; 
+//echo '<script language="javascript">alert(" Deberia mandar al home  ");</script>'; 
 
 					if($tipo_usuario == 0){
 

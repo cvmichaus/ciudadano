@@ -8,7 +8,7 @@ session_start();
       $fecha_del_dia=date('Y-m-d');//fecha actual
 
       $user = $_SESSION['UsuarioNombre'];
-      $iduser = $_SESSION['CodUsuario'];
+       $iduser = $_SESSION['CodUsuario'];
 
        $tipo_usuario = $_SESSION['Perfil'];
        
@@ -20,7 +20,7 @@ session_start();
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+  <title>Formulario de Unidad de Formacion</title>
   <link rel="stylesheet" href="estilo.css">
 <link rel="stylesheet" href="../bootstrap.min.css">
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -48,24 +48,9 @@ session_start();
             <div class="col-10">
               <div class="row" style="padding-bottom: 20px;padding-top: 20px;">
                                   <div class="col-3">
-                                    <?php
-                                       if($tipo_usuario == 0){
-                                        ?>
+                                    
                                          <a href="home.php"  style="color: #a31d24;font-size: 12px;text-decoration: none;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar </a>
-                                          <?php
-                                          }
-                                          else if ($tipo_usuario == 1){
-                                          ?>
-                                           <a href="home.php"  style="color: #a31d24;font-size: 12px;text-decoration: none;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar </a>
-                                          <?php
-                                          }                                         
-                                          else if ($tipo_usuario == 2){
-                                        ?>
-                                         <a href="home.php"  style="color: #a31d24;font-size: 12px;text-decoration: none;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar </a>
-                                        <?php
-                                       }
-
-                                    ?>
+                                     
                                     
                                   </div>
                                    <div class="col-3">
@@ -105,7 +90,7 @@ session_start();
                             </div>
                             </div>
 
-                            <form method="post" action="DBUF.php">
+                            <form method="post" action="DBUF.php" name="miformulario" id="miformulario">
 
                             <div class="row">
                             <div class="col-md-12">
@@ -319,7 +304,8 @@ Caracteres 1000 / <span id="pcaractere6" ></span>
                             <div class="col-md-2">
                                 <div class="form-group">
                                 
-                                <input type="number" class="form-control" id="nsecuencias" name="nsecuencias"  min="1" aria-describedby="nsecuencias" required placeholder="Escriba Aqui">
+                                <input type="number" class="form-control" id="nsecuencias" name="nsecuencias"  min="1" max="30" aria-describedby="nsecuencias" required placeholder="Escriba Aqui" onblur="validarvalor();">
+
                                
                                 </div>
                             </div>
@@ -394,6 +380,35 @@ $(window).on("load resize", function() {
 });
 
     </script>
+
+  <script>
+  function validarvalor(){
+    var a = document.getElementById("nsecuencias").value;
+    if( a >= 31){
+      document.getElementById("nsecuencias").value = 0;
+      alert("! El valor de las secuencias debe de ser maximo 30! , seleccione un valor dentro de este rango");
+      
+    }
+  }
+
+  </script>
+
+  <script type="text/javascript">
+    miFormulario = document.querySelector('#miformulario');
+miFormulario.nsecuencias.addEventListener('keypress', function (e){
+  if (!soloNumeros(event)){
+    e.preventDefault();
+  }
+})
+
+//Solo permite introducir numeros.
+function soloNumeros(e){
+    var key = e.charCode;
+    console.log(key);
+    return key >= 48 && key <= 57;
+}
+  </script>
+
 </html>
   <?php
   } else {

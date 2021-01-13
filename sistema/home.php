@@ -81,20 +81,9 @@ form.example::after {
                <div class="row">
                     <div class="col-sm-6">
                        <form class="example" action="/action_page.php">
-  <input type="text" name="search" style="box-sizing: border-box;
-  height: 21px;
-  width: 325px;
-  border: 1px solid #B3B3B3;
-  border-radius: 5px;">
-  <button type="submit" style="height: 20px;
-  width: 90px;color: #A31D24;
-  font-family: Roboto;
-  font-size: 8px;
-  font-weight: bold;
-  letter-spacing: 0;
-  line-height: 9px;
-  background-color: #FFFFFF;
-  text-align: center;"><i class="fa fa-search"> Buscar</i></button>
+  <input type="text" name="search" style="box-sizing: border-box;height: 21px; width: 325px; border: 1px solid #B3B3B3; border-radius: 5px;">
+  <button type="submit" style=";height: 20px; width: 90px;color: #A31D24; font-family: Roboto; font-size: 8px; font-weight: bold; letter-spacing: 0;
+  line-height: 9px; background-color: #FFFFFF; text-align: center;border-color: #A31D24;"><i class="fa fa-search"> Buscar</i></button>
 </form>
                     </div>
  <?php
@@ -167,7 +156,7 @@ echo $FechaPeriodoActual = $Dia_PHP33.$esp3.$Mes_PHP33.$esp3.$Anio_PHP33; //FORM
 
       ?><br></span>
       </p>
-      <center><a href="detalles_UF.php?codns=<?php echo $NSD; ?>&coduf=<?php echo base64_encode($CodUFxD);?>" class="btn btn-primary" style=" height: 30px;width: 83px; border-radius: 5px;
+      <center><a href="detalles_UF.php?codns=<?php echo $NSD; ?>&coduf=<?php echo base64_encode($CodUFxD);?>&iduser=<?php echo $iduser;?>" class="btn btn-primary" style=" height: 30px;width: 83px; border-radius: 5px;
       background-color: #A31D24;text-align: center;vertical-align: middle;font-family: Lato; font-size: 14px; letter-spacing: 0; line-height: 17px;"> Ver </a></center>
       </div>
       </div>
@@ -179,9 +168,12 @@ echo $FechaPeriodoActual = $Dia_PHP33.$esp3.$Mes_PHP33.$esp3.$Anio_PHP33; //FORM
             <?php
           }
         }
+
+
+       
           
 
-}else if($tipo_usuario == 0 ) {
+}else if($tipo_usuario == 0 ) {/*ADMIN*/
 
   $ConsultaPrincipal = "SELECT a.CodUF,a.Titulo,a.NSDidacticas,b.Grado,b.Grupo,b.Asignaturas,b.NumeroAlumnos,b.NumeroHoras,a.FechaAlta,a.CodMaestro,u.Nombres,u.Apellidos 
             FROM euf as a 
@@ -199,11 +191,12 @@ echo $FechaPeriodoActual = $Dia_PHP33.$esp3.$Mes_PHP33.$esp3.$Anio_PHP33; //FORM
       <div class="card-body">
       <label style=" color: #2B2B2B; font-family: Lato; font-size: 16px; font-weight: bold; letter-spacing: 0; line-height: 19px;" class="card-title"><?php echo $data['Titulo']; ?></label>
       <p class="card-text" style="color: #2B2B2B; font-family: Lato; font-size: 14px; letter-spacing: 0; line-height: 17px; text-align: left;">
+      Docente: <?php  echo $data['Nombres']; echo " &nbsp;"; echo $data['Apellidos'];?> <br>  
       Grado: <?php echo $data['Grado']; ?> <br>
       Asignatura(s) / proyecto: <?php echo $data['Asignaturas']; ?> <br>
       Número de alumnos: <?php echo $data['NumeroAlumnos']; ?> <br>
       Número de horas: <?php echo $data['NumeroHoras']; ?> <br>
-      <span style="color: #A31D24; font-family: Roboto; font-size: 14px; letter-spacing: 0; line-height: 16px;">Fecha de creacion <?php 
+      <span style="color: #A31D24; font-family: Roboto; font-size: 14px; letter-spacing: 0; line-height: 16px;">Fecha de creación: <?php 
       $fecha_altaPHP = $data['FechaAlta'];
     $porciones55 = explode("-", $fecha_altaPHP);
     $Anio_PHP33=$porciones55[0];
@@ -211,12 +204,12 @@ echo $FechaPeriodoActual = $Dia_PHP33.$esp3.$Mes_PHP33.$esp3.$Anio_PHP33; //FORM
     $Dia_PHP33=$porciones55[2];
      $esp3="/";
 echo $FechaPeriodoActual = $Dia_PHP33.$esp3.$Mes_PHP33.$esp3.$Anio_PHP33; //FORMAMOS EL PERIODO ACTUAL
-   echo "<br>";echo "Docente:"; echo " &nbsp;"; echo $data['Nombres']; echo " &nbsp;"; echo $data['Apellidos']; 
+  
 
 
       ?><br></span>
       </p>
-      <center><a href="detalles_UF.php?codns=<?php echo $NSD; ?>&coduf=<?php echo base64_encode($CodUFxD);?>" class="btn btn-primary" style=" height: 30px;width: 83px; border-radius: 5px;
+      <center><a href="detalles_UF.php?codns=<?php echo $NSD; ?>&coduf=<?php echo base64_encode($CodUFxD);?>&iduser=<?php echo $iduser;?>" class="btn btn-primary" style=" height: 30px;width: 83px; border-radius: 5px;
       background-color: #A31D24;text-align: center;vertical-align: middle;font-family: Lato; font-size: 14px; letter-spacing: 0; line-height: 17px;"> Ver </a></center>
       </div>
       </div>
@@ -228,9 +221,10 @@ echo $FechaPeriodoActual = $Dia_PHP33.$esp3.$Mes_PHP33.$esp3.$Anio_PHP33; //FORM
             <?php
           }
         }
+
           
 
-}else if($tipo_usuario == 2 ) {
+}else if($tipo_usuario == 2 ) { /*ALUMNO*/
 
  $ConsultaPrincipal = "SELECT a.CodUF,a.Titulo,a.NSDidacticas,b.Grado,b.Grupo,b.Asignaturas,b.NumeroAlumnos,b.NumeroHoras,a.FechaAlta,d.Nombres,d.Apellidos,u.correo,d.cedula 
             FROM euf as a 
@@ -255,7 +249,7 @@ echo $FechaPeriodoActual = $Dia_PHP33.$esp3.$Mes_PHP33.$esp3.$Anio_PHP33; //FORM
      
       ?><br></span>
       </p>
-      <center><a href="detalles_UF2.php?codns=<?php echo $NSD; ?>&coduf=<?php echo base64_encode($CodUFxD);?>" class="btn btn-primary" style=" height: 30px;width: 83px; border-radius: 5px;
+      <center><a href="detalles_UF2.php?codns=<?php echo $NSD; ?>&coduf=<?php echo base64_encode($CodUFxD);?>&iduser=<?php echo $iduser;?>" class="btn btn-primary" style=" height: 30px;width: 83px; border-radius: 5px;
       background-color: #A31D24;text-align: center;vertical-align: middle;font-family: Lato; font-size: 14px; letter-spacing: 0; line-height: 17px;"> Ver </a></center>
       </div>
       </div>
@@ -270,7 +264,34 @@ echo $FechaPeriodoActual = $Dia_PHP33.$esp3.$Mes_PHP33.$esp3.$Anio_PHP33; //FORM
 
 }       ?>
         </div>       
-                    
+          
+<?php
+if($tipo_usuario == 1 ) {
+?>           
+        <hr>
+        <div class="row">
+            <div class="col-12" style="text-align: center;">
+                <span style="  color: #2B2B2B; font-family: Roboto;  font-size: 24px;  font-weight: bold;  letter-spacing: 0;  line-height: 28px;  text-align: center;">¿Conoces nuestros recursos didácticos?</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12" style="text-align: justify-all;padding-top: 32.5px; width: 893px;">
+                <span style="color: #2B2B2B; font-family: Roboto; font-size: 14px;letter-spacing: 0; line-height: 16px; text-align: justify;">CCIUDADANO comparte contigo recursos didácticos con los que podrás apoyarte para el desarrollo de tu unidad de formación. Estos, al crear tu unidad de formación, ya estarán en la plataforma para que puedas hacer uso de ellos y enviarlos a tus estudiantes. De igual forma, te invitamos a desarrollar, subir y compartir tus propios recursos para complementar la formación de los estudiantes. </span>
+            </div>
+        </div>
+
+
+        <div class="row">
+          <div clas=col-12>
+            <br><br>
+          </div>
+        </div>
+
+
+  <?php
+}
+  ?>       
 
            </div> 
 

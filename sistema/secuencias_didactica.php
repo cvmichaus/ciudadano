@@ -8,7 +8,7 @@ session_start();
       $fecha_del_dia=date('Y-m-d');//fecha actual
 
       $user = $_SESSION['UsuarioNombre'];
-      $idusuario = $_GET['codusu'];
+      $idusuario = $_GET['iduser'];
 
 $COD_UF = $_GET['coduf'];
 $CodNS = $_GET['ns'];
@@ -26,7 +26,7 @@ $tipo_usuario = $_SESSION['Perfil'];
               ?>
 <div class="row">
     <div class="col-md-12">
-    <p style="font-family: Roboto;font-size: 16px;color:#a31d24;text-transform: uppercase;font-weight: bolder;" ><a style="font-family: Roboto;font-size: 16px;color:#a31d24;text-transform: uppercase;font-weight: bolder;text-decoration: none;" href="formDatosIG.php?codUF=<?php echo base64_encode($COD_UF); ?>&codns=<?php echo $CodNS; ?>"> <i class="fas fa-pencil-alt fa-sm"></i></a> datos de identificación del grupo </p>
+    <p style="font-family: Roboto;font-size: 16px;color:#a31d24;text-transform: uppercase;font-weight: bolder;" ><a style="font-family: Roboto;font-size: 16px;color:#a31d24;text-transform: uppercase;font-weight: bolder;text-decoration: none;" href="formDatosIG.php?codUF=<?php echo base64_encode($COD_UF); ?>&codns=<?php echo $CodNS; ?>&idusuario=<?php echo $idusuario; ?>"> <i class="fas fa-pencil-alt fa-sm"></i></a> datos de identificación del grupo </p>
     </div>
     </div>
 <?php
@@ -95,7 +95,7 @@ $tipo_usuario = $_SESSION['Perfil'];
                       $row_cnt2 = $D2->num_rows;
                        
                        if ($row_cnt2 == 0){
-                          echo "sin secuencias didacticas";
+                          echo "aun no hay secuencias didacticas o no eres el propietario de esata Unidad de Formacion por lo tanto  no puedes ver las secuencias didacticas";
                        }else{
                            //echo $row_cnt2;
                                 while($datoSec = mysqli_fetch_assoc($D2)){ 
@@ -156,18 +156,100 @@ $tipo_usuario = $_SESSION['Perfil'];
       <div class="card-body">
       
       <ul style="list-style: none;font-family: Roboto;">
-        <li><a style=" height: 14px; width: 89px; color: #666666; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;text-decoration: none;" href="formTema.php?codUF=<?php echo base64_encode($COD_UF); ?>&codSD=<?php echo $datoSec["codSD"]; ?>" > <i class="fas fa-pencil-alt fa-sm" data-toggle="tooltip" data-placement="top" title="Editar"></i> </a> 
-        Tema y Subtema </li>
 
-         <li><a  href="formProblema.php?codUF=<?php echo base64_encode($COD_UF); ?>&codSD=<?php echo $datoSec["codSD"]; ?>" style="height: 14px; width: 89px; color: #666666; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;text-decoration: none;" ><i class="fas fa-pencil-alt fa-sm" data-toggle="tooltip" data-placement="top" title="Editar"></i> </a> Problema significativo de contexto</li>
 
-          <li><a href="formCompetencias.php?codUF=<?php echo base64_encode($COD_UF); ?>&codSD=<?php echo $datoSec["codSD"]; ?>" style="height: 14px; width: 89px; color: #666666; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;text-decoration: none;" ><i class="fas fa-pencil-alt fa-sm" data-toggle="tooltip" data-placement="top" title="Editar"></i> </a> Competencias</li>
+        <li><a style=" height: 14px; width: 89px; color: #666666; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;text-decoration: none;" href="formTema.php?codUF=<?php echo base64_encode($COD_UF); ?>&codSD=<?php echo $datoSec["codSD"]; ?>&idusuario=<?php echo $idusuario; ?>" > <i class="fas fa-pencil-alt fa-sm" data-toggle="tooltip" data-placement="top" title="Editar"></i> </a> 
+        <span <?php
+        $QueryTema = "SELECT * FROM  tema  WHERE `CodUF` =  ".$COD_UF." AND NumSD = ".$datoSec["codSD"]." ";
+      if($ResTema = $mysqli->query($QueryTema)) {
 
-           <li><a href="formRecursos.php?codUF=<?php echo base64_encode($COD_UF); ?>&codSD=<?php echo $datoSec["codSD"]; ?>" style="height: 14px; width: 89px; color: #666666; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;text-decoration: none;" ><i class="fas fa-pencil-alt fa-sm" data-toggle="tooltip" data-placement="top" title="Editar"></i> </a> Recursos</li>
+      
+       $ExisteTema = mysqli_num_rows($ResTema);
+        if(empty($ExisteTema)){
+           echo 'style="font-family: Roboto; font-size: 12px;text-decoration: none;"';
+        }else{
+          echo 'style="font-family: Roboto; font-size: 12px;color:#A31D24"';
+        }
+     }
+     ?>
+        >Tema y Subtema</span> </li>
 
-            <li><a href="formDesarrollo.php?codUF=<?php echo base64_encode($COD_UF); ?>&codSD=<?php echo $datoSec["codSD"]; ?>" style="height: 14px; width: 89px; color: #666666; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;text-decoration: none;" ><i class="fas fa-pencil-alt fa-sm" data-toggle="tooltip" data-placement="top" title="Editar"></i> </a> Desarrollo de las sesiones</li>
+         <li><a  href="formProblema.php?codUF=<?php echo base64_encode($COD_UF); ?>&codSD=<?php echo $datoSec["codSD"]; ?>&idusuario=<?php echo $idusuario; ?>" style="height: 14px; width: 89px; color: #666666; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;text-decoration: none;" ><i class="fas fa-pencil-alt fa-sm" data-toggle="tooltip" data-placement="top" title="Editar"></i> </a> 
+         <span <?php
+        $QueryProblematica = "SELECT * FROM  problema_sig_contexto  WHERE `CodUF` =  ".$COD_UF." AND NumSD = ".$datoSec["codSD"]." ";
+      if($ResProblematica = $mysqli->query($QueryProblematica)) {
 
-             <li><a href="formMatriz.php?codUF=<?php echo base64_encode($COD_UF); ?>&codSD=<?php echo $datoSec["codSD"]; ?>" style="height: 14px; width: 89px; color: #666666; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;text-decoration: none;" ><i class="fas fa-pencil-alt fa-sm" data-toggle="tooltip" data-placement="top" title="Editar"></i> </a> Matriz de valoración</li>
+      
+       $ExisteProblematica = mysqli_num_rows($ResProblematica);
+        if(empty($ExisteProblematica)){
+           echo 'style="font-family: Roboto; font-size: 12px;text-decoration: none;"';
+        }else{
+          echo 'style="font-family: Roboto; font-size: 12px;color:#A31D24"';
+        }
+     }
+     ?>
+        >Problema significativo de contexto</span></li>
+
+          <li><a href="formCompetencias.php?codUF=<?php echo base64_encode($COD_UF); ?>&codSD=<?php echo $datoSec["codSD"]; ?>&idusuario=<?php echo $idusuario; ?>" style="height: 14px; width: 89px; color: #666666; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;text-decoration: none;" ><i class="fas fa-pencil-alt fa-sm" data-toggle="tooltip" data-placement="top" title="Editar"></i> </a> 
+           <span <?php
+        $QueryCompetencias = "SELECT * FROM  problema_sig_contexto  WHERE `CodUF` =  ".$COD_UF." AND NumSD = ".$datoSec["codSD"]." ";
+      if($ResCompetencias = $mysqli->query($QueryCompetencias)) {
+
+      
+       $ExisteCompetencias = mysqli_num_rows($ResCompetencias);
+        if(empty($ExisteCompetencias)){
+           echo 'style="font-family: Roboto; font-size: 12px;text-decoration: none;"';
+        }else{
+          echo 'style="font-family: Roboto; font-size: 12px;color:#A31D24"';
+        }
+     }
+     ?>
+        >Competencias</span></li>
+
+           <li><a href="formRecursos.php?codUF=<?php echo base64_encode($COD_UF); ?>&codSD=<?php echo $datoSec["codSD"]; ?>&idusuario=<?php echo $idusuario; ?>" style="height: 14px; width: 89px; color: #666666; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;text-decoration: none;" ><i class="fas fa-pencil-alt fa-sm" data-toggle="tooltip" data-placement="top" title="Editar"></i> </a> <span <?php
+        $QueryRecursos = "SELECT * FROM  recursos  WHERE `CodUF` =  ".$COD_UF." AND NumSD = ".$datoSec["codSD"]." ";
+      if($ResRecursos = $mysqli->query($QueryRecursos)) {
+
+      
+       $ExisteRecursos = mysqli_num_rows($ResRecursos);
+        if(empty($ExisteRecursos)){
+           echo 'style="font-family: Roboto; font-size: 12px;text-decoration: none;"';
+        }else{
+          echo 'style="font-family: Roboto; font-size: 12px;color:#A31D24"';
+        }
+     }
+     ?>
+        >Recursos</span></li>
+
+            <li><a href="formDesarrollo.php?codUF=<?php echo base64_encode($COD_UF); ?>&codSD=<?php echo $datoSec["codSD"]; ?>&idusuario=<?php echo $idusuario; ?>" style="height: 14px; width: 89px; color: #666666; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;text-decoration: none;" ><i class="fas fa-pencil-alt fa-sm" data-toggle="tooltip" data-placement="top" title="Editar"></i> </a>  <span <?php
+        $QueryDesarrollos = "SELECT * FROM  desarrollo_sesiones  WHERE `CodUF` =  ".$COD_UF." AND NumDS = ".$datoSec["codSD"]." ";
+      if($ResDesarrollos = $mysqli->query($QueryDesarrollos)) {
+
+      
+       $ExisteDesarrollos = mysqli_num_rows($ResDesarrollos);
+        if(empty($ExisteDesarrollos)){
+           echo 'style="font-family: Roboto; font-size: 12px;text-decoration: none;"';
+        }else{
+          echo 'style="font-family: Roboto; font-size: 12px;color:#A31D24"';
+        }
+     }
+     ?>
+        >Desarrollo de las sesiones</span></li>
+
+             <li><a href="formMatriz.php?codUF=<?php echo base64_encode($COD_UF); ?>&codSD=<?php echo $datoSec["codSD"]; ?>&idusuario=<?php echo $idusuario; ?>" style="height: 14px; width: 89px; color: #666666; font-family: Roboto; font-size: 12px; letter-spacing: 0; line-height: 14px;text-decoration: none;" ><i class="fas fa-pencil-alt fa-sm" data-toggle="tooltip" data-placement="top" title="Editar"></i> </a> <span <?php
+        $Querymatriz = "SELECT * FROM  matriz  WHERE `CodUF` =  ".$COD_UF." AND NumSD = ".$datoSec["codSD"]." ";
+      if($Resmatriz = $mysqli->query($Querymatriz)) {
+
+      
+       $Existematriz = mysqli_num_rows($Resmatriz);
+        if(empty($Existematriz)){
+           echo 'style="font-family: Roboto; font-size: 12px;text-decoration: none;"';
+        }else{
+          echo 'style="font-family: Roboto; font-size: 12px;color:#A31D24"';
+        }
+     }
+     ?>
+        >Matriz de valoración</span></li>
               
        </ul>
 

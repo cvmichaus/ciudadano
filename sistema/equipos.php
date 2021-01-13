@@ -72,7 +72,32 @@ $hora_actual= strftime("%H:%M:%S");
 
 			<?php
 	}else{
-			echo "usuario";
+		?>
+			<div class="row">
+				<div class="col-12" style="text-align: center;vertical-align: middle;padding-top: 20px;">
+				  <label style="  color: #A31D24; font-family: Roboto; font-size: 14px; font-weight: bold; letter-spacing: 0; line-height: 16px;  text-align: center;">Equipo:</label> 	
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12" style="text-align: center;vertical-align: middle;padding-top: 15.82px;">
+				  <label style="color: #000000; font-family: Lato; font-size: 15.6px;  letter-spacing: 0;  line-height: 18px;"> 1 </label> 	
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12" style="text-align: center;vertical-align: middle;padding-top: 15.82px;">
+				  <form name="formulariob" id="formulariob">
+				  	 <input type="hidden" name="cod_UF" id="cod_UF" value="<?php echo $_GET["coduf"]; ?>">
+				  	<input type="serch" name="q" id="q" onkeyup="busqueda();" style=" border-radius: 5px;box-sizing: border-box;height: 24px; width: 456px; border: 1px solid #B3B3B3;background-color: #FFFFFF;">
+				  <span style="  color: #A31D24; font-family: Lato; font-size: 12px; letter-spacing: 0;  line-height: 15px;"><i class="fas fa-plus fa-sm"></i> Agregar integrante</span>
+				  <div id="capa">
+				  	<input  style="border-style: none;background-color: #F0F0F0;box-sizing: border-box;height: 24px; width: 456px; " type="text" name="vcapa" id="vcapa">
+				  </div>
+				   </form>
+		
+				</style>	
+				</div>
+			</div>
+		<?php
 	}	
 
   } else {

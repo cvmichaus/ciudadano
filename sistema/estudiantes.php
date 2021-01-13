@@ -12,40 +12,6 @@
 <link rel="stylesheet" type="text/css" href="datatables/query.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="datatables/buttons.dataTables.min.css">
 
-
-<script type="text/javascript" language="javascript" class="init">
- $(document).ready(function() {
-        var selected = [];
-        $('#example2').DataTable( {
-         "lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]],
-          dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ],
-            stateSave: true,
-            "order": [[ 1, "desc" ]],
-        } );
-
-        $('#example2 tbody').on('click', 'tr', function () {
-            var id = this.id;
-            var index = $.inArray(id, selected);
-
-            if ( index === -1 ) {
-                selected.push( id );
-            } else {
-                selected.splice( index, 1 );
-            }
-
-            $(this).toggleClass('selected');
-        } );
-
-    } )
-
-
-</script>
-
-
-
 <div class="col-md-12" style="padding-top: 20px;
 padding-right: 80px;
 padding-bottom: 20px;
@@ -369,9 +335,9 @@ input:checked + .slider:before {
 <div style=" display: flex; justify-content: center; align-items: center;">
 <div style="text-align: justify;padding-right: 20px;padding-top: 20px;padding-bottom: 20px;height: 365px; width:692px; border-radius: 10px; background-color: #F0F0F0;">
   
-  <div class="row" style="text-align: justify;padding-left: 130px;">
+  <div class="row" style="text-align: justify;padding-left: 110px;">
     <div class="col-12">
-Deseo que el sistema cree los equipos
+<span style="color: #666666; font-family: Roboto; font-size: 14px; font-weight: bold; letter-spacing: 0; line-height: 16px;padding-right: 5px;">Deseo que el sistema cree los equipos</span>
         <label class="switch">
           <!--
   <input type="checkbox" name="chk" id="chk" onChange="ejecuta_ajax('equipos.php','chkphp='+chk.checked+'','grupos')">
@@ -379,14 +345,14 @@ Deseo que el sistema cree los equipos
   <input type="checkbox" name="chk" id="chk" onChange="ejecuta_ajax('equipos.php','chkphp='+chk.checked+'&coduf='+codUF.value+'','grupos')">
   <span class="slider round"></span>
 </label>
-Deseo hacerlo yo
+   <span style="color: #666666; font-family: Roboto; font-size: 14px; font-weight: bold; letter-spacing: 0; line-height: 16px;padding-left: 5px;">Deseo hacerlo yo</span>
     </div>
 </div>
 
 <div class="row" style="text-align: justify;padding-left: 20px;">
  <div class="col-12">
    <div id="grupos"> 
-    <from>
+   
     <div class="row">
       <?php
       $D4 = $mysqli->query("SELECT * FROM  estudiantes WHERE CodUF =".$COD_UF."  ");
@@ -425,18 +391,22 @@ Deseo hacerlo yo
           
         </div>
          <div class="col-4">
-     <input type="hidden" name="numrealestudiantes" id="numrealestudiantes" value="<?php echo $row_cnt4; ?>">       
-  <input type="hidden" name="codUF" id="codUF" value="<?php echo $_GET["coduf"]; ?>">
-   <input type="hidden" name="codigoNS" id="codigoNS" value="<?php echo $_GET["ns"]; ?>">
-  <button  class="btn btn-danger" id="btnCrearEquipos" name="btnCrearEquipos" disabled="disabled" style="font-family: Roboto;font-size: 12px;color:#fff;height: 40px;
-  width: 160px;" > Crear equipos </button> 
+    <form action="CrearGrupo.php" method="POST">
+          <input type="hidden" name="numero_grupos_php" id="numero_grupos_php" > 
+          <input type="hidden" name="numero_estudiantes_php" id="numero_estudiantes_php" >    
+          <input type="hidden" name="numrealestudiantes" id="numrealestudiantes" value="<?php echo $row_cnt4; ?>">       
+          <input type="hidden" name="codUF" id="codUF" value="<?php echo $_GET["coduf"]; ?>">
+          <input type="hidden" name="codigoNS" id="codigoNS" value="<?php echo $_GET["ns"]; ?>">
+          <button type="submit"  class="btn btn-danger" id="btnCrearEquipos" name="btnCrearEquipos" style="visibility: hidden;font-family: Roboto;font-size: 12px;color:#fff;height: 40px;
+          width: 160px;" > Crear equipos </button> 
+  </form>
         </div>
          <div class="col-4">
           
         </div>
      </div>
   </div>
-</from>
+
  </div>  
 </div>
  

@@ -38,7 +38,13 @@ if($res1 = $mysqli->query($cons01)) {
 //echo '<script language="javascript">alert(" total de secuencias '.$rest.' ");</script>'; 
 
                        if($rest==0){
-                       		echo "regresar ya que no se realizaron cambios";
+                       		
+                       		?>
+	<script type="text/javascript">
+	window.location.href='detalles_UF.php?coduf=<?php echo base64_encode($COD_UF); ?>&codns=<?php echo $nsecuencias ;?>&reenvio=1&iduser=<?php echo $idusr ;?>';
+	</script>
+	<?php
+
                        }else{
 
 	//echo '<script language="javascript">alert(" total de secuencias a insertar '.$rest.' ");</script>'; 
@@ -73,7 +79,7 @@ $traerSD = "SELECT MAX(NumSD) as NumSD FROM secuencias_didacticas WHERE CodUF = 
 
 								?>
 	<script type="text/javascript">
-	window.location.href='detalles_UF.php?coduf=<?php echo base64_encode($COD_UF); ?>&codns=<?php echo $nsecuencias ;?>&reenvio=1';
+	window.location.href='detalles_UF.php?coduf=<?php echo base64_encode($COD_UF); ?>&codns=<?php echo $nsecuencias ;?>&reenvio=1&iduser=<?php echo $idusr ;?>';
 	</script>
 	<?php
 

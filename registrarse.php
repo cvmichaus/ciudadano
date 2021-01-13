@@ -14,6 +14,8 @@ require("class/cnmysql.php");
 			$clave_secundaria = $_POST["clave_secundaria"]; 
 			$correo = $_POST["correo"]; 
 			$password = $_POST["pass"]; 
+			$tipo_usuario=$_POST["tipo_usuario"];
+		
 
 			$traerDMail = "SELECT port,host,username,password FROM `mailing`WHERE codMail = 1 ";
 
@@ -27,18 +29,7 @@ require("class/cnmysql.php");
 						
 
 
-$existeMail = "SELECT * FROM `usuarios` WHERE correo = '".$correo."'  ";
-
-						if($resMail = $mysqli->query($existeMail)) {
-									?>
-									<script type="text/javascript">
-									window.location.href='registrar.php?existes=1';
-									</script>
-									<?php
-
-						}else{
-
-$cons01 = "INSERT INTO `usuarios` (`CodUsuario`, `Usuario`, `Clave`, `Perfil`, `estatus`, `enlinea`, `correo`) VALUES (NULL,'".$nombre."', '".$password."', '1',  '0' , '0','".$correo."')";
+$cons01 = "INSERT INTO `usuarios` (`CodUsuario`, `Usuario`, `Clave`, `Perfil`, `estatus`, `enlinea`, `correo`) VALUES (NULL,'".$nombre."', '".$password."', '".$tipo_usuario."',  '0' , '0','".$correo."')";
 
 	if($res1 = $mysqli->query($cons01)) {
 
@@ -56,17 +47,27 @@ $cons01 = "INSERT INTO `usuarios` (`CodUsuario`, `Usuario`, `Clave`, `Perfil`, `
 $cons3 = "INSERT INTO `secundarias` (`CodSec`,`CodUsu`,`Tipo`,`Nombre`,`Clave`) VALUES (NULL,'".$UsuarioCod."','".$tipo_escuela."','".$nombre_secundaria."','".$clave_secundaria."' )";
 
 										if($res3 = $mysqli->query($cons3)) {
+
+
+											ini_set('display_errors',1);
+											error_reporting(E_ALL);
+											$from ="rh@cciudadano.mx";
+											$to =$correo;
+											$subject="Alta en el Sistema de Solicitud de CCIUDADANO";
+											$message='¡Bienvenido! Favor de corroborar tu cuenta ingresando en el siguiente enlace:  http://www.urbanistica.mx/areaproyectos/sistema/cciudadano/validar.php?correo='.$correo.'&pass='.$password.'"   ';
+											$headers ="From" . $from;
+											mail($to,$subject,$message,$headers);
+											?>
+											<script type="text/javascript">
+											window.location.href='index.php';
+											</script>
+											<?php
+
 										
-										
+										/*
 															require("PHPMailer-master/src/PHPMailer.php");
 															require("PHPMailer-master/src/SMTP.php");
-															require("PHPMailer-master/src/Exception.php");
-
-																
-																 
-																
-																 
-
+															require("PHPMailer-master/src/Exception.php");											
 
 															$mail3 = new PHPMailer\PHPMailer\PHPMailer();
 															$mail3->IsSMTP();
@@ -172,6 +173,7 @@ $cons3 = "INSERT INTO `secundarias` (`CodSec`,`CodUsu`,`Tipo`,`Nombre`,`Clave`) 
 															<?php
 
 															}
+															*/
 
 												}else{echo "error al insertar secundarias";}
 											
@@ -179,7 +181,7 @@ $cons3 = "INSERT INTO `secundarias` (`CodSec`,`CodUsu`,`Tipo`,`Nombre`,`Clave`) 
 						}else{echo "error al traer id";}
 
 					}else{echo "error al insertar usuario";}
-}
+
 	
 }			
 ?>

@@ -27,14 +27,20 @@ if($resTema = $mysqli->query($consTema)) {
 	?>
 	
 	<script type="text/javascript">
-	window.location.href='detalles_UF.php?coduf=<?php echo base64_encode($coduf); ?>&codns=<?php echo $codSD ;?>&reenvio=2';
+	window.location.href='detalles_UF.php?coduf=<?php echo base64_encode($coduf); ?>&codns=<?php echo $codSD ;?>&reenvio=2&iduser=<?php echo $idusr ;?>&tema=1';
 	</script>
 
 	<?php
 
 }else{
 
-	echo $consTema;
+	?>
+	
+	<script type="text/javascript">
+	window.location.href='detalles_UF.php?coduf=<?php echo base64_encode($coduf); ?>&codns=<?php echo $codSD ;?>&reenvio=2&iduser=<?php echo $idusr ;?>&tema=0';
+	</script>
+
+	<?php
 }
 
 

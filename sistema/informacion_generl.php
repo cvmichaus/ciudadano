@@ -13,15 +13,17 @@ session_start();
       $fecha_del_dia=date('Y-m-d');//fecha actual
 
       $user = $_SESSION['UsuarioNombre'];
-      $iduser = $_SESSION['CodUsuario'];
+      $iduser = $_GET['iduser'];
 
 $COD_UF = $_GET['coduf'];
+$NSDidacticasPHP=$_GET["NS_UF"];
+
 
 $ConsultaIG = "SELECT * FROM  euf WHERE `CodUF` =  ".$COD_UF." ";
   if($ResQryIG = $mysqli->query($ConsultaIG)) {
   while($datosig = mysqli_fetch_assoc($ResQryIG)){ 
 
-
+    
 ?>
  
 
@@ -137,7 +139,7 @@ $ConsultaIG = "SELECT * FROM  euf WHERE `CodUF` =  ".$COD_UF." ";
                                      
                                   </div>
                                    <div class="col-md-3" >
-                                      <a href="edituf.php?coduf=<?php echo $COD_UF; ?>" style="color: #A31D24; font-family: Roboto;  font-size: 12px;letter-spacing: 0;  line-height: 14px;  text-align: center;" class="btn btn-light btn-sm " ><span class="oi oi-pencil" ></span> Editar información general</a>
+                                      <a href="edituf.php?coduf=<?php echo $COD_UF; ?>&iduser=<?php echo $iduser; ?>&NSDidacticas=<?php echo $NSDidacticasPHP; ?>" style="color: #A31D24; font-family: Roboto;  font-size: 12px;letter-spacing: 0;  line-height: 14px;  text-align: center;" class="btn btn-light btn-sm " ><span class="oi oi-pencil" ></span> Editar información general</a>
                                   </div>
                                 </div>                               
  

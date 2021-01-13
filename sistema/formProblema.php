@@ -8,7 +8,7 @@ session_start();
       $fecha_del_dia=date('Y-m-d');//fecha actual
 
       $user = $_SESSION['UsuarioNombre'];
-      $iduser = $_SESSION['CodUsuario'];
+       $iduser = $_GET["idusuario"];
 
 	$ID_UF = base64_decode($_GET['codUF']); 
 	$CODSD = $_GET['codSD']; 
@@ -85,7 +85,7 @@ include ("menu.php");
                                 <br>
                                  <div class="row">
                                   <div class="col-md-3">
-                                     <a href="detalles_UF.php?coduf=<?php echo base64_encode($ID_UF);?>&codns=<?php echo $CODSD ?>&reenvio=2"  style="color: #a31d24;">&nbsp;<- Regresar </a>
+                                    <a href="detalles_UF.php?coduf=<?php echo base64_encode($ID_UF);?>&codns=<?php echo $CODSD ?>&iduser=<?php echo $iduser;?>&reenvio=2" style="color: #a31d24;font-size: 12px;text-decoration: none;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar </a>
                                   </div>
                                    <div class="col-md-3">
                                      
@@ -101,7 +101,15 @@ include ("menu.php");
 								
 								<div class="row" >
 								<div class="col-md-12">
-								<h2>Secuencia Didáctica <?php echo $CODSD; ?></h2>
+								 <?php
+                  $QueryTema2 = "SELECT * FROM  secuencias_didacticas  WHERE `CodUF` = ".$ID_UF." AND codSD = ".$CODSD." ";
+                  if($ResTema2 = $mysqli->query($QueryTema2)) {
+                  $datos2 = mysqli_fetch_assoc($ResTema2);
+                  ?>
+                  <h2><?php echo $datos2["Nombre"]; ?></h2>
+                  <?php
+                  }
+                  ?>
 								</div>
 								</div>
 
